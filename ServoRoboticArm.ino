@@ -25,11 +25,15 @@
 // DEFINES
 //////////////////////////////////////
 
+//Servos.
+#define SERVO_MIN_ANGLE (0.1745329252)
+#define SERVO_MAX_ANGLE (2.9670597284)
 #define SERVO_MIN_PULSE (1000)
 #define SERVO_MAX_PULSE (2000)
 #define SERVO_PULSE_RANGE (SERVO_MAX_PULSE - SERVO_MIN_PULSE)
 #define SERVO_PULSE_PER_RADIAN (SERVO_PULSE_RANGE / M_PI)
 
+//Servo driver.
 #define SERVO_DRIVER_FREQUENCY (60)
 #define SERVO_DRIVER_PULSE_LENGTH ((1000000 / SERVO_DRIVER_FREQUENCY) / 4096)
 
@@ -43,12 +47,12 @@
 Adafruit_PWMServoDriver servoDriver = Adafruit_PWMServoDriver();
 
 Servo servos[NUM_OF_SERVOS] = {
-  Servo(0, M_PI / 2),
-  Servo(1, M_PI / 2),
-  Servo(2, M_PI / 2),
-  Servo(3, M_PI / 2),
-  Servo(4, M_PI / 2),
-  Servo(5, M_PI / 2)
+  Servo(0, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2),
+  Servo(1, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2),
+  Servo(2, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2),
+  Servo(3, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2),
+  Servo(4, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2),
+  Servo(5, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2)
 };
 
 
@@ -73,6 +77,7 @@ void setup()
 
 void loop()
 {
+  //Update servos.
 	UpdateServos();
 }
 
