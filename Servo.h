@@ -23,6 +23,9 @@
 // DEFINES
 //////////////////////////////////////
 
+#define SERVO_MIN_ANGLE (0.1745329252)
+#define SERVO_MAX_ANGLE (2.9670597284)
+
 #ifndef M_PI
 #define M_PI (3.14159265358979323846)
 #endif

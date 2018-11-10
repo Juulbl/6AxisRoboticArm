@@ -26,16 +26,10 @@
 //////////////////////////////////////
 
 //Servos.
-#define SERVO_MIN_ANGLE (0.1745329252)
-#define SERVO_MAX_ANGLE (2.9670597284)
-#define SERVO_MIN_PULSE (1000)
-#define SERVO_MAX_PULSE (2000)
-#define SERVO_PULSE_RANGE (SERVO_MAX_PULSE - SERVO_MIN_PULSE)
-#define SERVO_PULSE_PER_RADIAN (SERVO_PULSE_RANGE / M_PI)
+#define SERVO_MIN_PULSE (125)
+#define SERVO_MAX_PULSE (575)
 
-//Servo driver.
-#define SERVO_DRIVER_FREQUENCY (60)
-#define SERVO_DRIVER_PULSE_LENGTH ((1000000 / SERVO_DRIVER_FREQUENCY) / 4096)
+#define DEGREES_PER_RADIAN (180.0 / M_PI)
 
 #define NUM_OF_SERVOS (6)
 
@@ -48,11 +42,11 @@ Adafruit_PWMServoDriver servoDriver = Adafruit_PWMServoDriver();
 
 Servo servos[NUM_OF_SERVOS] = {
   Servo(0, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2),
-  Servo(1, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2),
-  Servo(2, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2),
-  Servo(3, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2),
-  Servo(4, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2),
-  Servo(5, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2)
+  Servo(1, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI),
+  Servo(2, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, 0),
+  Servo(3, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, 0),
+  Servo(4, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, 0),
+  Servo(5, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, 0)
 };
 
 
@@ -69,7 +63,9 @@ void setup()
 	servoDriver.begin();
   
   //Set servo driver frequency
-  servoDriver.setPWMFreq(SERVO_DRIVER_FREQUENCY);
+  servoDriver.setPWMFreq(60);
+
+  delay(10);
 
   //Update servos.
   UpdateServos();
@@ -79,12 +75,72 @@ void loop()
 {
   //Update servos.
 	UpdateServos();
+
+  delay(1000);
+
+  servos[0].SetAngle(0);
+  servos[3].SetAngle(M_PI);
+  UpdateServos();
+
+  delay(1000);
+
+  servos[1].SetAngle(1.5);
+  UpdateServos();
+
+  delay(1000);
+
+  servos[3].SetAngle(M_PI);
+  UpdateServos();
+
+  delay(1000);
+
+  servos[1].SetAngle(M_PI);
+  UpdateServos();
+
+  delay(1000);
+
+  servos[3].SetAngle(0);
+  UpdateServos();
+
+  delay(1000);
+
+  servos[0].SetAngle(M_PI);
+  servos[3].SetAngle(M_PI);
+  UpdateServos();
+
+  delay(1000);
+
+  servos[1].SetAngle(1.5);
+  UpdateServos();
+
+  delay(1000);
+
+  servos[3].SetAngle(M_PI);
+  UpdateServos();
+
+  delay(1000);
+
+  servos[1].SetAngle(M_PI);
+  UpdateServos();
+
+  delay(1000);
+
+  servos[3].SetAngle(0);
+  UpdateServos();
+
+  delay(1000);
+
+  servos[0].SetAngle(M_PI / 2);
+  servos[3].SetAngle(M_PI / 2);
+  UpdateServos();
+
+  delay(1000);
 }
 
 void UpdateServos()
 {
   for(uint8_t i = 0; i < NUM_OF_SERVOS; i++)
   {
-    servoDriver.setPWM(servos[i].GetServoIndex(), 0, (SERVO_PULSE_PER_RADIAN * servos[i].GetAngle() + SERVO_MIN_PULSE) / SERVO_DRIVER_PULSE_LENGTH);
+    servoDriver.setPWM(servos[i].GetServoIndex(), 0, map(servos[i].GetAngle() * DEGREES_PER_RADIAN, 0, 180, SERVO_MIN_PULSE, SERVO_MAX_PULSE));
   }
 }
