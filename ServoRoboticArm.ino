@@ -26,8 +26,8 @@
 //////////////////////////////////////
 
 //Servos.
-#define SERVO_MIN_PULSE (125)
-#define SERVO_MAX_PULSE (575)
+#define SERVO_MIN_PULSE (157)
+#define SERVO_MAX_PULSE (543)
 
 #define DEGREES_PER_RADIAN (180.0 / M_PI)
 
