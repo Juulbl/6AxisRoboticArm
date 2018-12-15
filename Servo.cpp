@@ -45,26 +45,34 @@ void Servo::SetAngle(double angle)
   if(angle > maxAngle) angle = maxAngle;
   else if(angle < minAngle) angle = minAngle;
 
+  //Set pulse.
+  this->pulse = SERVO_ANGLE_TO_PULSE(angle);
+
   //Set angle.
   this->angle = angle;
 }
 
-uint8_t Servo::GetServoIndex()
+const uint8_t& Servo::GetServoIndex() const
 {
   return this->servoIndex;
 }
 
-double Servo::GetMinAngle()
+const double& Servo::GetMinAngle() const
 {
   return this->minAngle;
 }
 
-double Servo::GetMaxAngle()
+const double& Servo::GetMaxAngle() const
 {
   return this->maxAngle;
 }
 
-double Servo::GetAngle()
+const double& Servo::GetAngle() const
 {
   return this->angle;
+}
+
+const uint16_t& Servo::GetPulse() const
+{
+  return this->pulse;
 }

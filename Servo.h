@@ -16,6 +16,8 @@
 // INCLUDES
 //////////////////////////////////////
 
+#include "Arduino.h"
+
 #include <stdint.h>
 
 
@@ -23,12 +25,24 @@
 // DEFINES
 //////////////////////////////////////
 
-#define SERVO_MIN_ANGLE (0.1745329252)
-#define SERVO_MAX_ANGLE (2.9670597284)
+//Servo
+#define SERVO_MIN_PULSE (157)
+#define SERVO_MAX_PULSE (543)
 
+//Degrees/Radians
+#define DEGREES_PER_RADIAN (180.0 / M_PI)
+
+//M_PI
 #ifndef M_PI
 #define M_PI (3.14159265358979323846)
 #endif
+
+
+//////////////////////////////////////
+// MACROS
+//////////////////////////////////////
+
+#define SERVO_ANGLE_TO_PULSE(SERVO_ANGLE) (map(SERVO_ANGLE * DEGREES_PER_RADIAN, 0, 180, SERVO_MIN_PULSE, SERVO_MAX_PULSE))
 
 
 //////////////////////////////////////
@@ -46,16 +60,18 @@ public:
 
   void SetAngle(double angle);
 
-  uint8_t GetServoIndex();
-  double GetMinAngle();
-  double GetMaxAngle();
-  double GetAngle();
+  const uint8_t& GetServoIndex() const;
+  const double& GetMinAngle() const;
+  const double& GetMaxAngle() const;
+  const double& GetAngle() const;
+  const uint16_t& GetPulse() const;
 
 private:
   uint8_t servoIndex;
   double minAngle;
   double maxAngle;
   double angle;
+  uint16_t pulse;
 
 };
 

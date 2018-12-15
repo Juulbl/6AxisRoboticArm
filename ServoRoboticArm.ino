@@ -26,10 +26,8 @@
 //////////////////////////////////////
 
 //Servos.
-#define SERVO_MIN_PULSE (157)
-#define SERVO_MAX_PULSE (543)
-
-#define DEGREES_PER_RADIAN (180.0 / M_PI)
+#define SERVO_MIN_ANGLE (0.1745329252)
+#define SERVO_MAX_ANGLE (2.9670597284)
 
 #define NUM_OF_SERVOS (6)
 
@@ -141,6 +139,6 @@ void UpdateServos()
 {
   for(uint8_t i = 0; i < NUM_OF_SERVOS; i++)
   {
-    servoDriver.setPWM(servos[i].GetServoIndex(), 0, map(servos[i].GetAngle() * DEGREES_PER_RADIAN, 0, 180, SERVO_MIN_PULSE, SERVO_MAX_PULSE));
+    servoDriver.setPWM(servos[i].GetServoIndex(), 0, servos[i].GetPulse());
   }
 }
