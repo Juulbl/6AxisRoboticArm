@@ -21,6 +21,8 @@
 #include "Servo.h"
 #include "Timeline.h"
 
+#include "TestProgram.h"
+
 
 //////////////////////////////////////
 // DEFINES
@@ -73,10 +75,20 @@ void setup()
   //Set servo driver frequency
   servoDriver.setPWMFreq(60);
 
+  //Wait for pwm driver to initialize.
   delay(10);
 
   //Update servos.
   UpdateServos();
+
+  //Wait for servos to move to position.
+  delay(1000);
+
+  //Load test sequence.
+  timeline.LoadSequences(TestProgram);
+  timeline.SetIsRepeating(true);
+  timeline.Play();
+
 }
 
 void loop()
