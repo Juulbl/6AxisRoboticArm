@@ -19,6 +19,7 @@
 #include <Adafruit_PWMServoDriver.h>
 
 #include "Servo.h"
+#include "Timeline.h"
 
 
 //////////////////////////////////////
@@ -36,8 +37,10 @@
 // FIELDS
 //////////////////////////////////////
 
+//Pwm driver.
 Adafruit_PWMServoDriver servoDriver = Adafruit_PWMServoDriver();
 
+//Servos.
 Servo servos[NUM_OF_SERVOS] = {
   Servo(0, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI / 2),
   Servo(1, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, M_PI),
@@ -47,6 +50,13 @@ Servo servos[NUM_OF_SERVOS] = {
   Servo(5, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, 0)
 };
 
+//Timeline.
+Timeline timeline(servos, NUM_OF_SERVOS);
+
+//Timing.
+unsigned long lastMicros;
+unsigned long currentMicros;
+unsigned long deltaTime;
 
 //////////////////////////////////////
 // FUNCTIONS
@@ -71,68 +81,29 @@ void setup()
 
 void loop()
 {
+
+  //Update current micros.
+  currentMicros = micros();
+
+  //Calculate delta time.
+  deltaTime = currentMicros - lastMicros;
+
+
+  //////////////////////////////////////////
+
+
+  //Update timeline.
+  timeline.Update(deltaTime);
+
   //Update servos.
-	UpdateServos();
-
-  delay(1000);
-
-  servos[0].SetAngle(0);
-  servos[3].SetAngle(M_PI);
   UpdateServos();
 
-  delay(1000);
 
-  servos[1].SetAngle(1.5);
-  UpdateServos();
+  //////////////////////////////////////////
+  
 
-  delay(1000);
-
-  servos[3].SetAngle(M_PI);
-  UpdateServos();
-
-  delay(1000);
-
-  servos[1].SetAngle(M_PI);
-  UpdateServos();
-
-  delay(1000);
-
-  servos[3].SetAngle(0);
-  UpdateServos();
-
-  delay(1000);
-
-  servos[0].SetAngle(M_PI);
-  servos[3].SetAngle(M_PI);
-  UpdateServos();
-
-  delay(1000);
-
-  servos[1].SetAngle(1.5);
-  UpdateServos();
-
-  delay(1000);
-
-  servos[3].SetAngle(M_PI);
-  UpdateServos();
-
-  delay(1000);
-
-  servos[1].SetAngle(M_PI);
-  UpdateServos();
-
-  delay(1000);
-
-  servos[3].SetAngle(0);
-  UpdateServos();
-
-  delay(1000);
-
-  servos[0].SetAngle(M_PI / 2);
-  servos[3].SetAngle(M_PI / 2);
-  UpdateServos();
-
-  delay(1000);
+  //Set last micros to current micros.
+  lastMicros = currentMicros;
 }
 
 void UpdateServos()

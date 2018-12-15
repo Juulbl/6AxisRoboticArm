@@ -53,14 +53,14 @@ class Servo {
 
 public:
   /**
-   * @brief Construct a new Servo object
+   * @brief Construct a new Servo object.
    * 
    * @param servoIndex Index the servo has on the PWM driver.
    */
   Servo(uint8_t servoIndex);
 
   /**
-   * @brief Construct a new Servo object
+   * @brief Construct a new Servo object.
    * 
    * @param servoIndex Index the servo has on the PWM driver.
    * @param initialAngle Value the servo is set to on initialization.
@@ -68,20 +68,20 @@ public:
   Servo(uint8_t servoIndex, double initialAngle);
 
   /**
-   * @brief Construct a new Servo object
+   * @brief Construct a new Servo object.
    * 
    * @param servoIndex Index the servo has on the PWM driver.
-   * @param minAngle Minimal angle the servo can be at.
-   * @param maxAngle Maximum angle the servo can be at.
+   * @param minAngle Minimal (radians) the servo can be at.
+   * @param maxAngle Maximum angle(radians) the servo can be at.
    */
   Servo(uint8_t servoIndex, double minAngle, double maxAngle);
 
   /**
-   * @brief Construct a new Servo object
+   * @brief Construct a new Servo object.
    * 
    * @param servoIndex Index the servo has on the PWM driver.
-   * @param minAngle Minimal angle the servo can be at.
-   * @param maxAngle Maximum angle the servo can be at.
+   * @param minAngle Minimal angle(radians) the servo can be at.
+   * @param maxAngle Maximum angle(radians) the servo can be at.
    * @param initialAngle Value the servo is set to on initialization.
    */
   Servo(uint8_t servoIndex, double minAngle, double maxAngle, double initialAngle);
@@ -100,42 +100,43 @@ public:
    * 
    * @return const uint8_t& Servo index.
    */
-  const uint8_t& GetServoIndex() const;
+  const uint8_t GetServoIndex() const;
 
   /**
    * @brief Get the servo its minimal angle.
    * 
    * @return const double& Minimal angle in radians.
    */
-  const double& GetMinAngle() const;
+  const double GetMinAngle() const;
 
   /**
    * @brief Get the servo its maximum angle.
    * 
    * @return const double& Maximum angle in radians.
    */
-  const double& GetMaxAngle() const;
+  const double GetMaxAngle() const;
 
   /**
    * @brief Get the servo its angle.
    * 
    * @return const double& Angle in radians.
    */
-  const double& GetAngle() const;
+  const double GetAngle() const;
 
   /**
    * @brief Get the PWM pulse needed to get the desired angle.
    * 
    * @return const uint16_t& PWM pulse.
    */
-  const uint16_t& GetPulse() const;
+  const uint16_t GetPulse() const;
 
 private:
-  const uint8_t servoIndex;
-  const double minAngle;
-  const double maxAngle;
-  double angle;
-  uint16_t pulse;
+
+  const uint8_t servoIndex;   //Index the servo has on the pwm driver.
+  const double minAngle;      //Minimal angle(radians) the servo can be at.
+  const double maxAngle;      //Maximum angle(radians) the servo can be at.
+  double angle;               //Current angle(radians) the servo is at.
+  uint16_t pulse;             //PWM pulse needed to get the desired angle.
 
 };
 

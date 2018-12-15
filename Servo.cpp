@@ -52,27 +52,27 @@ void Servo::SetAngle(double angle)
   this->angle = angle;
 }
 
-const uint8_t& Servo::GetServoIndex() const
+const uint8_t Servo::GetServoIndex() const
 {
   return this->servoIndex;
 }
 
-const double& Servo::GetMinAngle() const
+const double Servo::GetMinAngle() const
 {
   return this->minAngle;
 }
 
-const double& Servo::GetMaxAngle() const
+const double Servo::GetMaxAngle() const
 {
   return this->maxAngle;
 }
 
-const double& Servo::GetAngle() const
+const double Servo::GetAngle() const
 {
   return this->angle;
 }
 
-const uint16_t& Servo::GetPulse() const
+const uint16_t Servo::GetPulse() const
 {
   return this->pulse;
 }
