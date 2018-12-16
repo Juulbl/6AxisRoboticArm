@@ -21,6 +21,7 @@
 #include "Arduino.h"
 
 #include "Timeline.h"
+#include "RemoteControlCommand.h"
 
 
 //////////////////////////////////////
@@ -29,7 +30,6 @@
 
 #define REMOTE_CONTROL_START_SYMBOL   ('#')
 #define REMOTE_CONTROL_END_SYMBOL     ('%')
-#define REMOTE_CONTROL_SPLIT_SYMBOL   (':')
 
 #define REMOTE_CONTROL_RX_SIZE        (128)
 
@@ -49,7 +49,7 @@ public:
    * 
    * @pre Serial needs to be initialized.
    */
-  RemoteControl(Timeline* timeline);
+  RemoteControl(Timeline& timeline);
 
   ~RemoteControl();
 
@@ -85,11 +85,11 @@ public:
    * 
    * @return int8_t Positive if success.
    */
-  const int8_t HandleCommand(char* command);
+  const int8_t HandleCommand(RemoteControlCommand&& command);
 
 private:
 
-  Timeline* timeline;                     //Used to control the robot.
+  Timeline& timeline;                     //Used to control the robot.
   char rxBuffer[REMOTE_CONTROL_RX_SIZE];  //Buffer for receiving data.
   uint16_t currentRxBufferIndex;          //The current index in the rx buffer.
 

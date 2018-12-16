@@ -60,7 +60,7 @@ unsigned long currentMicros;
 unsigned long deltaTime;
 
 //Remote control.
-RemoteControl remoteControl(&timeline);
+RemoteControl remoteControl(timeline);
 
 //////////////////////////////////////
 // FUNCTIONS
@@ -118,10 +118,24 @@ void loop()
   lastMicros = currentMicros;
 }
 
+void serialEvent()
+{
+
+  //Updated remote control serial.
+  remoteControl.UpdateSerial();
+
+}
+
 void UpdateServos()
 {
+
+  //Update all servos.
   for(uint8_t i = 0; i < NUM_OF_SERVOS; i++)
   {
+
+    //Set servo pwm pulse.
     servoDriver.setPWM(servos[i].GetServoIndex(), 0, servos[i].GetPulse());
+
   }
+
 }

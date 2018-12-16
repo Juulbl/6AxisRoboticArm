@@ -10,9 +10,12 @@
  */
 #include "RemoteControl.h"
 
-RemoteControl::RemoteControl(Timeline* timeline)
+RemoteControl::RemoteControl(Timeline& timeline)
   : timeline(timeline)
 {
+
+  //Clear rx buffer.
+  this->ClearRxBuffer();
 
 }
 
@@ -23,16 +26,13 @@ RemoteControl::~RemoteControl()
 void RemoteControl::Update()
 {
 
-  //Update serial.
-  this->UpdateSerial();
-
 }
 
 void RemoteControl::UpdateSerial() 
 {
 
   //Received character.
-  char receivedChar = 0;
+  char receivedChar;
 
   //While serial available.
   while(Serial.available() > 0)
@@ -53,7 +53,7 @@ void RemoteControl::UpdateSerial()
       case REMOTE_CONTROL_END_SYMBOL:
 
         //Handle rx buffer as command.
-        this->HandleCommand(this->rxBuffer);
+        this->HandleCommand(RemoteControlCommand(this->rxBuffer));
 
         break;
       default:
@@ -96,9 +96,10 @@ void RemoteControl::ClearRxBuffer()
 
 }
 
-const int8_t RemoteControl::HandleCommand(char* command)
+const int8_t RemoteControl::HandleCommand(RemoteControlCommand&& command)
 {
   
-  
+  Serial.println(command.GetCommand());
+  Serial.println(command.GetParams());
 
 }
