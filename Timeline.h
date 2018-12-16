@@ -50,6 +50,13 @@ public:
   void SetIsRepeating(const bool isRepeating);
 
   /**
+   * @brief Get the number of servos.
+   * 
+   * @return const uint8_t Number of servos.
+   */
+  const uint8_t GetNumberOfServos() const;
+
+  /**
    * @brief If timeline is playing.
    * 
    * @return true If is playing.

@@ -20,8 +20,7 @@
 
 #include "Servo.h"
 #include "Timeline.h"
-
-#include "TestProgram.h"
+#include "RemoteControl.h"
 
 
 //////////////////////////////////////
@@ -29,10 +28,10 @@
 //////////////////////////////////////
 
 //Servos.
-#define SERVO_MIN_ANGLE (0.1745329252)
-#define SERVO_MAX_ANGLE (2.9670597284)
+#define SERVO_MIN_ANGLE   (0.1745329252)
+#define SERVO_MAX_ANGLE   (2.9670597284)
 
-#define NUM_OF_SERVOS (6)
+#define NUM_OF_SERVOS     (6)
 
 
 //////////////////////////////////////
@@ -60,6 +59,9 @@ unsigned long lastMicros;
 unsigned long currentMicros;
 unsigned long deltaTime;
 
+//Remote control.
+RemoteControl remoteControl(&timeline);
+
 //////////////////////////////////////
 // FUNCTIONS
 //////////////////////////////////////
@@ -84,11 +86,6 @@ void setup()
   //Wait for servos to move to position.
   delay(1000);
 
-  //Load test sequence.
-  timeline.LoadSequences(TestProgram);
-  timeline.SetIsRepeating(true);
-  timeline.Play();
-
 }
 
 void loop()
@@ -103,6 +100,9 @@ void loop()
 
   //////////////////////////////////////////
 
+
+  //Update remote control.
+  remoteControl.Update();
 
   //Update timeline.
   timeline.Update(deltaTime);

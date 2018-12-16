@@ -26,15 +26,15 @@
 //////////////////////////////////////
 
 //Servo
-#define SERVO_MIN_PULSE (157)
-#define SERVO_MAX_PULSE (543)
+#define SERVO_MIN_PULSE     (157)
+#define SERVO_MAX_PULSE     (543)
 
 //Degrees/Radians
-#define DEGREES_PER_RADIAN (180.0 / M_PI)
+#define DEGREES_PER_RADIAN  (180.0 / M_PI)
 
 //M_PI
 #ifndef M_PI
-#define M_PI (3.14159265358979323846)
+#define M_PI                (3.14159265358979323846)
 #endif
 
 

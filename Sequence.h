@@ -31,6 +31,12 @@ class Sequence {
 
 public:
 
+  /**
+   * @brief Construct a new Sequence object
+   * 
+   * @param keyframes 
+   * @param numOfFrames 
+   */
   Sequence(SequenceKeyframe* keyframes, uint16_t numOfFrames);
 
   ~Sequence();

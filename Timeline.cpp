@@ -32,6 +32,11 @@ void Timeline::SetIsRepeating(const bool isRepeating)
   this->isRepeating = isRepeating;
 }
 
+const uint8_t Timeline::GetNumberOfServos() const
+{
+  return this->numOfServos;
+}
+
 const bool Timeline::IsPlaying()
 {
   return this->isPlaying;
