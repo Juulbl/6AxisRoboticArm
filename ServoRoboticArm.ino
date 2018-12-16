@@ -19,7 +19,6 @@
 #include <Adafruit_PWMServoDriver.h>
 
 #include "Servo.h"
-#include "Timeline.h"
 #include "RemoteControl.h"
 
 
@@ -51,16 +50,13 @@ Servo servos[NUM_OF_SERVOS] = {
   Servo(5, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE, 0)
 };
 
-//Timeline.
-Timeline timeline(servos, NUM_OF_SERVOS);
-
 //Timing.
 unsigned long lastMicros;
 unsigned long currentMicros;
 unsigned long deltaTime;
 
 //Remote control.
-RemoteControl remoteControl(timeline);
+RemoteControl remoteControl(servos, NUM_OF_SERVOS);
 
 //////////////////////////////////////
 // FUNCTIONS
@@ -103,9 +99,6 @@ void loop()
 
   //Update remote control.
   remoteControl.Update();
-
-  //Update timeline.
-  timeline.Update(deltaTime);
 
   //Update servos.
   UpdateServos();

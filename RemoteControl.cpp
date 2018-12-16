@@ -10,8 +10,8 @@
  */
 #include "RemoteControl.h"
 
-RemoteControl::RemoteControl(Timeline& timeline)
-  : timeline(timeline)
+RemoteControl::RemoteControl(Servo* servos, uint8_t numOfServos)
+  : servos(servos), numOfServos(numOfServos)
 {
 
   //Clear rx buffer.

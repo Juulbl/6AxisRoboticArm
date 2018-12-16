@@ -20,7 +20,7 @@
 
 #include "Arduino.h"
 
-#include "Timeline.h"
+#include "Servo.h"
 #include "RemoteControlCommand.h"
 
 
@@ -45,11 +45,11 @@ public:
   /**
    * @brief Construct a new Remote Control object
    * 
-   * @param timeline 
+   * @param servos Servo array.
    * 
    * @pre Serial needs to be initialized.
    */
-  RemoteControl(Timeline& timeline);
+  RemoteControl(Servo* servos, uint8_t numOfServos);
 
   ~RemoteControl();
 
@@ -89,7 +89,8 @@ public:
 
 private:
 
-  Timeline& timeline;                     //Used to control the robot.
+  const uint8_t numOfServos;              //Number of servos.
+  Servo* servos;                          //Servo array.
   char rxBuffer[REMOTE_CONTROL_RX_SIZE];  //Buffer for receiving data.
   uint16_t currentRxBufferIndex;          //The current index in the rx buffer.
 
