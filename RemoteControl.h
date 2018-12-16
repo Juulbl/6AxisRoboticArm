@@ -93,6 +93,7 @@ private:
   Servo* servos;                          //Servo array.
   char rxBuffer[REMOTE_CONTROL_RX_SIZE];  //Buffer for receiving data.
   uint16_t currentRxBufferIndex;          //The current index in the rx buffer.
+  uint8_t selectedServo;                  //Selected servo.
 
 };
 

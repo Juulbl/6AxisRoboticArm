@@ -98,8 +98,29 @@ void RemoteControl::ClearRxBuffer()
 
 const int8_t RemoteControl::HandleCommand(RemoteControlCommand&& command)
 {
+  const char* commandStr = command.GetCommand();
+  const char* paramsStr = command.GetParams();
   
-  Serial.println(command.GetCommand());
-  Serial.println(command.GetParams());
+  //Check command.
+  if(strcmp(commandStr, "SELECT_SERVO") == 0)
+  {
+
+    //Set selected servo.
+    this->selectedServo = String(paramsStr).toInt();
+
+  }
+  else if(strcmp(commandStr, "SET_ANGLE") == 0)
+  { 
+
+    //If selected servo index is higher than or equal to the number of servos, return -1;
+    if(this->selectedServo >= this->numOfServos) return -1;
+
+    //Set servo angle.
+    this->servos[this->selectedServo].SetAngle(String(paramsStr).toDouble());
+
+  }
+  
+  //Return success.
+  return 0;
 
 }
