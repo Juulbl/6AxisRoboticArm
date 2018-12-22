@@ -49,6 +49,12 @@
         <property name="Label" translatable="yes" />
         <property name="StockId">gtk-revert-to-saved</property>
       </action>
+      <action id="connectSerialAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-disconnect</property>
+        <signal name="Activated" handler="OnConnectSerialActivated" />
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">RobotInterface</property>
@@ -75,6 +81,7 @@
                   <node type="Toolitem" action="floppyAction" />
                   <node type="Toolitem" action="revertToSavedAction" />
                   <node type="Separator" />
+                  <node type="Toolitem" action="connectSerialAction" />
                 </node>
               </widget>
               <packing>
@@ -84,10 +91,11 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.ComboBox" id="PortDropdown">
+              <widget class="Gtk.ComboBox" id="SerialPortDropdown">
                 <property name="MemberName" />
                 <property name="IsTextCombo">True</property>
                 <property name="Items" translatable="yes" />
+                <signal name="Changed" handler="OnSerialPortDropdownChanged" />
               </widget>
               <packing>
                 <property name="Position">1</property>
@@ -115,6 +123,7 @@
 128000
 256000</property>
                 <property name="Active">11</property>
+                <signal name="Changed" handler="OnBaudRateDropdownChanged" />
               </widget>
               <packing>
                 <property name="Position">2</property>

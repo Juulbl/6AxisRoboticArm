@@ -1,9 +1,8 @@
 ﻿<Properties StartupConfiguration="{880E94CC-B88B-414F-B046-E2ACFC78EB32}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="RobotInterface/gtk-gui/MainWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RobotInterface/MainWindow.cs">
     <Files>
-      <File FileName="RobotInterface/Program.cs" Line="11" Column="34" />
-      <File FileName="RobotInterface/MainWindow.cs" Line="8" Column="13" />
-      <File FileName="RobotInterface/gtk-gui/MainWindow.cs" Line="46" Column="34" />
+      <File FileName="RobotInterface/Serial.cs" Line="74" Column="30" />
+      <File FileName="RobotInterface/MainWindow.cs" Line="82" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.RobotInterface PreferredExecutionTarget="MonoDevelop.Default" />

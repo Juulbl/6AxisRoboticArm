@@ -21,13 +21,15 @@ public partial class MainWindow
 
 	private global::Gtk.Action revertToSavedAction;
 
+	private global::Gtk.Action connectSerialAction;
+
 	private global::Gtk.VBox VPanel1;
 
 	private global::Gtk.HBox MenuBar;
 
 	private global::Gtk.Toolbar MenuTools;
 
-	private global::Gtk.ComboBox PortDropdown;
+	private global::Gtk.ComboBox SerialPortDropdown;
 
 	private global::Gtk.ComboBox BaudRateDropdown;
 
@@ -79,6 +81,8 @@ public partial class MainWindow
 		w1.Add(this.floppyAction, null);
 		this.revertToSavedAction = new global::Gtk.Action("revertToSavedAction", null, null, "gtk-revert-to-saved");
 		w1.Add(this.revertToSavedAction, null);
+		this.connectSerialAction = new global::Gtk.Action("connectSerialAction", null, null, "gtk-disconnect");
+		w1.Add(this.connectSerialAction, null);
 		this.UIManager.InsertActionGroup(w1, 0);
 		this.AddAccelGroup(this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
@@ -93,7 +97,7 @@ public partial class MainWindow
 		this.MenuBar.Name = "MenuBar";
 		this.MenuBar.Spacing = 6;
 		// Container child MenuBar.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString(@"<ui><toolbar name='MenuTools'><toolitem name='newAction' action='newAction'/><separator/><toolitem name='openAction' action='openAction'/><separator/><toolitem name='floppyAction' action='floppyAction'/><toolitem name='revertToSavedAction' action='revertToSavedAction'/><separator/></toolbar></ui>");
+		this.UIManager.AddUiFromString(@"<ui><toolbar name='MenuTools'><toolitem name='newAction' action='newAction'/><separator/><toolitem name='openAction' action='openAction'/><separator/><toolitem name='floppyAction' action='floppyAction'/><toolitem name='revertToSavedAction' action='revertToSavedAction'/><separator/><toolitem name='connectSerialAction' action='connectSerialAction'/></toolbar></ui>");
 		this.MenuTools = ((global::Gtk.Toolbar)(this.UIManager.GetWidget("/MenuTools")));
 		this.MenuTools.Name = "MenuTools";
 		this.MenuTools.ShowArrow = false;
@@ -103,10 +107,10 @@ public partial class MainWindow
 		w2.Position = 0;
 		w2.Expand = false;
 		// Container child MenuBar.Gtk.Box+BoxChild
-		this.PortDropdown = global::Gtk.ComboBox.NewText();
-		this.PortDropdown.Name = "PortDropdown";
-		this.MenuBar.Add(this.PortDropdown);
-		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.MenuBar[this.PortDropdown]));
+		this.SerialPortDropdown = global::Gtk.ComboBox.NewText();
+		this.SerialPortDropdown.Name = "SerialPortDropdown";
+		this.MenuBar.Add(this.SerialPortDropdown);
+		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.MenuBar[this.SerialPortDropdown]));
 		w3.Position = 1;
 		w3.Expand = false;
 		w3.Fill = false;
@@ -256,5 +260,8 @@ public partial class MainWindow
 		this.DefaultHeight = 648;
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
+		this.connectSerialAction.Activated += new global::System.EventHandler(this.OnConnectSerialActivated);
+		this.SerialPortDropdown.Changed += new global::System.EventHandler(this.OnSerialPortDropdownChanged);
+		this.BaudRateDropdown.Changed += new global::System.EventHandler(this.OnBaudRateDropdownChanged);
 	}
 }
