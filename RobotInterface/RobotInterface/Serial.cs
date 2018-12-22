@@ -25,6 +25,9 @@ namespace RobotInterface
         #region FIELDS
 
         private SerialPort serialPort = new SerialPort();
+        private const char startChar = '#';
+        private const char endChar = '%';
+        private const char splitChar = ':';
 
         #endregion
 
@@ -93,10 +96,34 @@ namespace RobotInterface
             //If serial port is open, return false.
             if (this.serialPort.IsOpen) return false;
 
-            //Set baud rate.
+            //Set serial port.
             this.serialPort.PortName = portName;
 
             return true;
+        }
+
+        public bool Write(string message)
+        {
+            //If serial port is open, return false.
+            if (!this.serialPort.IsOpen) return false;
+
+            //Write message.
+            this.serialPort.WriteLine(startChar + message + endChar);
+
+            return true;
+        }
+
+        public bool WriteCommand(string command, params string[] parameters)
+        {
+            //Parameters to string.
+            string parametersStr = "";
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                if (i > 0) parametersStr += ',';
+                parametersStr += parameters[i];
+            }
+
+            return this.Write(command + splitChar + parametersStr);
         }
 
         #endregion
