@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{880E94CC-B88B-414F-B046-E2ACFC78EB32}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="RobotInterface/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RobotInterface/MainWindow.cs">
     <Files>
       <File FileName="RobotInterface/Program.cs" Line="11" Column="34" />
+      <File FileName="RobotInterface/MainWindow.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.RobotInterface FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.RobotInterface PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
