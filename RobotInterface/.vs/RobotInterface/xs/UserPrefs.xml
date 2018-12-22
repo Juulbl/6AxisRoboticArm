@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="RobotInterface/MainWindow.cs">
     <Files>
       <File FileName="RobotInterface/Serial.cs" Line="74" Column="30" />
-      <File FileName="RobotInterface/MainWindow.cs" Line="82" Column="21" />
+      <File FileName="RobotInterface/MainWindow.cs" Line="87" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.RobotInterface PreferredExecutionTarget="MonoDevelop.Default" />
