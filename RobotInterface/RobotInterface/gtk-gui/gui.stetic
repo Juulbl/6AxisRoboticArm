@@ -5,6 +5,7 @@
   </configuration>
   <import>
     <widget-library name="../bin/Debug/RobotInterface.exe" internal="true" />
+    <widget-library name="MonoDevelop.Ide, Version=2.6.0.0, Culture=neutral, PublicKeyToken=3ead7498f347467b" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="1127 648">
     <action-group name="Default">
@@ -28,25 +29,25 @@
         <property name="Label" translatable="yes" />
         <property name="StockId">gtk-media-next</property>
       </action>
-      <action id="mediaPreviousAction1">
+      <action id="newAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes" />
-        <property name="StockId">gtk-media-previous</property>
+        <property name="StockId">gtk-new</property>
       </action>
-      <action id="mediaStopAction1">
+      <action id="openAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes" />
-        <property name="StockId">gtk-media-stop</property>
+        <property name="StockId">gtk-open</property>
       </action>
-      <action id="mediaPlayAction1">
+      <action id="floppyAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes" />
-        <property name="StockId">gtk-media-play</property>
+        <property name="StockId">gtk-floppy</property>
       </action>
-      <action id="mediaNextAction1">
+      <action id="revertToSavedAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes" />
-        <property name="StockId">gtk-media-next</property>
+        <property name="StockId">gtk-revert-to-saved</property>
       </action>
     </action-group>
     <property name="MemberName" />
@@ -54,38 +55,233 @@
     <property name="WindowPosition">CenterOnParent</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
-      <widget class="Gtk.VPaned" id="vpaned1">
+      <widget class="Gtk.VBox" id="VPanel1">
         <property name="MemberName" />
-        <property name="CanFocus">True</property>
-        <property name="Position">424</property>
+        <property name="Spacing">6</property>
         <child>
-          <widget class="Gtk.HPaned" id="hpaned2">
+          <widget class="Gtk.HBox" id="MenuBar">
+            <property name="MemberName" />
+            <property name="Spacing">6</property>
+            <child>
+              <widget class="Gtk.Toolbar" id="MenuTools">
+                <property name="MemberName" />
+                <property name="ShowArrow">False</property>
+                <property name="IconSize">SmallToolbar</property>
+                <node name="MenuTools" type="Toolbar">
+                  <node type="Toolitem" action="newAction" />
+                  <node type="Separator" />
+                  <node type="Toolitem" action="openAction" />
+                  <node type="Separator" />
+                  <node type="Toolitem" action="floppyAction" />
+                  <node type="Toolitem" action="revertToSavedAction" />
+                  <node type="Separator" />
+                </node>
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">False</property>
+                <property name="Expand">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.ComboBox" id="PortDropdown">
+                <property name="MemberName" />
+                <property name="IsTextCombo">True</property>
+                <property name="Items" translatable="yes" />
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.ComboBox" id="BaudRateDropdown">
+                <property name="MemberName" />
+                <property name="IsTextCombo">True</property>
+                <property name="Items">110
+300
+600
+1200
+2400
+4800
+9600
+14400
+19200
+38400
+57600
+115200
+128000
+256000</property>
+                <property name="Active">11</property>
+              </widget>
+              <packing>
+                <property name="Position">2</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.VPaned" id="VPanel2">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="Position">867</property>
+            <property name="Position">391</property>
             <child>
-              <widget class="Gtk.Image" id="image1">
+              <widget class="Gtk.HPaned" id="HPanel1">
                 <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Position">867</property>
+                <child>
+                  <widget class="Gtk.Image" id="image1">
+                    <property name="MemberName" />
+                  </widget>
+                  <packing>
+                    <property name="Resize">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.ScrolledWindow" id="ActuatorsList">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="VscrollbarPolicy">Always</property>
+                    <property name="HscrollbarPolicy">Never</property>
+                    <property name="ShadowType">In</property>
+                    <child>
+                      <widget class="Gtk.Viewport" id="GtkViewport1">
+                        <property name="MemberName" />
+                        <property name="ShadowType">None</property>
+                        <child>
+                          <placeholder />
+                        </child>
+                      </widget>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="Resize">False</property>
+                    <property name="Shrink">False</property>
+                  </packing>
+                </child>
               </widget>
               <packing>
                 <property name="Resize">False</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.ScrolledWindow" id="ActuatorsList">
+              <widget class="Gtk.VBox" id="TimelinePanel">
                 <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="VscrollbarPolicy">Always</property>
-                <property name="HscrollbarPolicy">Never</property>
-                <property name="ShadowType">In</property>
+                <property name="Spacing">6</property>
                 <child>
-                  <widget class="Gtk.Viewport" id="GtkViewport1">
+                  <widget class="Gtk.HBox" id="ControlsPanel">
                     <property name="MemberName" />
-                    <property name="ShadowType">None</property>
+                    <property name="Spacing">6</property>
                     <child>
-                      <placeholder />
+                      <widget class="Gtk.Fixed" id="SpaceLeft">
+                        <property name="MemberName" />
+                        <property name="HasWindow">False</property>
+                      </widget>
+                      <packing>
+                        <property name="Position">0</property>
+                        <property name="AutoSize">True</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Toolbar" id="Controls">
+                        <property name="MemberName" />
+                        <property name="ShowArrow">False</property>
+                        <property name="IconSize">SmallToolbar</property>
+                        <node name="Controls" type="Toolbar">
+                          <node type="Toolitem" action="mediaPreviousAction" />
+                          <node type="Toolitem" action="mediaStopAction" />
+                          <node type="Toolitem" action="mediaPlayAction" />
+                          <node type="Toolitem" action="mediaNextAction" />
+                        </node>
+                      </widget>
+                      <packing>
+                        <property name="Position">1</property>
+                        <property name="AutoSize">False</property>
+                        <property name="Expand">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Fixed" id="SpaceRight">
+                        <property name="MemberName" />
+                        <property name="HasWindow">False</property>
+                      </widget>
+                      <packing>
+                        <property name="Position">2</property>
+                        <property name="AutoSize">True</property>
+                      </packing>
                     </child>
                   </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.ScrolledWindow" id="SequencePanel">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="VscrollbarPolicy">Always</property>
+                    <property name="HscrollbarPolicy">Never</property>
+                    <property name="ShadowType">In</property>
+                    <child>
+                      <widget class="Gtk.Viewport" id="GtkViewport">
+                        <property name="MemberName" />
+                        <property name="ShadowType">None</property>
+                        <child>
+                          <widget class="Gtk.HPaned" id="SequenceList">
+                            <property name="MemberName" />
+                            <property name="CanFocus">True</property>
+                            <property name="Position">237</property>
+                            <child>
+                              <widget class="Gtk.Fixed" id="fixed4">
+                                <property name="MemberName" />
+                                <property name="HasWindow">False</property>
+                              </widget>
+                              <packing>
+                                <property name="Resize">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.ScrolledWindow" id="scrolledwindow8">
+                                <property name="MemberName" />
+                                <property name="CanFocus">True</property>
+                                <property name="VscrollbarPolicy">Never</property>
+                                <property name="HscrollbarPolicy">Always</property>
+                                <property name="ShadowType">In</property>
+                                <child>
+                                  <widget class="Gtk.Viewport" id="GtkViewport2">
+                                    <property name="MemberName" />
+                                    <property name="ShadowType">None</property>
+                                    <child>
+                                      <placeholder />
+                                    </child>
+                                  </widget>
+                                </child>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                      </widget>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                  </packing>
                 </child>
               </widget>
               <packing>
@@ -95,120 +291,8 @@
             </child>
           </widget>
           <packing>
-            <property name="Resize">False</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.VBox" id="Timeline">
-            <property name="MemberName" />
-            <property name="Spacing">6</property>
-            <child>
-              <widget class="Gtk.HBox" id="Controls">
-                <property name="MemberName" />
-                <property name="Spacing">6</property>
-                <child>
-                  <widget class="Gtk.Fixed" id="fixed5">
-                    <property name="MemberName" />
-                    <property name="HasWindow">False</property>
-                  </widget>
-                  <packing>
-                    <property name="Position">0</property>
-                    <property name="AutoSize">True</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="Gtk.Toolbar" id="toolbar5">
-                    <property name="MemberName" />
-                    <property name="ShowArrow">False</property>
-                    <property name="IconSize">SmallToolbar</property>
-                    <node name="__gtksharp_161_Stetic_Editor_ActionToolbar" type="Toolbar">
-                      <node type="Toolitem" action="mediaPreviousAction1" />
-                      <node type="Toolitem" action="mediaStopAction1" />
-                      <node type="Toolitem" action="mediaPlayAction1" />
-                      <node type="Toolitem" action="mediaNextAction1" />
-                    </node>
-                  </widget>
-                  <packing>
-                    <property name="Position">1</property>
-                    <property name="AutoSize">False</property>
-                    <property name="Expand">False</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="Gtk.Fixed" id="fixed6">
-                    <property name="MemberName" />
-                    <property name="HasWindow">False</property>
-                  </widget>
-                  <packing>
-                    <property name="Position">2</property>
-                    <property name="AutoSize">True</property>
-                  </packing>
-                </child>
-              </widget>
-              <packing>
-                <property name="Position">0</property>
-                <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.ScrolledWindow" id="SequencePanel">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="VscrollbarPolicy">Always</property>
-                <property name="HscrollbarPolicy">Never</property>
-                <property name="ShadowType">In</property>
-                <child>
-                  <widget class="Gtk.Viewport" id="GtkViewport">
-                    <property name="MemberName" />
-                    <property name="ShadowType">None</property>
-                    <child>
-                      <widget class="Gtk.HPaned" id="SequenceList">
-                        <property name="MemberName" />
-                        <property name="CanFocus">True</property>
-                        <property name="Position">237</property>
-                        <child>
-                          <widget class="Gtk.Fixed" id="fixed4">
-                            <property name="MemberName" />
-                            <property name="HasWindow">False</property>
-                          </widget>
-                          <packing>
-                            <property name="Resize">False</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="Gtk.ScrolledWindow" id="scrolledwindow8">
-                            <property name="MemberName" />
-                            <property name="CanFocus">True</property>
-                            <property name="VscrollbarPolicy">Never</property>
-                            <property name="HscrollbarPolicy">Always</property>
-                            <property name="ShadowType">In</property>
-                            <child>
-                              <widget class="Gtk.Viewport" id="GtkViewport2">
-                                <property name="MemberName" />
-                                <property name="ShadowType">None</property>
-                                <child>
-                                  <placeholder />
-                                </child>
-                              </widget>
-                            </child>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                  </widget>
-                </child>
-              </widget>
-              <packing>
-                <property name="Position">1</property>
-                <property name="AutoSize">True</property>
-              </packing>
-            </child>
-          </widget>
-          <packing>
-            <property name="Resize">False</property>
-            <property name="Shrink">False</property>
+            <property name="Position">1</property>
+            <property name="AutoSize">True</property>
           </packing>
         </child>
       </widget>

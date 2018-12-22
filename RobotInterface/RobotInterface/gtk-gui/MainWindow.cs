@@ -13,31 +13,41 @@ public partial class MainWindow
 
 	private global::Gtk.Action mediaNextAction;
 
-	private global::Gtk.Action mediaPreviousAction1;
+	private global::Gtk.Action newAction;
 
-	private global::Gtk.Action mediaStopAction1;
+	private global::Gtk.Action openAction;
 
-	private global::Gtk.Action mediaPlayAction1;
+	private global::Gtk.Action floppyAction;
 
-	private global::Gtk.Action mediaNextAction1;
+	private global::Gtk.Action revertToSavedAction;
 
-	private global::Gtk.VPaned vpaned1;
+	private global::Gtk.VBox VPanel1;
 
-	private global::Gtk.HPaned hpaned2;
+	private global::Gtk.HBox MenuBar;
+
+	private global::Gtk.Toolbar MenuTools;
+
+	private global::Gtk.ComboBox PortDropdown;
+
+	private global::Gtk.ComboBox BaudRateDropdown;
+
+	private global::Gtk.VPaned VPanel2;
+
+	private global::Gtk.HPaned HPanel1;
 
 	private global::Gtk.Image image1;
 
 	private global::Gtk.ScrolledWindow ActuatorsList;
 
-	private global::Gtk.VBox Timeline;
+	private global::Gtk.VBox TimelinePanel;
 
-	private global::Gtk.HBox Controls;
+	private global::Gtk.HBox ControlsPanel;
 
-	private global::Gtk.Fixed fixed5;
+	private global::Gtk.Fixed SpaceLeft;
 
-	private global::Gtk.Toolbar toolbar5;
+	private global::Gtk.Toolbar Controls;
 
-	private global::Gtk.Fixed fixed6;
+	private global::Gtk.Fixed SpaceRight;
 
 	private global::Gtk.ScrolledWindow SequencePanel;
 
@@ -61,87 +71,141 @@ public partial class MainWindow
 		w1.Add(this.mediaPlayAction, null);
 		this.mediaNextAction = new global::Gtk.Action("mediaNextAction", null, null, "gtk-media-next");
 		w1.Add(this.mediaNextAction, null);
-		this.mediaPreviousAction1 = new global::Gtk.Action("mediaPreviousAction1", null, null, "gtk-media-previous");
-		w1.Add(this.mediaPreviousAction1, null);
-		this.mediaStopAction1 = new global::Gtk.Action("mediaStopAction1", null, null, "gtk-media-stop");
-		w1.Add(this.mediaStopAction1, null);
-		this.mediaPlayAction1 = new global::Gtk.Action("mediaPlayAction1", null, null, "gtk-media-play");
-		w1.Add(this.mediaPlayAction1, null);
-		this.mediaNextAction1 = new global::Gtk.Action("mediaNextAction1", null, null, "gtk-media-next");
-		w1.Add(this.mediaNextAction1, null);
+		this.newAction = new global::Gtk.Action("newAction", null, null, "gtk-new");
+		w1.Add(this.newAction, null);
+		this.openAction = new global::Gtk.Action("openAction", null, null, "gtk-open");
+		w1.Add(this.openAction, null);
+		this.floppyAction = new global::Gtk.Action("floppyAction", null, null, "gtk-floppy");
+		w1.Add(this.floppyAction, null);
+		this.revertToSavedAction = new global::Gtk.Action("revertToSavedAction", null, null, "gtk-revert-to-saved");
+		w1.Add(this.revertToSavedAction, null);
 		this.UIManager.InsertActionGroup(w1, 0);
 		this.AddAccelGroup(this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString("RobotInterface");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 		// Container child MainWindow.Gtk.Container+ContainerChild
-		this.vpaned1 = new global::Gtk.VPaned();
-		this.vpaned1.CanFocus = true;
-		this.vpaned1.Name = "vpaned1";
-		this.vpaned1.Position = 424;
-		// Container child vpaned1.Gtk.Paned+PanedChild
-		this.hpaned2 = new global::Gtk.HPaned();
-		this.hpaned2.CanFocus = true;
-		this.hpaned2.Name = "hpaned2";
-		this.hpaned2.Position = 867;
-		// Container child hpaned2.Gtk.Paned+PanedChild
+		this.VPanel1 = new global::Gtk.VBox();
+		this.VPanel1.Name = "VPanel1";
+		this.VPanel1.Spacing = 6;
+		// Container child VPanel1.Gtk.Box+BoxChild
+		this.MenuBar = new global::Gtk.HBox();
+		this.MenuBar.Name = "MenuBar";
+		this.MenuBar.Spacing = 6;
+		// Container child MenuBar.Gtk.Box+BoxChild
+		this.UIManager.AddUiFromString(@"<ui><toolbar name='MenuTools'><toolitem name='newAction' action='newAction'/><separator/><toolitem name='openAction' action='openAction'/><separator/><toolitem name='floppyAction' action='floppyAction'/><toolitem name='revertToSavedAction' action='revertToSavedAction'/><separator/></toolbar></ui>");
+		this.MenuTools = ((global::Gtk.Toolbar)(this.UIManager.GetWidget("/MenuTools")));
+		this.MenuTools.Name = "MenuTools";
+		this.MenuTools.ShowArrow = false;
+		this.MenuTools.IconSize = ((global::Gtk.IconSize)(2));
+		this.MenuBar.Add(this.MenuTools);
+		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.MenuBar[this.MenuTools]));
+		w2.Position = 0;
+		w2.Expand = false;
+		// Container child MenuBar.Gtk.Box+BoxChild
+		this.PortDropdown = global::Gtk.ComboBox.NewText();
+		this.PortDropdown.Name = "PortDropdown";
+		this.MenuBar.Add(this.PortDropdown);
+		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.MenuBar[this.PortDropdown]));
+		w3.Position = 1;
+		w3.Expand = false;
+		w3.Fill = false;
+		// Container child MenuBar.Gtk.Box+BoxChild
+		this.BaudRateDropdown = global::Gtk.ComboBox.NewText();
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("110"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("300"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("600"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("1200"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("2400"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("4800"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("9600"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("14400"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("19200"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("38400"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("57600"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("115200"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("128000"));
+		this.BaudRateDropdown.AppendText(global::Mono.Unix.Catalog.GetString("256000"));
+		this.BaudRateDropdown.Name = "BaudRateDropdown";
+		this.BaudRateDropdown.Active = 11;
+		this.MenuBar.Add(this.BaudRateDropdown);
+		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.MenuBar[this.BaudRateDropdown]));
+		w4.Position = 2;
+		w4.Expand = false;
+		w4.Fill = false;
+		this.VPanel1.Add(this.MenuBar);
+		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.VPanel1[this.MenuBar]));
+		w5.Position = 0;
+		w5.Expand = false;
+		w5.Fill = false;
+		// Container child VPanel1.Gtk.Box+BoxChild
+		this.VPanel2 = new global::Gtk.VPaned();
+		this.VPanel2.CanFocus = true;
+		this.VPanel2.Name = "VPanel2";
+		this.VPanel2.Position = 391;
+		// Container child VPanel2.Gtk.Paned+PanedChild
+		this.HPanel1 = new global::Gtk.HPaned();
+		this.HPanel1.CanFocus = true;
+		this.HPanel1.Name = "HPanel1";
+		this.HPanel1.Position = 867;
+		// Container child HPanel1.Gtk.Paned+PanedChild
 		this.image1 = new global::Gtk.Image();
 		this.image1.Name = "image1";
-		this.hpaned2.Add(this.image1);
-		global::Gtk.Paned.PanedChild w2 = ((global::Gtk.Paned.PanedChild)(this.hpaned2[this.image1]));
-		w2.Resize = false;
-		// Container child hpaned2.Gtk.Paned+PanedChild
+		this.HPanel1.Add(this.image1);
+		global::Gtk.Paned.PanedChild w6 = ((global::Gtk.Paned.PanedChild)(this.HPanel1[this.image1]));
+		w6.Resize = false;
+		// Container child HPanel1.Gtk.Paned+PanedChild
 		this.ActuatorsList = new global::Gtk.ScrolledWindow();
 		this.ActuatorsList.CanFocus = true;
 		this.ActuatorsList.Name = "ActuatorsList";
 		this.ActuatorsList.VscrollbarPolicy = ((global::Gtk.PolicyType)(0));
 		this.ActuatorsList.HscrollbarPolicy = ((global::Gtk.PolicyType)(2));
 		this.ActuatorsList.ShadowType = ((global::Gtk.ShadowType)(1));
-		this.hpaned2.Add(this.ActuatorsList);
-		global::Gtk.Paned.PanedChild w3 = ((global::Gtk.Paned.PanedChild)(this.hpaned2[this.ActuatorsList]));
-		w3.Resize = false;
-		w3.Shrink = false;
-		this.vpaned1.Add(this.hpaned2);
-		global::Gtk.Paned.PanedChild w4 = ((global::Gtk.Paned.PanedChild)(this.vpaned1[this.hpaned2]));
-		w4.Resize = false;
-		// Container child vpaned1.Gtk.Paned+PanedChild
-		this.Timeline = new global::Gtk.VBox();
-		this.Timeline.Name = "Timeline";
-		this.Timeline.Spacing = 6;
-		// Container child Timeline.Gtk.Box+BoxChild
-		this.Controls = new global::Gtk.HBox();
+		this.HPanel1.Add(this.ActuatorsList);
+		global::Gtk.Paned.PanedChild w7 = ((global::Gtk.Paned.PanedChild)(this.HPanel1[this.ActuatorsList]));
+		w7.Resize = false;
+		w7.Shrink = false;
+		this.VPanel2.Add(this.HPanel1);
+		global::Gtk.Paned.PanedChild w8 = ((global::Gtk.Paned.PanedChild)(this.VPanel2[this.HPanel1]));
+		w8.Resize = false;
+		// Container child VPanel2.Gtk.Paned+PanedChild
+		this.TimelinePanel = new global::Gtk.VBox();
+		this.TimelinePanel.Name = "TimelinePanel";
+		this.TimelinePanel.Spacing = 6;
+		// Container child TimelinePanel.Gtk.Box+BoxChild
+		this.ControlsPanel = new global::Gtk.HBox();
+		this.ControlsPanel.Name = "ControlsPanel";
+		this.ControlsPanel.Spacing = 6;
+		// Container child ControlsPanel.Gtk.Box+BoxChild
+		this.SpaceLeft = new global::Gtk.Fixed();
+		this.SpaceLeft.Name = "SpaceLeft";
+		this.SpaceLeft.HasWindow = false;
+		this.ControlsPanel.Add(this.SpaceLeft);
+		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.ControlsPanel[this.SpaceLeft]));
+		w9.Position = 0;
+		// Container child ControlsPanel.Gtk.Box+BoxChild
+		this.UIManager.AddUiFromString(@"<ui><toolbar name='Controls'><toolitem name='mediaPreviousAction' action='mediaPreviousAction'/><toolitem name='mediaStopAction' action='mediaStopAction'/><toolitem name='mediaPlayAction' action='mediaPlayAction'/><toolitem name='mediaNextAction' action='mediaNextAction'/></toolbar></ui>");
+		this.Controls = ((global::Gtk.Toolbar)(this.UIManager.GetWidget("/Controls")));
 		this.Controls.Name = "Controls";
-		this.Controls.Spacing = 6;
-		// Container child Controls.Gtk.Box+BoxChild
-		this.fixed5 = new global::Gtk.Fixed();
-		this.fixed5.Name = "fixed5";
-		this.fixed5.HasWindow = false;
-		this.Controls.Add(this.fixed5);
-		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.Controls[this.fixed5]));
-		w5.Position = 0;
-		// Container child Controls.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString(@"<ui><toolbar name='toolbar5'><toolitem name='mediaPreviousAction1' action='mediaPreviousAction1'/><toolitem name='mediaStopAction1' action='mediaStopAction1'/><toolitem name='mediaPlayAction1' action='mediaPlayAction1'/><toolitem name='mediaNextAction1' action='mediaNextAction1'/></toolbar></ui>");
-		this.toolbar5 = ((global::Gtk.Toolbar)(this.UIManager.GetWidget("/toolbar5")));
-		this.toolbar5.Name = "toolbar5";
-		this.toolbar5.ShowArrow = false;
-		this.toolbar5.IconSize = ((global::Gtk.IconSize)(2));
-		this.Controls.Add(this.toolbar5);
-		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.Controls[this.toolbar5]));
-		w6.Position = 1;
-		w6.Expand = false;
-		// Container child Controls.Gtk.Box+BoxChild
-		this.fixed6 = new global::Gtk.Fixed();
-		this.fixed6.Name = "fixed6";
-		this.fixed6.HasWindow = false;
-		this.Controls.Add(this.fixed6);
-		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.Controls[this.fixed6]));
-		w7.Position = 2;
-		this.Timeline.Add(this.Controls);
-		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.Timeline[this.Controls]));
-		w8.Position = 0;
-		w8.Expand = false;
-		w8.Fill = false;
-		// Container child Timeline.Gtk.Box+BoxChild
+		this.Controls.ShowArrow = false;
+		this.Controls.IconSize = ((global::Gtk.IconSize)(2));
+		this.ControlsPanel.Add(this.Controls);
+		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.ControlsPanel[this.Controls]));
+		w10.Position = 1;
+		w10.Expand = false;
+		// Container child ControlsPanel.Gtk.Box+BoxChild
+		this.SpaceRight = new global::Gtk.Fixed();
+		this.SpaceRight.Name = "SpaceRight";
+		this.SpaceRight.HasWindow = false;
+		this.ControlsPanel.Add(this.SpaceRight);
+		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.ControlsPanel[this.SpaceRight]));
+		w11.Position = 2;
+		this.TimelinePanel.Add(this.ControlsPanel);
+		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.TimelinePanel[this.ControlsPanel]));
+		w12.Position = 0;
+		w12.Expand = false;
+		w12.Fill = false;
+		// Container child TimelinePanel.Gtk.Box+BoxChild
 		this.SequencePanel = new global::Gtk.ScrolledWindow();
 		this.SequencePanel.CanFocus = true;
 		this.SequencePanel.Name = "SequencePanel";
@@ -149,8 +213,8 @@ public partial class MainWindow
 		this.SequencePanel.HscrollbarPolicy = ((global::Gtk.PolicyType)(2));
 		this.SequencePanel.ShadowType = ((global::Gtk.ShadowType)(1));
 		// Container child SequencePanel.Gtk.Container+ContainerChild
-		global::Gtk.Viewport w9 = new global::Gtk.Viewport();
-		w9.ShadowType = ((global::Gtk.ShadowType)(0));
+		global::Gtk.Viewport w13 = new global::Gtk.Viewport();
+		w13.ShadowType = ((global::Gtk.ShadowType)(0));
 		// Container child GtkViewport.Gtk.Container+ContainerChild
 		this.SequenceList = new global::Gtk.HPaned();
 		this.SequenceList.CanFocus = true;
@@ -161,8 +225,8 @@ public partial class MainWindow
 		this.fixed4.Name = "fixed4";
 		this.fixed4.HasWindow = false;
 		this.SequenceList.Add(this.fixed4);
-		global::Gtk.Paned.PanedChild w10 = ((global::Gtk.Paned.PanedChild)(this.SequenceList[this.fixed4]));
-		w10.Resize = false;
+		global::Gtk.Paned.PanedChild w14 = ((global::Gtk.Paned.PanedChild)(this.SequenceList[this.fixed4]));
+		w14.Resize = false;
 		// Container child SequenceList.Gtk.Paned+PanedChild
 		this.scrolledwindow8 = new global::Gtk.ScrolledWindow();
 		this.scrolledwindow8.CanFocus = true;
@@ -171,16 +235,19 @@ public partial class MainWindow
 		this.scrolledwindow8.HscrollbarPolicy = ((global::Gtk.PolicyType)(0));
 		this.scrolledwindow8.ShadowType = ((global::Gtk.ShadowType)(1));
 		this.SequenceList.Add(this.scrolledwindow8);
-		w9.Add(this.SequenceList);
-		this.SequencePanel.Add(w9);
-		this.Timeline.Add(this.SequencePanel);
-		global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.Timeline[this.SequencePanel]));
-		w14.Position = 1;
-		this.vpaned1.Add(this.Timeline);
-		global::Gtk.Paned.PanedChild w15 = ((global::Gtk.Paned.PanedChild)(this.vpaned1[this.Timeline]));
-		w15.Resize = false;
-		w15.Shrink = false;
-		this.Add(this.vpaned1);
+		w13.Add(this.SequenceList);
+		this.SequencePanel.Add(w13);
+		this.TimelinePanel.Add(this.SequencePanel);
+		global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.TimelinePanel[this.SequencePanel]));
+		w18.Position = 1;
+		this.VPanel2.Add(this.TimelinePanel);
+		global::Gtk.Paned.PanedChild w19 = ((global::Gtk.Paned.PanedChild)(this.VPanel2[this.TimelinePanel]));
+		w19.Resize = false;
+		w19.Shrink = false;
+		this.VPanel1.Add(this.VPanel2);
+		global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.VPanel1[this.VPanel2]));
+		w20.Position = 1;
+		this.Add(this.VPanel1);
 		if ((this.Child != null))
 		{
 			this.Child.ShowAll();
