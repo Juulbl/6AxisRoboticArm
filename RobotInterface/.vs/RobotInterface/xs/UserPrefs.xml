@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{880E94CC-B88B-414F-B046-E2ACFC78EB32}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RobotInterface/Program.cs">
+    <Files>
+      <File FileName="RobotInterface/Program.cs" Line="11" Column="34" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.RobotInterface FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

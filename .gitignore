@@ -1,2 +1,11 @@
-#config directories.
+#Vscode
 .vscode
+
+#User Specific
+*.userprefs
+*.usertasks
+
+#Mono Project Files
+*.pidb
+*.resources
+test-results/

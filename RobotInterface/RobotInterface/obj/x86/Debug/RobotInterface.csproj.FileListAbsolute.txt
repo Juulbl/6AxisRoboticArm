@@ -1,0 +1,6 @@
+/home/juul/Documents/Github/ServoRoboticArm/RobotInterface/RobotInterface/bin/Debug/RobotInterface.exe
+/home/juul/Documents/Github/ServoRoboticArm/RobotInterface/RobotInterface/bin/Debug/RobotInterface.pdb
+/home/juul/Documents/Github/ServoRoboticArm/RobotInterface/RobotInterface/obj/x86/Debug/RobotInterface.csprojAssemblyReference.cache
+/home/juul/Documents/Github/ServoRoboticArm/RobotInterface/RobotInterface/obj/x86/Debug/RobotInterface.csproj.CoreCompileInputs.cache
+/home/juul/Documents/Github/ServoRoboticArm/RobotInterface/RobotInterface/obj/x86/Debug/RobotInterface.exe
+/home/juul/Documents/Github/ServoRoboticArm/RobotInterface/RobotInterface/obj/x86/Debug/RobotInterface.pdb
