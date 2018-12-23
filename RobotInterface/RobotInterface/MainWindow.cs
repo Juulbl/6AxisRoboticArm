@@ -10,8 +10,8 @@ public partial class MainWindow : Gtk.Window
 
     private Robot robot = new Robot(
             new Servo(10, 170, 90),
-            new Servo(10, 170, 90),
-            new Servo(10, 170, 90),
+            new Servo(10, 170, 170),
+            new Servo(10, 170, 35),
             new Servo(10, 170, 90),
             new Servo(10, 170, 90),
             new Servo(10, 170, 90)
@@ -32,6 +32,10 @@ public partial class MainWindow : Gtk.Window
 
         //Load available serial ports.
         this.LoadAvailableSerialPorts();
+
+        //Update baud rate and serial port.
+        this.OnBaudRateDropdownChanged(this.BaudRateDropdown, null);
+        this.OnSerialPortDropdownChanged(this.SerialPortDropdown, null);
     }
 
     protected void OnDeleteEvent(object sender, DeleteEventArgs a)
@@ -95,6 +99,11 @@ public partial class MainWindow : Gtk.Window
         //Disable baudrate and port dropdowns.
         this.BaudRateDropdown.Sensitive = false;
         this.SerialPortDropdown.Sensitive = false;
+
+        System.Threading.Thread.Sleep(3000);
+
+        //Init servo angles.
+        this.robot.InitializeServoAngles();
 
     }
 
@@ -177,7 +186,22 @@ public partial class MainWindow : Gtk.Window
 
     protected void OnActuatorScaleChanged(object sender, EventArgs e)
     {
+        //Get sender name.
+        string senderName = ((Gtk.Widget)sender).Name;
 
+        //Check what scale to update.
+        for(int i = 0; i < this.actuatorScales.Count; i++) 
+        {
+            Gtk.HScale actuatorScale  = this.actuatorScales[i];
+
+            //If actuator name not sender name, continue.
+            if (actuatorScale.Name != senderName) continue;
+
+            //Update servo connected to actuator.
+            this.robot.SetServoAngle(i, (float)actuatorScale.Adjustment.Value);
+
+            break;
+        }
     }
 
     #endregion

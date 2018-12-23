@@ -110,6 +110,8 @@ namespace RobotInterface
             //Write message.
             this.serialPort.WriteLine(startChar + message + endChar);
 
+            Console.WriteLine(startChar + message + endChar);
+
             return true;
         }
 
