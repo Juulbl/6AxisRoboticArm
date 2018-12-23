@@ -5,28 +5,28 @@ namespace RobotInterface
     {
         #region FIELDS
 
-        private double minAngle;
-        private double maxAngle;
-        private double angle;
+        private float minAngle;
+        private float maxAngle;
+        private float angle;
 
         #endregion
 
 
         #region PROPERTIES
 
-        public double MinAngle
+        public float MinAngle
         {
             get => this.minAngle;
             private set => this.minAngle = value;
         }
 
-        public double MaxAngle
+        public float MaxAngle
         {
             get => this.maxAngle;
             private set => this.maxAngle = value;
         }
 
-        public double Angle
+        public float Angle
         {
             get => this.angle;
             set
@@ -45,7 +45,7 @@ namespace RobotInterface
 
         #region CONSTRUCTORS
 
-        public Servo(double minAngle, double maxAngle, double initalAngle)
+        public Servo(float minAngle, float maxAngle, float initalAngle)
         {
             this.MinAngle = minAngle;
             this.MaxAngle = maxAngle;

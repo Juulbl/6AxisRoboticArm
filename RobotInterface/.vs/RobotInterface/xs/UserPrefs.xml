@@ -1,7 +1,8 @@
 ﻿<Properties StartupConfiguration="{880E94CC-B88B-414F-B046-E2ACFC78EB32}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="RobotInterface/MainWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RobotInterface/Servo.cs">
     <Files>
-      <File FileName="RobotInterface/MainWindow.cs" Line="128" Column="32" />
+      <File FileName="RobotInterface/MainWindow.cs" Line="49" Column="76" />
+      <File FileName="RobotInterface/Servo.cs" Line="9" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.RobotInterface PreferredExecutionTarget="MonoDevelop.Default" />
