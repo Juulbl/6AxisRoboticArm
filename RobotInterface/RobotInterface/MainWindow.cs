@@ -39,6 +39,11 @@ public partial class MainWindow : Gtk.Window
         this.SerialPortDropdown.Active = 0;
     }
 
+    #endregion
+
+
+    #region EVENTS
+
     private void OnConnectSerial()
     {
         //Set connect serial action icon.
@@ -58,11 +63,6 @@ public partial class MainWindow : Gtk.Window
         this.BaudRateDropdown.Sensitive = true;
         this.SerialPortDropdown.Sensitive = true;
     }
-
-    #endregion
-
-
-    #region EVENTS
 
     protected void OnSerialPortDropdownChanged(object sender, EventArgs e)
     {
@@ -121,6 +121,11 @@ public partial class MainWindow : Gtk.Window
                 dialog.Destroy();
             }
         }
+    }
+
+    protected void OnActuatorScaleChanged(object sender, EventArgs e)
+    {
+
     }
 
     #endregion
