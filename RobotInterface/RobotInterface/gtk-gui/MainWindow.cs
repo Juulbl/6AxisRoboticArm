@@ -219,7 +219,10 @@ public partial class MainWindow
 		this.ActuatorScale.CanFocus = true;
 		this.ActuatorScale.Name = "ActuatorScale";
 		this.ActuatorScale.Adjustment.Upper = 180D;
+		this.ActuatorScale.Adjustment.PageIncrement = 10D;
+		this.ActuatorScale.Adjustment.StepIncrement = 1D;
 		this.ActuatorScale.DrawValue = true;
+		this.ActuatorScale.Digits = 0;
 		this.ActuatorScale.ValuePos = ((global::Gtk.PositionType)(2));
 		this.ActuatorBox.Add(this.ActuatorScale);
 		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale]));
@@ -231,7 +234,10 @@ public partial class MainWindow
 		this.ActuatorScale1.CanFocus = true;
 		this.ActuatorScale1.Name = "ActuatorScale1";
 		this.ActuatorScale1.Adjustment.Upper = 180D;
+		this.ActuatorScale1.Adjustment.PageIncrement = 10D;
+		this.ActuatorScale1.Adjustment.StepIncrement = 1D;
 		this.ActuatorScale1.DrawValue = true;
+		this.ActuatorScale1.Digits = 0;
 		this.ActuatorScale1.ValuePos = ((global::Gtk.PositionType)(2));
 		this.ActuatorBox.Add(this.ActuatorScale1);
 		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale1]));
@@ -243,7 +249,10 @@ public partial class MainWindow
 		this.ActuatorScale2.CanFocus = true;
 		this.ActuatorScale2.Name = "ActuatorScale2";
 		this.ActuatorScale2.Adjustment.Upper = 180D;
+		this.ActuatorScale2.Adjustment.PageIncrement = 10D;
+		this.ActuatorScale2.Adjustment.StepIncrement = 1D;
 		this.ActuatorScale2.DrawValue = true;
+		this.ActuatorScale2.Digits = 0;
 		this.ActuatorScale2.ValuePos = ((global::Gtk.PositionType)(2));
 		this.ActuatorBox.Add(this.ActuatorScale2);
 		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale2]));
@@ -255,7 +264,10 @@ public partial class MainWindow
 		this.ActuatorScale3.CanFocus = true;
 		this.ActuatorScale3.Name = "ActuatorScale3";
 		this.ActuatorScale3.Adjustment.Upper = 180D;
+		this.ActuatorScale3.Adjustment.PageIncrement = 10D;
+		this.ActuatorScale3.Adjustment.StepIncrement = 1D;
 		this.ActuatorScale3.DrawValue = true;
+		this.ActuatorScale3.Digits = 0;
 		this.ActuatorScale3.ValuePos = ((global::Gtk.PositionType)(2));
 		this.ActuatorBox.Add(this.ActuatorScale3);
 		global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale3]));
@@ -267,7 +279,10 @@ public partial class MainWindow
 		this.ActuatorScale4.CanFocus = true;
 		this.ActuatorScale4.Name = "ActuatorScale4";
 		this.ActuatorScale4.Adjustment.Upper = 180D;
+		this.ActuatorScale4.Adjustment.PageIncrement = 10D;
+		this.ActuatorScale4.Adjustment.StepIncrement = 1D;
 		this.ActuatorScale4.DrawValue = true;
+		this.ActuatorScale4.Digits = 0;
 		this.ActuatorScale4.ValuePos = ((global::Gtk.PositionType)(2));
 		this.ActuatorBox.Add(this.ActuatorScale4);
 		global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale4]));
@@ -279,7 +294,10 @@ public partial class MainWindow
 		this.ActuatorScale5.CanFocus = true;
 		this.ActuatorScale5.Name = "ActuatorScale5";
 		this.ActuatorScale5.Adjustment.Upper = 180D;
+		this.ActuatorScale5.Adjustment.PageIncrement = 10D;
+		this.ActuatorScale5.Adjustment.StepIncrement = 1D;
 		this.ActuatorScale5.DrawValue = true;
+		this.ActuatorScale5.Digits = 0;
 		this.ActuatorScale5.ValuePos = ((global::Gtk.PositionType)(2));
 		this.ActuatorBox.Add(this.ActuatorScale5);
 		global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale5]));
