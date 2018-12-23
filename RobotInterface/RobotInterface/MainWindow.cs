@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO.Ports;
 using System.Collections.Generic;
 using Gtk;
 using RobotInterface;
@@ -85,6 +86,24 @@ public partial class MainWindow : Gtk.Window
 
     }
 
+    private void AddToSerialTerminal(string text)
+    {
+        //Add time to text.
+        DateTime dateTime = DateTime.Now;
+        text = string.Format(
+                "[{0}:{1}:{2}.{3}] {4}",
+                dateTime.Hour.ToString().PadLeft(2, '0'),
+                dateTime.Minute.ToString().PadLeft(2, '0'),
+                dateTime.Second.ToString().PadLeft(2, '0'),
+                dateTime.Millisecond.ToString().PadLeft(3, '0'),
+                text
+            );
+
+        //Add text.
+        var iter = this.SerialTerminal.Buffer.GetIterAtLine(this.SerialTerminal.Buffer.LineCount);
+        this.SerialTerminal.Buffer.Insert(ref iter, text + "\n");
+    }
+
     #endregion
 
 
@@ -92,6 +111,7 @@ public partial class MainWindow : Gtk.Window
 
     private void OnConnectSerial()
     {
+        this.AddToSerialTerminal("Device connected successfully.");
 
         //Set connect serial action icon.
         this.connectSerialAction.StockId = Stock.Connect;
@@ -100,6 +120,7 @@ public partial class MainWindow : Gtk.Window
         this.BaudRateDropdown.Sensitive = false;
         this.SerialPortDropdown.Sensitive = false;
 
+        //Delay
         System.Threading.Thread.Sleep(3000);
 
         //Init servo angles.
@@ -109,6 +130,7 @@ public partial class MainWindow : Gtk.Window
 
     private void OnDisconnectSerial()
     {
+        this.AddToSerialTerminal("Device disconnected successfully.");
 
         //Set connect serial action icon.
         this.connectSerialAction.StockId = Stock.Disconnect;

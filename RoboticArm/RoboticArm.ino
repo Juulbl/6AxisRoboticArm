@@ -65,7 +65,7 @@ RemoteControl remoteControl(servos, NUM_OF_SERVOS);
 void setup()
 {
   //Start serial.
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   //Start servo driver.
 	servoDriver.begin();
@@ -86,7 +86,6 @@ void setup()
 
 void loop()
 {
-
   //Update current micros.
   currentMicros = micros();
 

@@ -37,7 +37,9 @@ public partial class MainWindow
 
 	private global::Gtk.HPaned HPanel1;
 
-	private global::Gtk.Image image1;
+	private global::Gtk.ScrolledWindow GtkScrolledWindow;
+
+	private global::Gtk.TextView SerialTerminal;
 
 	private global::Gtk.VBox ActuatorPanel;
 
@@ -173,11 +175,19 @@ public partial class MainWindow
 		this.HPanel1.Name = "HPanel1";
 		this.HPanel1.Position = 867;
 		// Container child HPanel1.Gtk.Paned+PanedChild
-		this.image1 = new global::Gtk.Image();
-		this.image1.Name = "image1";
-		this.HPanel1.Add(this.image1);
-		global::Gtk.Paned.PanedChild w6 = ((global::Gtk.Paned.PanedChild)(this.HPanel1[this.image1]));
-		w6.Resize = false;
+		this.GtkScrolledWindow = new global::Gtk.ScrolledWindow();
+		this.GtkScrolledWindow.Name = "GtkScrolledWindow";
+		this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
+		// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
+		this.SerialTerminal = new global::Gtk.TextView();
+		this.SerialTerminal.CanFocus = true;
+		this.SerialTerminal.Name = "SerialTerminal";
+		this.SerialTerminal.Editable = false;
+		this.SerialTerminal.CursorVisible = false;
+		this.GtkScrolledWindow.Add(this.SerialTerminal);
+		this.HPanel1.Add(this.GtkScrolledWindow);
+		global::Gtk.Paned.PanedChild w7 = ((global::Gtk.Paned.PanedChild)(this.HPanel1[this.GtkScrolledWindow]));
+		w7.Resize = false;
 		// Container child HPanel1.Gtk.Paned+PanedChild
 		this.ActuatorPanel = new global::Gtk.VBox();
 		this.ActuatorPanel.Name = "ActuatorPanel";
@@ -191,15 +201,15 @@ public partial class MainWindow
 		this.Label1.Name = "Label1";
 		this.Label1.LabelProp = global::Mono.Unix.Catalog.GetString("Actuators");
 		this.hbox2.Add(this.Label1);
-		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.Label1]));
-		w7.Position = 0;
-		w7.Expand = false;
-		w7.Fill = false;
-		this.ActuatorPanel.Add(this.hbox2);
-		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.ActuatorPanel[this.hbox2]));
+		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.Label1]));
 		w8.Position = 0;
 		w8.Expand = false;
 		w8.Fill = false;
+		this.ActuatorPanel.Add(this.hbox2);
+		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.ActuatorPanel[this.hbox2]));
+		w9.Position = 0;
+		w9.Expand = false;
+		w9.Fill = false;
 		// Container child ActuatorPanel.Gtk.Box+BoxChild
 		this.ActuatorsList = new global::Gtk.ScrolledWindow();
 		this.ActuatorsList.CanFocus = true;
@@ -208,8 +218,8 @@ public partial class MainWindow
 		this.ActuatorsList.HscrollbarPolicy = ((global::Gtk.PolicyType)(2));
 		this.ActuatorsList.ShadowType = ((global::Gtk.ShadowType)(1));
 		// Container child ActuatorsList.Gtk.Container+ContainerChild
-		global::Gtk.Viewport w9 = new global::Gtk.Viewport();
-		w9.ShadowType = ((global::Gtk.ShadowType)(0));
+		global::Gtk.Viewport w10 = new global::Gtk.Viewport();
+		w10.ShadowType = ((global::Gtk.ShadowType)(0));
 		// Container child GtkViewport1.Gtk.Container+ContainerChild
 		this.ActuatorBox = new global::Gtk.VBox();
 		this.ActuatorBox.Name = "ActuatorBox";
@@ -225,10 +235,10 @@ public partial class MainWindow
 		this.ActuatorScale.Digits = 0;
 		this.ActuatorScale.ValuePos = ((global::Gtk.PositionType)(2));
 		this.ActuatorBox.Add(this.ActuatorScale);
-		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale]));
-		w10.Position = 0;
-		w10.Expand = false;
-		w10.Fill = false;
+		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale]));
+		w11.Position = 0;
+		w11.Expand = false;
+		w11.Fill = false;
 		// Container child ActuatorBox.Gtk.Box+BoxChild
 		this.ActuatorScale1 = new global::Gtk.HScale(null);
 		this.ActuatorScale1.CanFocus = true;
@@ -240,10 +250,10 @@ public partial class MainWindow
 		this.ActuatorScale1.Digits = 0;
 		this.ActuatorScale1.ValuePos = ((global::Gtk.PositionType)(2));
 		this.ActuatorBox.Add(this.ActuatorScale1);
-		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale1]));
-		w11.Position = 1;
-		w11.Expand = false;
-		w11.Fill = false;
+		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale1]));
+		w12.Position = 1;
+		w12.Expand = false;
+		w12.Fill = false;
 		// Container child ActuatorBox.Gtk.Box+BoxChild
 		this.ActuatorScale2 = new global::Gtk.HScale(null);
 		this.ActuatorScale2.CanFocus = true;
@@ -255,10 +265,10 @@ public partial class MainWindow
 		this.ActuatorScale2.Digits = 0;
 		this.ActuatorScale2.ValuePos = ((global::Gtk.PositionType)(2));
 		this.ActuatorBox.Add(this.ActuatorScale2);
-		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale2]));
-		w12.Position = 2;
-		w12.Expand = false;
-		w12.Fill = false;
+		global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale2]));
+		w13.Position = 2;
+		w13.Expand = false;
+		w13.Fill = false;
 		// Container child ActuatorBox.Gtk.Box+BoxChild
 		this.ActuatorScale3 = new global::Gtk.HScale(null);
 		this.ActuatorScale3.CanFocus = true;
@@ -270,10 +280,10 @@ public partial class MainWindow
 		this.ActuatorScale3.Digits = 0;
 		this.ActuatorScale3.ValuePos = ((global::Gtk.PositionType)(2));
 		this.ActuatorBox.Add(this.ActuatorScale3);
-		global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale3]));
-		w13.Position = 3;
-		w13.Expand = false;
-		w13.Fill = false;
+		global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale3]));
+		w14.Position = 3;
+		w14.Expand = false;
+		w14.Fill = false;
 		// Container child ActuatorBox.Gtk.Box+BoxChild
 		this.ActuatorScale4 = new global::Gtk.HScale(null);
 		this.ActuatorScale4.CanFocus = true;
@@ -285,10 +295,10 @@ public partial class MainWindow
 		this.ActuatorScale4.Digits = 0;
 		this.ActuatorScale4.ValuePos = ((global::Gtk.PositionType)(2));
 		this.ActuatorBox.Add(this.ActuatorScale4);
-		global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale4]));
-		w14.Position = 4;
-		w14.Expand = false;
-		w14.Fill = false;
+		global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale4]));
+		w15.Position = 4;
+		w15.Expand = false;
+		w15.Fill = false;
 		// Container child ActuatorBox.Gtk.Box+BoxChild
 		this.ActuatorScale5 = new global::Gtk.HScale(null);
 		this.ActuatorScale5.CanFocus = true;
@@ -300,21 +310,21 @@ public partial class MainWindow
 		this.ActuatorScale5.Digits = 0;
 		this.ActuatorScale5.ValuePos = ((global::Gtk.PositionType)(2));
 		this.ActuatorBox.Add(this.ActuatorScale5);
-		global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale5]));
-		w15.Position = 5;
-		w15.Expand = false;
-		w15.Fill = false;
-		w9.Add(this.ActuatorBox);
-		this.ActuatorsList.Add(w9);
+		global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.ActuatorBox[this.ActuatorScale5]));
+		w16.Position = 5;
+		w16.Expand = false;
+		w16.Fill = false;
+		w10.Add(this.ActuatorBox);
+		this.ActuatorsList.Add(w10);
 		this.ActuatorPanel.Add(this.ActuatorsList);
-		global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.ActuatorPanel[this.ActuatorsList]));
-		w18.Position = 1;
+		global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.ActuatorPanel[this.ActuatorsList]));
+		w19.Position = 1;
 		this.HPanel1.Add(this.ActuatorPanel);
-		global::Gtk.Paned.PanedChild w19 = ((global::Gtk.Paned.PanedChild)(this.HPanel1[this.ActuatorPanel]));
-		w19.Resize = false;
-		this.VPanel2.Add(this.HPanel1);
-		global::Gtk.Paned.PanedChild w20 = ((global::Gtk.Paned.PanedChild)(this.VPanel2[this.HPanel1]));
+		global::Gtk.Paned.PanedChild w20 = ((global::Gtk.Paned.PanedChild)(this.HPanel1[this.ActuatorPanel]));
 		w20.Resize = false;
+		this.VPanel2.Add(this.HPanel1);
+		global::Gtk.Paned.PanedChild w21 = ((global::Gtk.Paned.PanedChild)(this.VPanel2[this.HPanel1]));
+		w21.Resize = false;
 		// Container child VPanel2.Gtk.Paned+PanedChild
 		this.TimelinePanel = new global::Gtk.VBox();
 		this.TimelinePanel.Name = "TimelinePanel";
@@ -328,8 +338,8 @@ public partial class MainWindow
 		this.SpaceLeft.Name = "SpaceLeft";
 		this.SpaceLeft.HasWindow = false;
 		this.ControlsPanel.Add(this.SpaceLeft);
-		global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.ControlsPanel[this.SpaceLeft]));
-		w21.Position = 0;
+		global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.ControlsPanel[this.SpaceLeft]));
+		w22.Position = 0;
 		// Container child ControlsPanel.Gtk.Box+BoxChild
 		this.UIManager.AddUiFromString(@"<ui><toolbar name='Controls'><toolitem name='mediaPreviousAction' action='mediaPreviousAction'/><toolitem name='mediaStopAction' action='mediaStopAction'/><toolitem name='mediaPlayAction' action='mediaPlayAction'/><toolitem name='mediaNextAction' action='mediaNextAction'/></toolbar></ui>");
 		this.Controls = ((global::Gtk.Toolbar)(this.UIManager.GetWidget("/Controls")));
@@ -337,21 +347,21 @@ public partial class MainWindow
 		this.Controls.ShowArrow = false;
 		this.Controls.IconSize = ((global::Gtk.IconSize)(2));
 		this.ControlsPanel.Add(this.Controls);
-		global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.ControlsPanel[this.Controls]));
-		w22.Position = 1;
-		w22.Expand = false;
+		global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.ControlsPanel[this.Controls]));
+		w23.Position = 1;
+		w23.Expand = false;
 		// Container child ControlsPanel.Gtk.Box+BoxChild
 		this.SpaceRight = new global::Gtk.Fixed();
 		this.SpaceRight.Name = "SpaceRight";
 		this.SpaceRight.HasWindow = false;
 		this.ControlsPanel.Add(this.SpaceRight);
-		global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.ControlsPanel[this.SpaceRight]));
-		w23.Position = 2;
+		global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.ControlsPanel[this.SpaceRight]));
+		w24.Position = 2;
 		this.TimelinePanel.Add(this.ControlsPanel);
-		global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.TimelinePanel[this.ControlsPanel]));
-		w24.Position = 0;
-		w24.Expand = false;
-		w24.Fill = false;
+		global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.TimelinePanel[this.ControlsPanel]));
+		w25.Position = 0;
+		w25.Expand = false;
+		w25.Fill = false;
 		// Container child TimelinePanel.Gtk.Box+BoxChild
 		this.SequencePanel = new global::Gtk.ScrolledWindow();
 		this.SequencePanel.CanFocus = true;
@@ -360,8 +370,8 @@ public partial class MainWindow
 		this.SequencePanel.HscrollbarPolicy = ((global::Gtk.PolicyType)(2));
 		this.SequencePanel.ShadowType = ((global::Gtk.ShadowType)(1));
 		// Container child SequencePanel.Gtk.Container+ContainerChild
-		global::Gtk.Viewport w25 = new global::Gtk.Viewport();
-		w25.ShadowType = ((global::Gtk.ShadowType)(0));
+		global::Gtk.Viewport w26 = new global::Gtk.Viewport();
+		w26.ShadowType = ((global::Gtk.ShadowType)(0));
 		// Container child GtkViewport.Gtk.Container+ContainerChild
 		this.TimelineBox = new global::Gtk.HPaned();
 		this.TimelineBox.CanFocus = true;
@@ -372,8 +382,8 @@ public partial class MainWindow
 		this.fixed4.Name = "fixed4";
 		this.fixed4.HasWindow = false;
 		this.TimelineBox.Add(this.fixed4);
-		global::Gtk.Paned.PanedChild w26 = ((global::Gtk.Paned.PanedChild)(this.TimelineBox[this.fixed4]));
-		w26.Resize = false;
+		global::Gtk.Paned.PanedChild w27 = ((global::Gtk.Paned.PanedChild)(this.TimelineBox[this.fixed4]));
+		w27.Resize = false;
 		// Container child TimelineBox.Gtk.Paned+PanedChild
 		this.SequenceList = new global::Gtk.ScrolledWindow();
 		this.SequenceList.CanFocus = true;
@@ -382,18 +392,18 @@ public partial class MainWindow
 		this.SequenceList.HscrollbarPolicy = ((global::Gtk.PolicyType)(0));
 		this.SequenceList.ShadowType = ((global::Gtk.ShadowType)(1));
 		this.TimelineBox.Add(this.SequenceList);
-		w25.Add(this.TimelineBox);
-		this.SequencePanel.Add(w25);
+		w26.Add(this.TimelineBox);
+		this.SequencePanel.Add(w26);
 		this.TimelinePanel.Add(this.SequencePanel);
-		global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.TimelinePanel[this.SequencePanel]));
-		w30.Position = 1;
+		global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.TimelinePanel[this.SequencePanel]));
+		w31.Position = 1;
 		this.VPanel2.Add(this.TimelinePanel);
-		global::Gtk.Paned.PanedChild w31 = ((global::Gtk.Paned.PanedChild)(this.VPanel2[this.TimelinePanel]));
-		w31.Resize = false;
-		w31.Shrink = false;
+		global::Gtk.Paned.PanedChild w32 = ((global::Gtk.Paned.PanedChild)(this.VPanel2[this.TimelinePanel]));
+		w32.Resize = false;
+		w32.Shrink = false;
 		this.VPanel1.Add(this.VPanel2);
-		global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.VPanel1[this.VPanel2]));
-		w32.Position = 1;
+		global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.VPanel1[this.VPanel2]));
+		w33.Position = 1;
 		this.Add(this.VPanel1);
 		if ((this.Child != null))
 		{

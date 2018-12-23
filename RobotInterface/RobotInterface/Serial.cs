@@ -21,13 +21,23 @@ namespace RobotInterface
 
         #endregion
 
-
         #region FIELDS
 
         private SerialPort serialPort = new SerialPort();
         private const char startChar = '#';
         private const char endChar = '%';
         private const char splitChar = ':';
+
+        #endregion
+
+
+        #region PROPERTIES
+
+        public SerialPort SerialPort
+        {
+            get => this.serialPort;
+            private set => this.serialPort = value;
+        }
 
         #endregion
 

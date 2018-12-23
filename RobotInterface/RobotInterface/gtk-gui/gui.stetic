@@ -151,8 +151,19 @@
                 <property name="CanFocus">True</property>
                 <property name="Position">867</property>
                 <child>
-                  <widget class="Gtk.Image" id="image1">
+                  <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                     <property name="MemberName" />
+                    <property name="ShadowType">In</property>
+                    <child>
+                      <widget class="Gtk.TextView" id="SerialTerminal">
+                        <property name="MemberName" />
+                        <property name="CanFocus">True</property>
+                        <property name="ShowScrollbars">True</property>
+                        <property name="Editable">False</property>
+                        <property name="CursorVisible">False</property>
+                        <property name="Text" translatable="yes" />
+                      </widget>
+                    </child>
                   </widget>
                   <packing>
                     <property name="Resize">False</property>
