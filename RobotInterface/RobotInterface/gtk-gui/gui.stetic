@@ -7,7 +7,7 @@
     <widget-library name="../bin/Debug/RobotInterface.exe" internal="true" />
     <widget-library name="MonoDevelop.Ide, Version=2.6.0.0, Culture=neutral, PublicKeyToken=3ead7498f347467b" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="1127 648">
+  <widget class="Gtk.Window" id="MainWindow" design-size="1209 648">
     <action-group name="Default">
       <action id="mediaPreviousAction">
         <property name="Type">Action</property>
@@ -54,6 +54,16 @@
         <property name="Label" translatable="yes" />
         <property name="StockId">gtk-disconnect</property>
         <signal name="Activated" handler="OnConnectSerialActivated" />
+      </action>
+      <action id="addAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-add</property>
+      </action>
+      <action id="removeAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-remove</property>
       </action>
     </action-group>
     <property name="MemberName" />
@@ -148,6 +158,7 @@
                 <property name="MemberName" />
                 <property name="WidthRequest">160</property>
                 <property name="CanFocus">True</property>
+                <property name="Text" translatable="yes">0</property>
                 <property name="IsEditable">True</property>
                 <property name="InvisibleChar">•</property>
               </widget>
@@ -202,22 +213,82 @@
           <widget class="Gtk.HPaned" id="HPanel1">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="Position">867</property>
+            <property name="Position">935</property>
             <child>
               <widget class="Gtk.VPaned" id="vpaned1">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Position">406</property>
                 <child>
-                  <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow1">
+                  <widget class="Gtk.VBox" id="vbox8">
                     <property name="MemberName" />
-                    <property name="ShadowType">In</property>
+                    <property name="Spacing">6</property>
                     <child>
-                      <widget class="Gtk.TreeView" id="FrameTreeView">
+                      <widget class="Gtk.HBox" id="hbox8">
                         <property name="MemberName" />
-                        <property name="CanFocus">True</property>
-                        <property name="ShowScrollbars">True</property>
+                        <property name="Spacing">6</property>
+                        <child>
+                          <widget class="Gtk.Label" id="label16">
+                            <property name="MemberName" />
+                            <property name="LabelProp" translatable="yes">Frames</property>
+                          </widget>
+                          <packing>
+                            <property name="Position">0</property>
+                            <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Fixed" id="fixed2">
+                            <property name="MemberName" />
+                            <property name="HasWindow">False</property>
+                          </widget>
+                          <packing>
+                            <property name="Position">1</property>
+                            <property name="AutoSize">True</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Toolbar" id="FrameToolbar">
+                            <property name="MemberName" />
+                            <property name="ShowArrow">False</property>
+                            <property name="IconSize">SmallToolbar</property>
+                            <node name="FrameToolbar" type="Toolbar">
+                              <node type="Toolitem" action="addAction" />
+                              <node type="Toolitem" action="removeAction" />
+                            </node>
+                          </widget>
+                          <packing>
+                            <property name="Position">2</property>
+                            <property name="AutoSize">False</property>
+                            <property name="Expand">False</property>
+                          </packing>
+                        </child>
                       </widget>
+                      <packing>
+                        <property name="Position">0</property>
+                        <property name="AutoSize">True</property>
+                        <property name="Expand">False</property>
+                        <property name="Fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+                        <property name="MemberName" />
+                        <property name="ShadowType">In</property>
+                        <child>
+                          <widget class="Gtk.TreeView" id="FrameTreeView">
+                            <property name="MemberName" />
+                            <property name="CanFocus">True</property>
+                            <property name="ShowScrollbars">True</property>
+                          </widget>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">1</property>
+                        <property name="AutoSize">True</property>
+                      </packing>
                     </child>
                   </widget>
                   <packing>
@@ -320,6 +391,7 @@
                 <child>
                   <widget class="Gtk.ScrolledWindow" id="scrolledwindow1">
                     <property name="MemberName" />
+                    <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="ShadowType">In</property>
                     <child>
