@@ -131,7 +131,7 @@ public partial class MainWindow : Gtk.Window
         //Set is loading frame true.
         this.isLoadingFrame = true;
 
-        this.timeline.SetSelectedKeyframeIndex(index);
+        this.timeline.SelectKeyframeIndex = index;
 
         //Set selected frame to the last selected frame.
         this.SetSelectedFrame(this.timeline.Keyframes[index]);

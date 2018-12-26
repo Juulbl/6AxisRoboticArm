@@ -29,13 +29,17 @@ namespace RobotInterface
         public int SelectKeyframeIndex
         {
             get => this.selectKeyframeIndex;
-            private set
+            set
             {
                 //If value is higher than the number of keyframes, set value to last keyframe.
                 if (value >= this.Keyframes.Count) value = this.Keyframes.Count - 1;
 
                 //Set selected keyframe.
                 this.selectKeyframeIndex = value;
+
+                this.treeView.ActivateRow(new TreePath(new int[1] { this.SelectKeyframeIndex }), this.treeView.Columns[0]);
+
+                this.UpdateAllRobotServos();
             }
         }
 
@@ -103,7 +107,7 @@ namespace RobotInterface
                 frame.time
                 );
 
-            this.SetSelectedKeyframeIndex(this.Keyframes.Count - 1);
+            this.SelectKeyframeIndex = this.Keyframes.Count - 1;
         }
 
         private void SortKeyframes()
@@ -135,6 +139,9 @@ namespace RobotInterface
 
             //Remove item from list.
             this.Keyframes.RemoveAt(index);
+
+            //Reset selected item.
+            this.SelectKeyframeIndex = this.SelectKeyframeIndex;
 
             return true;
         }
@@ -180,17 +187,10 @@ namespace RobotInterface
                 this.SortKeyframes();
 
                 //Get item.
-                this.SetSelectedKeyframeIndex(this.GetKeyframeIndex(keyframe.time));
+                this.SelectKeyframeIndex = this.GetKeyframeIndex(keyframe.time);
             }
 
             return true;
-        }
-
-        public void SetSelectedKeyframeIndex(int index)
-        {
-            this.SelectKeyframeIndex = index;
-            this.treeView.ActivateRow(new TreePath(new int[1] { this.SelectKeyframeIndex }), this.treeView.Columns[0]);
-            this.UpdateAllRobotServos();
         }
 
         public Nullable<Keyframe> GetSelectedKeyframe()
