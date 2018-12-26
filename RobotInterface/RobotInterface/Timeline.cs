@@ -14,6 +14,9 @@ namespace RobotInterface
         private Gtk.ListStore framesListStore;
         private Gtk.TreeView treeView;
         private int selectKeyframeIndex = -1;
+        private bool isPlaying = false;
+        private bool repeat = false;
+        private UInt32 currentTime = 0;
 
         #endregion
 
@@ -43,6 +46,31 @@ namespace RobotInterface
             }
         }
 
+        public bool IsPlaying
+        {
+            get => this.isPlaying;
+            private set
+            {
+                //If no keyframes, return.
+                if (this.keyframes.Count == 0) return;
+
+                this.treeView.Sensitive = !value;
+                this.isPlaying = value;
+            }
+        }
+
+        public bool Repeat
+        {
+            get => this.repeat;
+            set => this.repeat = value;
+        }
+
+        public UInt32 CurrentTime
+        {
+            get => this.currentTime;
+            set => this.currentTime = value;
+        }
+
         #endregion
 
 
@@ -50,8 +78,10 @@ namespace RobotInterface
 
         public Timeline(ref Gtk.TreeView treeView, ref Robot robot)
         {
+            //Set robot.
             this.robot = robot;
 
+            //Set tree view.
             this.treeView = treeView;
 
             //Create list store.
@@ -92,6 +122,47 @@ namespace RobotInterface
 
 
         #region METHODS
+
+        public void Play()
+        {
+            this.IsPlaying = true;
+        }
+
+        public void Pause()
+        {
+            this.IsPlaying = false;
+        }
+
+        public void Stop()
+        {
+            this.IsPlaying = false;
+            this.CurrentTime = 0; 
+        }
+
+        public void Update(UInt32 deltaTime)
+        {
+            //If if not playing, return.
+            if (!this.IsPlaying) return;
+
+            //Update current time.
+            this.CurrentTime += deltaTime;
+
+            Console.WriteLine($"It's time {this.CurrentTime}");
+
+            //If time is higher than the last keyframe.
+            if (this.CurrentTime > this.Keyframes[this.Keyframes.Count - 1].time)
+            { 
+                //If not repeating, stop playing
+                if(!this.Repeat)
+                {
+                    this.Stop();
+                }
+                else
+                {
+                    this.CurrentTime = 0;
+                }
+            }
+        }
 
         private void AppendListStore(ref Keyframe frame)
         {

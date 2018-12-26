@@ -1,5 +1,5 @@
 ﻿using System;
-using System.IO.Ports;
+using System.Threading;
 using System.Collections.Generic;
 using Gtk;
 using RobotInterface;
@@ -10,7 +10,10 @@ public partial class MainWindow : Gtk.Window
     #region FIELDS
 
     private bool isLoadingFrame = true;
+
     private Timeline timeline;
+    private Thread timelineUpdateThread;
+
     private Robot robot = new Robot(
             new Servo(10, 170, 90),
             new Servo(10, 170, 170),
@@ -21,6 +24,22 @@ public partial class MainWindow : Gtk.Window
             new Servo(0, 180, 0)
         );
     private List<Gtk.HScale> actuatorScales = new List<Gtk.HScale>();
+
+    #endregion
+
+
+    #region THREAD_HANDLERS
+    void HandleTimelineUpdateThread()
+    {
+        DateTime currentDateTime = DateTime.Now;
+        DateTime lastDateTime = currentDateTime;
+        while (true)
+        {
+            currentDateTime = DateTime.Now;
+            timeline.Update(/*FIX THIS*/);
+            lastDateTime = currentDateTime;
+        }
+    }
 
     #endregion
 
@@ -46,6 +65,10 @@ public partial class MainWindow : Gtk.Window
 
         //Init timeline.
         this.timeline = new Timeline(ref this.FrameTreeView, ref this.robot);
+
+        //Init timeline update thread.
+        this.timelineUpdateThread = new Thread(HandleTimelineUpdateThread);
+        this.timelineUpdateThread.Start();
 
         this.isLoadingFrame = false;
     }
@@ -76,7 +99,7 @@ public partial class MainWindow : Gtk.Window
         this.actuatorScales.Add(this.FrameActuatorScale6);
 
         //Set values of scales.
-        for(int i = 0; i < actuatorScales.Count; i++)
+        for (int i = 0; i < actuatorScales.Count; i++)
         {
             this.actuatorScales[i].Adjustment.Lower = this.robot.Servos[i].MinAngle;
             this.actuatorScales[i].Adjustment.Upper = this.robot.Servos[i].MaxAngle;
@@ -90,7 +113,7 @@ public partial class MainWindow : Gtk.Window
         //Add serial ports to dropdown.
         foreach (string portName in Serial.Instance.GetPortNames())
         {
-            this.SerialPortDropdown.AppendText(portName); 
+            this.SerialPortDropdown.AppendText(portName);
         }
 
         //Set active serial port.
@@ -241,7 +264,7 @@ public partial class MainWindow : Gtk.Window
         if (!Serial.Instance.IsOpen())
         {
             if (Serial.Instance.Open()) this.OnConnectSerial();
-            else 
+            else
             {
                 MessageDialog dialog = new MessageDialog(
                         null,
@@ -329,6 +352,22 @@ public partial class MainWindow : Gtk.Window
         {
             this.UpdateSelectedKeyframe();
         }
+    }
+
+    protected void OnResetTimelineActivated(object sender, EventArgs e)
+    {
+        this.timeline.CurrentTime = 0;
+    }
+
+    protected void OnStopTimelineActivated(object sender, EventArgs e)
+    {
+        //Update robot.
+        this.timeline.Stop();
+    }
+
+    protected void OnPlayTimelineActivated(object sender, EventArgs e)
+    {
+        this.timeline.Play();
     }
 
     #endregion

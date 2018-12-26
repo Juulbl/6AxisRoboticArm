@@ -13,16 +13,19 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes" />
         <property name="StockId">gtk-media-previous</property>
+        <signal name="Activated" handler="OnResetTimelineActivated" />
       </action>
       <action id="mediaStopAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes" />
         <property name="StockId">gtk-media-stop</property>
+        <signal name="Activated" handler="OnStopTimelineActivated" />
       </action>
       <action id="mediaPlayAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes" />
         <property name="StockId">gtk-media-play</property>
+        <signal name="Activated" handler="OnPlayTimelineActivated" />
       </action>
       <action id="mediaNextAction">
         <property name="Type">Action</property>
@@ -71,7 +74,6 @@
     <property name="MemberName" />
     <property name="Title" translatable="yes">RobotInterface</property>
     <property name="WindowPosition">CenterOnParent</property>
-    <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
       <widget class="Gtk.VBox" id="VPanel1">
         <property name="MemberName" />
@@ -107,7 +109,6 @@
                 <property name="MemberName" />
                 <property name="IsTextCombo">True</property>
                 <property name="Items" translatable="yes" />
-                <signal name="Changed" handler="OnSerialPortDropdownChanged" />
               </widget>
               <packing>
                 <property name="Position">1</property>
@@ -135,7 +136,6 @@
 128000
 256000</property>
                 <property name="Active">11</property>
-                <signal name="Changed" handler="OnBaudRateDropdownChanged" />
               </widget>
               <packing>
                 <property name="Position">2</property>
@@ -193,7 +193,6 @@
                   <node type="Toolitem" action="mediaPreviousAction" />
                   <node type="Toolitem" action="mediaStopAction" />
                   <node type="Toolitem" action="mediaPlayAction" />
-                  <node type="Toolitem" action="mediaNextAction" />
                 </node>
               </widget>
               <packing>
@@ -284,7 +283,6 @@
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="ShowScrollbars">True</property>
-                            <signal name="RowActivated" handler="OnFrameTreeViewRowActivated" />
                           </widget>
                         </child>
                       </widget>
@@ -456,7 +454,6 @@
                                         <property name="CanFocus">True</property>
                                         <property name="IsEditable">True</property>
                                         <property name="InvisibleChar">•</property>
-                                        <signal name="KeyReleaseEvent" handler="OnFramePropertyKeyRelease" />
                                       </widget>
                                       <packing>
                                         <property name="Position">1</property>
@@ -499,7 +496,6 @@
                                         <property name="Text" translatable="yes">0</property>
                                         <property name="IsEditable">True</property>
                                         <property name="InvisibleChar">•</property>
-                                        <signal name="KeyReleaseEvent" handler="OnFramePropertyKeyRelease" />
                                       </widget>
                                       <packing>
                                         <property name="Position">3</property>
@@ -580,7 +576,6 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">0</property>
@@ -599,7 +594,6 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">1</property>
@@ -618,7 +612,6 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">2</property>
@@ -637,7 +630,6 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">3</property>
@@ -656,7 +648,6 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">4</property>
@@ -675,7 +666,6 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">5</property>
@@ -694,7 +684,6 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">6</property>

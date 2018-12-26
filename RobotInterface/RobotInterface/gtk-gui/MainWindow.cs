@@ -239,7 +239,9 @@ public partial class MainWindow
 		w7.Expand = false;
 		w7.Fill = false;
 		// Container child MenuBar.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString(@"<ui><toolbar name='MediaControls'><toolitem name='mediaPreviousAction' action='mediaPreviousAction'/><toolitem name='mediaStopAction' action='mediaStopAction'/><toolitem name='mediaPlayAction' action='mediaPlayAction'/><toolitem name='mediaNextAction' action='mediaNextAction'/></toolbar></ui>");
+		this.UIManager.AddUiFromString("<ui><toolbar name=\'MediaControls\'><toolitem name=\'mediaPreviousAction\' action=\'me" +
+				"diaPreviousAction\'/><toolitem name=\'mediaStopAction\' action=\'mediaStopAction\'/><" +
+				"toolitem name=\'mediaPlayAction\' action=\'mediaPlayAction\'/></toolbar></ui>");
 		this.MediaControls = ((global::Gtk.Toolbar)(this.UIManager.GetWidget("/MediaControls")));
 		this.MediaControls.Name = "MediaControls";
 		this.MediaControls.ShowArrow = false;
@@ -650,21 +652,11 @@ public partial class MainWindow
 		this.DefaultWidth = 1209;
 		this.DefaultHeight = 648;
 		this.Show();
-		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
+		this.mediaPreviousAction.Activated += new global::System.EventHandler(this.OnResetTimelineActivated);
+		this.mediaStopAction.Activated += new global::System.EventHandler(this.OnStopTimelineActivated);
+		this.mediaPlayAction.Activated += new global::System.EventHandler(this.OnPlayTimelineActivated);
 		this.connectSerialAction.Activated += new global::System.EventHandler(this.OnConnectSerialActivated);
 		this.addAction.Activated += new global::System.EventHandler(this.OnAddFrameActivated);
 		this.removeAction.Activated += new global::System.EventHandler(this.OnRemoveFrameActivated);
-		this.SerialPortDropdown.Changed += new global::System.EventHandler(this.OnSerialPortDropdownChanged);
-		this.BaudRateDropdown.Changed += new global::System.EventHandler(this.OnBaudRateDropdownChanged);
-		this.FrameTreeView.RowActivated += new global::Gtk.RowActivatedHandler(this.OnFrameTreeViewRowActivated);
-		this.FrameNameEntry.KeyReleaseEvent += new global::Gtk.KeyReleaseEventHandler(this.OnFramePropertyKeyRelease);
-		this.FrameTimeEntry.KeyReleaseEvent += new global::Gtk.KeyReleaseEventHandler(this.OnFramePropertyKeyRelease);
-		this.FrameActuatorScale.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
-		this.FrameActuatorScale1.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
-		this.FrameActuatorScale2.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
-		this.FrameActuatorScale3.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
-		this.FrameActuatorScale4.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
-		this.FrameActuatorScale5.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
-		this.FrameActuatorScale6.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
 	}
 }

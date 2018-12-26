@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{880E94CC-B88B-414F-B046-E2ACFC78EB32}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="RobotInterface/Timeline.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RobotInterface/MainWindow.cs">
     <Files>
       <File FileName="RobotInterface/Servo.cs" Line="28" Column="1" />
       <File FileName="RobotInterface/Robot.cs" Line="30" Column="1" />
       <File FileName="RobotInterface/Serial.cs" Line="1" Column="1" />
-      <File FileName="RobotInterface/MainWindow.cs" Line="268" Column="10" />
-      <File FileName="RobotInterface/Timeline.cs" Line="176" Column="9" />
+      <File FileName="RobotInterface/Timeline.cs" Line="159" Column="14" />
+      <File FileName="RobotInterface/MainWindow.cs" Line="360" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.RobotInterface PreferredExecutionTarget="MonoDevelop.Default" />
