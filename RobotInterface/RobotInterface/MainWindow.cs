@@ -45,7 +45,7 @@ public partial class MainWindow : Gtk.Window
         this.OnSerialPortDropdownChanged(this.SerialPortDropdown, null);
 
         //Init timeline.
-        this.timeline = new Timeline(ref this.FrameTreeView);
+        this.timeline = new Timeline(ref this.FrameTreeView, ref this.robot);
 
         this.isLoadingFrame = false;
     }
@@ -132,6 +132,7 @@ public partial class MainWindow : Gtk.Window
         this.isLoadingFrame = true;
 
         this.timeline.SetSelectedKeyframeIndex(index);
+
         //Set selected frame to the last selected frame.
         this.SetSelectedFrame(this.timeline.Keyframes[index]);
     }

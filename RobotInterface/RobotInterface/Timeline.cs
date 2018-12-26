@@ -9,6 +9,7 @@ namespace RobotInterface
     {
         #region FIELDS
 
+        private Robot robot;
         private List<Keyframe> keyframes = new List<Keyframe>();
         private Gtk.ListStore framesListStore;
         private Gtk.TreeView treeView;
@@ -43,8 +44,10 @@ namespace RobotInterface
 
         #region CONSTRUCTORS
 
-        public Timeline(ref Gtk.TreeView treeView)
+        public Timeline(ref Gtk.TreeView treeView, ref Robot robot)
         {
+            this.robot = robot;
+
             this.treeView = treeView;
 
             //Create list store.
@@ -123,6 +126,12 @@ namespace RobotInterface
             //Does time change???
             bool timeChanges = (this.keyframes[index].time != keyframe.time);
 
+            //If (new)time does match another item's time, set time to old time.
+            if (this.GetKeyframeIndex(keyframe.time) >= 0)
+            {
+                keyframe.time = this.Keyframes[index].time;
+            }
+
             //Update keyframe.
             this.Keyframes[index] = keyframe;
 
@@ -159,8 +168,8 @@ namespace RobotInterface
         public void SetSelectedKeyframeIndex(int index)
         {
             this.SelectKeyframeIndex = index;
-            TreePath path = new TreePath(new int[1] { this.SelectKeyframeIndex });
             this.treeView.ActivateRow(new TreePath(new int[1] { this.SelectKeyframeIndex }), this.treeView.Columns[0]);
+            this.UpdateAllRobotServos();
         }
 
         public Nullable<Keyframe> GetSelectedKeyframe()
@@ -186,7 +195,7 @@ namespace RobotInterface
             //Set name.
             if (name == null)
             {
-                keyframe.name = $"Frame({this.Keyframes.Count})";
+                keyframe.name = "Frame";
             }
             else
             {
@@ -218,6 +227,17 @@ namespace RobotInterface
 
             //Return index where frame is inserted.
             return numOfFrames;
+        }
+
+        public void UpdateAllRobotServos()
+        {
+            Nullable<Keyframe> keyframe = this.GetSelectedKeyframe();
+            if (!keyframe.HasValue) return;
+
+            for(int i = 0; i < this.robot.Servos.Length; i++)
+            {
+                this.robot.SetServoAngle(i, keyframe.Value.actuatorValues[i]);
+            }
         }
 
         #endregion
