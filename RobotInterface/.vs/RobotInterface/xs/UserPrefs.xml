@@ -4,8 +4,8 @@
       <File FileName="RobotInterface/Servo.cs" Line="28" Column="1" />
       <File FileName="RobotInterface/Robot.cs" Line="30" Column="1" />
       <File FileName="RobotInterface/Serial.cs" Line="1" Column="1" />
-      <File FileName="RobotInterface/MainWindow.cs" Line="135" Column="15" />
-      <File FileName="RobotInterface/Timeline.cs" Line="117" Column="34" />
+      <File FileName="RobotInterface/MainWindow.cs" Line="268" Column="10" />
+      <File FileName="RobotInterface/Timeline.cs" Line="176" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.RobotInterface PreferredExecutionTarget="MonoDevelop.Default" />

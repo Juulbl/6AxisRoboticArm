@@ -394,7 +394,6 @@ public partial class MainWindow
 		w25.ShadowType = ((global::Gtk.ShadowType)(0));
 		// Container child GtkViewport.Gtk.Container+ContainerChild
 		this.FramePropertiesPanel = new global::Gtk.VBox();
-		this.FramePropertiesPanel.Sensitive = false;
 		this.FramePropertiesPanel.Name = "FramePropertiesPanel";
 		this.FramePropertiesPanel.Spacing = 6;
 		// Container child FramePropertiesPanel.Gtk.Box+BoxChild
@@ -464,6 +463,7 @@ public partial class MainWindow
 		this.FrameTimeEntry = new global::Gtk.Entry();
 		this.FrameTimeEntry.CanFocus = true;
 		this.FrameTimeEntry.Name = "FrameTimeEntry";
+		this.FrameTimeEntry.Text = global::Mono.Unix.Catalog.GetString("0");
 		this.FrameTimeEntry.IsEditable = true;
 		this.FrameTimeEntry.InvisibleChar = '•';
 		this.PropertyContent1.Add(this.FrameTimeEntry);
@@ -657,12 +657,14 @@ public partial class MainWindow
 		this.SerialPortDropdown.Changed += new global::System.EventHandler(this.OnSerialPortDropdownChanged);
 		this.BaudRateDropdown.Changed += new global::System.EventHandler(this.OnBaudRateDropdownChanged);
 		this.FrameTreeView.RowActivated += new global::Gtk.RowActivatedHandler(this.OnFrameTreeViewRowActivated);
-		this.FrameActuatorScale.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
-		this.FrameActuatorScale1.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
-		this.FrameActuatorScale2.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
-		this.FrameActuatorScale3.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
-		this.FrameActuatorScale4.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
-		this.FrameActuatorScale5.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
-		this.FrameActuatorScale6.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
+		this.FrameNameEntry.KeyReleaseEvent += new global::Gtk.KeyReleaseEventHandler(this.OnFramePropertyKeyRelease);
+		this.FrameTimeEntry.KeyReleaseEvent += new global::Gtk.KeyReleaseEventHandler(this.OnFramePropertyKeyRelease);
+		this.FrameActuatorScale.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
+		this.FrameActuatorScale1.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
+		this.FrameActuatorScale2.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
+		this.FrameActuatorScale3.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
+		this.FrameActuatorScale4.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
+		this.FrameActuatorScale5.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
+		this.FrameActuatorScale6.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
 	}
 }

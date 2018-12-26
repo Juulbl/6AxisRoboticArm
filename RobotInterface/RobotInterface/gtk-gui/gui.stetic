@@ -403,7 +403,6 @@
                         <child>
                           <widget class="Gtk.VBox" id="FramePropertiesPanel">
                             <property name="MemberName" />
-                            <property name="Sensitive">False</property>
                             <property name="Spacing">6</property>
                             <child>
                               <widget class="Gtk.VBox" id="PropertyContainer1">
@@ -457,6 +456,7 @@
                                         <property name="CanFocus">True</property>
                                         <property name="IsEditable">True</property>
                                         <property name="InvisibleChar">•</property>
+                                        <signal name="KeyReleaseEvent" handler="OnFramePropertyKeyRelease" />
                                       </widget>
                                       <packing>
                                         <property name="Position">1</property>
@@ -496,8 +496,10 @@
                                       <widget class="Gtk.Entry" id="FrameTimeEntry">
                                         <property name="MemberName" />
                                         <property name="CanFocus">True</property>
+                                        <property name="Text" translatable="yes">0</property>
                                         <property name="IsEditable">True</property>
                                         <property name="InvisibleChar">•</property>
+                                        <signal name="KeyReleaseEvent" handler="OnFramePropertyKeyRelease" />
                                       </widget>
                                       <packing>
                                         <property name="Position">3</property>
@@ -578,7 +580,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnActuatorScaleChanged" />
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">0</property>
@@ -597,7 +599,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnActuatorScaleChanged" />
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">1</property>
@@ -616,7 +618,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnActuatorScaleChanged" />
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">2</property>
@@ -635,7 +637,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnActuatorScaleChanged" />
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">3</property>
@@ -654,7 +656,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnActuatorScaleChanged" />
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">4</property>
@@ -673,7 +675,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnActuatorScaleChanged" />
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">5</property>
@@ -692,7 +694,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
-                                        <signal name="ValueChanged" handler="OnActuatorScaleChanged" />
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">6</property>

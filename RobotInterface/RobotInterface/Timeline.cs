@@ -12,16 +12,30 @@ namespace RobotInterface
         private List<Keyframe> keyframes = new List<Keyframe>();
         private Gtk.ListStore framesListStore;
         private Gtk.TreeView treeView;
+        private int selectKeyframeIndex = -1;
 
         #endregion
 
 
         #region PROPERTIES
 
-        public List<Keyframe> Keyframes 
+        public List<Keyframe> Keyframes
         {
             get => this.keyframes;
             private set => this.keyframes = value;
+        }
+
+        public int SelectKeyframeIndex
+        {
+            get => this.selectKeyframeIndex;
+            private set
+            {
+                //If value is higher than the number of keyframes, set value to last keyframe.
+                if (value >= this.Keyframes.Count) value = this.Keyframes.Count - 1;
+
+                //Set selected keyframe.
+                this.selectKeyframeIndex = value;
+            }
         }
 
         #endregion
@@ -33,8 +47,8 @@ namespace RobotInterface
         {
             this.treeView = treeView;
 
+            //Create list store.
             this.framesListStore = new ListStore(
-                typeof(int),
                 typeof(string),
                 typeof(float),
                 typeof(float),
@@ -46,20 +60,25 @@ namespace RobotInterface
                 typeof(UInt32)
             );
 
+            //Set sorting.
+            this.framesListStore.SetSortColumnId(8, SortType.Ascending);
+
+            //Set model.
             this.treeView.Model = this.framesListStore;
 
+            //Create renderer.
             var cellView = new CellRendererText();
 
-            this.treeView.AppendColumn("ID", cellView, "text", 0);
-            this.treeView.AppendColumn("Name", cellView, "text", 1);
-            this.treeView.AppendColumn("Actuator 0", cellView, "text", 2);
-            this.treeView.AppendColumn("Actuator 1", cellView, "text", 3);
-            this.treeView.AppendColumn("Actuator 2", cellView, "text", 4);
-            this.treeView.AppendColumn("Actuator 3", cellView, "text", 5);
-            this.treeView.AppendColumn("Actuator 4", cellView, "text", 6);
-            this.treeView.AppendColumn("Actuator 5", cellView, "text", 7);
-            this.treeView.AppendColumn("Actuator 6", cellView, "text", 8);
-            this.treeView.AppendColumn("Time (Milliseconds)", cellView, "text", 9);
+            //Add columns.
+            this.treeView.AppendColumn("Name", cellView, "text", 0);
+            this.treeView.AppendColumn("Actuator 0", cellView, "text", 1);
+            this.treeView.AppendColumn("Actuator 1", cellView, "text", 2);
+            this.treeView.AppendColumn("Actuator 2", cellView, "text", 3);
+            this.treeView.AppendColumn("Actuator 3", cellView, "text", 4);
+            this.treeView.AppendColumn("Actuator 4", cellView, "text", 5);
+            this.treeView.AppendColumn("Actuator 5", cellView, "text", 6);
+            this.treeView.AppendColumn("Actuator 6", cellView, "text", 7);
+            this.treeView.AppendColumn("Time (Milliseconds)", cellView, "text", 8);
         }
 
         #endregion
@@ -70,7 +89,6 @@ namespace RobotInterface
         private void AppendListStore(ref Keyframe frame)
         {
             this.framesListStore.AppendValues(
-                this.Keyframes.Count,
                 frame.name,
                 frame.actuatorValues[0],
                 frame.actuatorValues[1],
@@ -82,25 +100,25 @@ namespace RobotInterface
                 frame.time
                 );
 
-            this.SetSelectedKeyframe(this.Keyframes.Count - 1);
+            this.SetSelectedKeyframeIndex(this.Keyframes.Count - 1);
         }
 
         private void SortKeyframes()
         {
-            this.Keyframes.OrderBy(x => x.time);
+            this.Keyframes = this.Keyframes.OrderBy(f => f.time).ToList<Keyframe>();
         }
 
-        private int GetKeyframeIndex(string name)
-        { 
-            for(int i = 0; i < this.keyframes.Count; i++)
+        private int GetKeyframeIndex(UInt32 time)
+        {
+            for (int i = 0; i < this.keyframes.Count; i++)
             {
-                if (this.keyframes[i].name == name) return i;
+                if (this.keyframes[i].time == time) return i;
             }
 
             return -1;
         }
 
-        public void UpdateKeyframe(int index, Keyframe keyframe)
+        public bool UpdateKeyframe(int index, Keyframe keyframe)
         {
             //Does time change???
             bool timeChanges = (this.keyframes[index].time != keyframe.time);
@@ -108,19 +126,53 @@ namespace RobotInterface
             //Update keyframe.
             this.Keyframes[index] = keyframe;
 
-            //If time does not change return.
-            if (!timeChanges) return;
+            //Set visible keyframe.
+            TreeIter iter;
+            this.framesListStore.GetIter(out iter, new TreePath(new int[1] { this.SelectKeyframeIndex }));
 
-            //Sort keyframes.
-            this.SortKeyframes();
+            this.framesListStore.SetValues(
+                iter,
+                keyframe.name,
+                keyframe.actuatorValues[0],
+                keyframe.actuatorValues[1],
+                keyframe.actuatorValues[2],
+                keyframe.actuatorValues[3],
+                keyframe.actuatorValues[4],
+                keyframe.actuatorValues[5],
+                keyframe.actuatorValues[6],
+                keyframe.time
+                );
 
-            //Get keyframe index.
-            this.GetKeyframeIndex(keyframe.name);
+            //If time has changed.
+            if (timeChanges)
+            {
+                //Sort keyframes.
+                this.SortKeyframes();
+
+                //Get item.
+                this.SetSelectedKeyframeIndex(this.GetKeyframeIndex(keyframe.time));
+            }
+
+            return true;
         }
 
-        public void SetSelectedKeyframe(int index)
+        public void SetSelectedKeyframeIndex(int index)
         {
-            this.treeView.ActivateRow(new TreePath(new int[1] { index }), this.treeView.Columns[0]);
+            this.SelectKeyframeIndex = index;
+            TreePath path = new TreePath(new int[1] { this.SelectKeyframeIndex });
+            this.treeView.ActivateRow(new TreePath(new int[1] { this.SelectKeyframeIndex }), this.treeView.Columns[0]);
+        }
+
+        public Nullable<Keyframe> GetSelectedKeyframe()
+        {
+            if (this.SelectKeyframeIndex < 0) return null;
+            return this.Keyframes[this.SelectKeyframeIndex];
+        }
+
+        public bool UpdateSelectedKeyframe(Keyframe keyframe)
+        {
+            if (this.SelectKeyframeIndex < 0) return false;
+            return this.UpdateKeyframe(this.SelectKeyframeIndex, keyframe);
         }
 
         public int AddKeyframe(string name, Nullable<UInt32> time, params float[] actuatorValues)
@@ -142,9 +194,9 @@ namespace RobotInterface
             }
 
             //Set time.
-            if (time == null)
+            if (!time.HasValue)
             {
-                keyframe.time = (numOfFrames > 0) ? this.Keyframes[numOfFrames - 1].time + 1 : 0;
+                keyframe.time = (numOfFrames > 0) ? this.Keyframes[numOfFrames - 1].time + 1000 : 0;
             }
             else
             {
