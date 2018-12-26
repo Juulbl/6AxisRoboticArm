@@ -275,12 +275,18 @@ public partial class MainWindow : Gtk.Window
 
     protected void OnAddFrameActivated(object sender, EventArgs e)
     {
+        //If is loading frame, return.
+        if (this.isLoadingFrame) return;
+
         this.timeline.AddKeyframe(null, null, this.GetActuatorScaleValues());
     }
 
     protected void OnRemoveFrameActivated(object sender, EventArgs e)
     {
+        //If is loading frame, return.
+        if (this.isLoadingFrame) return;
 
+        this.timeline.DeleteKeyframe(this.timeline.SelectKeyframeIndex);
     }
 
     protected void OnFrameTreeViewRowActivated(object o, RowActivatedArgs args)

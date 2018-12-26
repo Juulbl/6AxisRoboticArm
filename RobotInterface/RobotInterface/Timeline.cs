@@ -121,8 +121,29 @@ namespace RobotInterface
             return -1;
         }
 
+        public bool DeleteKeyframe(int index)
+        {
+            //If out of range, return.
+            if (index < 0 && index >= this.Keyframes.Count) return false;
+
+            //Get keyframe  itterator.
+            TreeIter iter;
+            this.framesListStore.GetIter(out iter, new TreePath(new int[1] { index }));
+
+            //Remove item.
+            this.framesListStore.Remove(ref iter);
+
+            //Remove item from list.
+            this.Keyframes.RemoveAt(index);
+
+            return true;
+        }
+
         public bool UpdateKeyframe(int index, Keyframe keyframe)
         {
+            //If out of range, return.
+            if (index < 0 && index >= this.Keyframes.Count) return false;
+
             //Does time change???
             bool timeChanges = (this.keyframes[index].time != keyframe.time);
 
@@ -137,7 +158,7 @@ namespace RobotInterface
 
             //Set visible keyframe.
             TreeIter iter;
-            this.framesListStore.GetIter(out iter, new TreePath(new int[1] { this.SelectKeyframeIndex }));
+            this.framesListStore.GetIter(out iter, new TreePath(new int[1] { index }));
 
             this.framesListStore.SetValues(
                 iter,
