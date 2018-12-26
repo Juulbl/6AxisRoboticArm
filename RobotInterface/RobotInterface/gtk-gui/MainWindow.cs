@@ -47,7 +47,7 @@ public partial class MainWindow
 
 	private global::Gtk.ScrolledWindow GtkScrolledWindow1;
 
-	private global::Gtk.TreeView treeview1;
+	private global::Gtk.TreeView FrameTreeView;
 
 	private global::Gtk.VBox TerminalPanel;
 
@@ -108,6 +108,8 @@ public partial class MainWindow
 	private global::Gtk.HScale ActuatorScale4;
 
 	private global::Gtk.HScale ActuatorScale5;
+
+	private global::Gtk.HScale ActuatorScale6;
 
 	protected virtual void Build()
 	{
@@ -248,10 +250,10 @@ public partial class MainWindow
 		this.GtkScrolledWindow1.Name = "GtkScrolledWindow1";
 		this.GtkScrolledWindow1.ShadowType = ((global::Gtk.ShadowType)(1));
 		// Container child GtkScrolledWindow1.Gtk.Container+ContainerChild
-		this.treeview1 = new global::Gtk.TreeView();
-		this.treeview1.CanFocus = true;
-		this.treeview1.Name = "treeview1";
-		this.GtkScrolledWindow1.Add(this.treeview1);
+		this.FrameTreeView = new global::Gtk.TreeView();
+		this.FrameTreeView.CanFocus = true;
+		this.FrameTreeView.Name = "FrameTreeView";
+		this.GtkScrolledWindow1.Add(this.FrameTreeView);
 		this.vpaned1.Add(this.GtkScrolledWindow1);
 		global::Gtk.Paned.PanedChild w11 = ((global::Gtk.Paned.PanedChild)(this.vpaned1[this.GtkScrolledWindow1]));
 		w11.Resize = false;
@@ -540,28 +542,43 @@ public partial class MainWindow
 		w38.Position = 5;
 		w38.Expand = false;
 		w38.Fill = false;
-		this.PropertyContainer.Add(this.PropertyContent);
-		global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.PropertyContainer[this.PropertyContent]));
-		w39.Position = 2;
+		// Container child PropertyContent.Gtk.Box+BoxChild
+		this.ActuatorScale6 = new global::Gtk.HScale(null);
+		this.ActuatorScale6.CanFocus = true;
+		this.ActuatorScale6.Name = "ActuatorScale6";
+		this.ActuatorScale6.Adjustment.Upper = 180D;
+		this.ActuatorScale6.Adjustment.PageIncrement = 10D;
+		this.ActuatorScale6.Adjustment.StepIncrement = 1D;
+		this.ActuatorScale6.DrawValue = true;
+		this.ActuatorScale6.Digits = 0;
+		this.ActuatorScale6.ValuePos = ((global::Gtk.PositionType)(2));
+		this.PropertyContent.Add(this.ActuatorScale6);
+		global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.ActuatorScale6]));
+		w39.Position = 6;
 		w39.Expand = false;
 		w39.Fill = false;
-		this.FramePropertiesPanel.Add(this.PropertyContainer);
-		global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.FramePropertiesPanel[this.PropertyContainer]));
-		w40.Position = 1;
+		this.PropertyContainer.Add(this.PropertyContent);
+		global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.PropertyContainer[this.PropertyContent]));
+		w40.Position = 2;
 		w40.Expand = false;
 		w40.Fill = false;
+		this.FramePropertiesPanel.Add(this.PropertyContainer);
+		global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.FramePropertiesPanel[this.PropertyContainer]));
+		w41.Position = 1;
+		w41.Expand = false;
+		w41.Fill = false;
 		w20.Add(this.FramePropertiesPanel);
 		this.scrolledwindow1.Add(w20);
 		this.vbox7.Add(this.scrolledwindow1);
-		global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.vbox7[this.scrolledwindow1]));
-		w43.Position = 1;
+		global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.vbox7[this.scrolledwindow1]));
+		w44.Position = 1;
 		this.HPanel1.Add(this.vbox7);
-		global::Gtk.Paned.PanedChild w44 = ((global::Gtk.Paned.PanedChild)(this.HPanel1[this.vbox7]));
-		w44.Resize = false;
-		w44.Shrink = false;
+		global::Gtk.Paned.PanedChild w45 = ((global::Gtk.Paned.PanedChild)(this.HPanel1[this.vbox7]));
+		w45.Resize = false;
+		w45.Shrink = false;
 		this.VPanel1.Add(this.HPanel1);
-		global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.VPanel1[this.HPanel1]));
-		w45.Position = 1;
+		global::Gtk.Box.BoxChild w46 = ((global::Gtk.Box.BoxChild)(this.VPanel1[this.HPanel1]));
+		w46.Position = 1;
 		this.Add(this.VPanel1);
 		if ((this.Child != null))
 		{
@@ -580,5 +597,6 @@ public partial class MainWindow
 		this.ActuatorScale3.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
 		this.ActuatorScale4.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
 		this.ActuatorScale5.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
+		this.ActuatorScale6.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
 	}
 }

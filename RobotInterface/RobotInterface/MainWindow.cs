@@ -9,13 +9,15 @@ public partial class MainWindow : Gtk.Window
 
     #region FIELDS
 
+    private ListStore framesListStore;
     private Robot robot = new Robot(
             new Servo(10, 170, 90),
             new Servo(10, 170, 170),
             new Servo(10, 170, 35),
             new Servo(10, 170, 90),
             new Servo(10, 170, 90),
-            new Servo(10, 170, 90)
+            new Servo(10, 170, 90),
+            new Servo(0, 180, 0)
         );
     private List<Gtk.HScale> actuatorScales = new List<Gtk.HScale>();
 
@@ -27,6 +29,9 @@ public partial class MainWindow : Gtk.Window
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
         Build();
+
+        //Init tree frame view.
+        this.InitFrameTreeView();
 
         //Init actuator scales.
         this.InitActuatorScales();
@@ -50,6 +55,37 @@ public partial class MainWindow : Gtk.Window
 
     #region METHODS
 
+    private void InitFrameTreeView()
+    {
+        this.framesListStore = new ListStore(
+                typeof(string), 
+                typeof(string),
+                typeof(float),
+                typeof(float),
+                typeof(float),
+                typeof(float),
+                typeof(float),
+                typeof(float),
+                typeof(float),
+                typeof(int)
+            );
+
+        this.FrameTreeView.Model = this.framesListStore;
+
+        var cellView = new CellRendererText();
+
+        this.FrameTreeView.AppendColumn("ID", cellView, "text", 0);
+        this.FrameTreeView.AppendColumn("Name", cellView, "text", 1);
+        this.FrameTreeView.AppendColumn("Actuator 0", cellView, "text", 2);
+        this.FrameTreeView.AppendColumn("Actuator 1", cellView, "text", 3);
+        this.FrameTreeView.AppendColumn("Actuator 2", cellView, "text", 4);
+        this.FrameTreeView.AppendColumn("Actuator 3", cellView, "text", 5);
+        this.FrameTreeView.AppendColumn("Actuator 4", cellView, "text", 6);
+        this.FrameTreeView.AppendColumn("Actuator 5", cellView, "text", 7);
+        this.FrameTreeView.AppendColumn("Actuator 6", cellView, "text", 8);
+        this.FrameTreeView.AppendColumn("Time (Milliseconds)", cellView, "text",  9);
+    }
+
     private void InitActuatorScales()
     {
         //Clear actuator scales list.
@@ -62,6 +98,7 @@ public partial class MainWindow : Gtk.Window
         this.actuatorScales.Add(this.ActuatorScale3);
         this.actuatorScales.Add(this.ActuatorScale4);
         this.actuatorScales.Add(this.ActuatorScale5);
+        this.actuatorScales.Add(this.ActuatorScale6);
 
         //Set values of scales.
         for(int i = 0; i < actuatorScales.Count; i++) 

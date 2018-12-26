@@ -213,7 +213,7 @@
                     <property name="MemberName" />
                     <property name="ShadowType">In</property>
                     <child>
-                      <widget class="Gtk.TreeView" id="treeview1">
+                      <widget class="Gtk.TreeView" id="FrameTreeView">
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="ShowScrollbars">True</property>
@@ -602,6 +602,25 @@
                                       </widget>
                                       <packing>
                                         <property name="Position">5</property>
+                                        <property name="AutoSize">True</property>
+                                        <property name="Expand">False</property>
+                                        <property name="Fill">False</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="Gtk.HScale" id="ActuatorScale6">
+                                        <property name="MemberName">0</property>
+                                        <property name="CanFocus">True</property>
+                                        <property name="Upper">180</property>
+                                        <property name="PageIncrement">10</property>
+                                        <property name="StepIncrement">1</property>
+                                        <property name="DrawValue">True</property>
+                                        <property name="Digits">0</property>
+                                        <property name="ValuePos">Top</property>
+                                        <signal name="ValueChanged" handler="OnActuatorScaleChanged" />
+                                      </widget>
+                                      <packing>
+                                        <property name="Position">6</property>
                                         <property name="AutoSize">True</property>
                                         <property name="Expand">False</property>
                                         <property name="Fill">False</property>
