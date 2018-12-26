@@ -93,13 +93,13 @@ public partial class MainWindow
 
 	private global::Gtk.Label label13;
 
-	private global::Gtk.Entry entry3;
+	private global::Gtk.Entry FrameNameEntry;
 
 	private global::Gtk.HBox hbox6;
 
 	private global::Gtk.Label label14;
 
-	private global::Gtk.Entry entry4;
+	private global::Gtk.Entry FrameTimeEntry;
 
 	private global::Gtk.VBox PropertyContainer;
 
@@ -111,19 +111,19 @@ public partial class MainWindow
 
 	private global::Gtk.VBox PropertyContent;
 
-	private global::Gtk.HScale ActuatorScale;
+	private global::Gtk.HScale FrameActuatorScale;
 
-	private global::Gtk.HScale ActuatorScale1;
+	private global::Gtk.HScale FrameActuatorScale1;
 
-	private global::Gtk.HScale ActuatorScale2;
+	private global::Gtk.HScale FrameActuatorScale2;
 
-	private global::Gtk.HScale ActuatorScale3;
+	private global::Gtk.HScale FrameActuatorScale3;
 
-	private global::Gtk.HScale ActuatorScale4;
+	private global::Gtk.HScale FrameActuatorScale4;
 
-	private global::Gtk.HScale ActuatorScale5;
+	private global::Gtk.HScale FrameActuatorScale5;
 
-	private global::Gtk.HScale ActuatorScale6;
+	private global::Gtk.HScale FrameActuatorScale6;
 
 	protected virtual void Build()
 	{
@@ -386,7 +386,6 @@ public partial class MainWindow
 		w24.Fill = false;
 		// Container child vbox7.Gtk.Box+BoxChild
 		this.scrolledwindow1 = new global::Gtk.ScrolledWindow();
-		this.scrolledwindow1.Sensitive = false;
 		this.scrolledwindow1.CanFocus = true;
 		this.scrolledwindow1.Name = "scrolledwindow1";
 		this.scrolledwindow1.ShadowType = ((global::Gtk.ShadowType)(1));
@@ -395,6 +394,7 @@ public partial class MainWindow
 		w25.ShadowType = ((global::Gtk.ShadowType)(0));
 		// Container child GtkViewport.Gtk.Container+ContainerChild
 		this.FramePropertiesPanel = new global::Gtk.VBox();
+		this.FramePropertiesPanel.Sensitive = false;
 		this.FramePropertiesPanel.Name = "FramePropertiesPanel";
 		this.FramePropertiesPanel.Spacing = 6;
 		// Container child FramePropertiesPanel.Gtk.Box+BoxChild
@@ -432,13 +432,13 @@ public partial class MainWindow
 		w28.Expand = false;
 		w28.Fill = false;
 		// Container child PropertyContent1.Gtk.Box+BoxChild
-		this.entry3 = new global::Gtk.Entry();
-		this.entry3.CanFocus = true;
-		this.entry3.Name = "entry3";
-		this.entry3.IsEditable = true;
-		this.entry3.InvisibleChar = '•';
-		this.PropertyContent1.Add(this.entry3);
-		global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.PropertyContent1[this.entry3]));
+		this.FrameNameEntry = new global::Gtk.Entry();
+		this.FrameNameEntry.CanFocus = true;
+		this.FrameNameEntry.Name = "FrameNameEntry";
+		this.FrameNameEntry.IsEditable = true;
+		this.FrameNameEntry.InvisibleChar = '•';
+		this.PropertyContent1.Add(this.FrameNameEntry);
+		global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.PropertyContent1[this.FrameNameEntry]));
 		w29.Position = 1;
 		w29.Expand = false;
 		w29.Fill = false;
@@ -461,13 +461,13 @@ public partial class MainWindow
 		w31.Expand = false;
 		w31.Fill = false;
 		// Container child PropertyContent1.Gtk.Box+BoxChild
-		this.entry4 = new global::Gtk.Entry();
-		this.entry4.CanFocus = true;
-		this.entry4.Name = "entry4";
-		this.entry4.IsEditable = true;
-		this.entry4.InvisibleChar = '•';
-		this.PropertyContent1.Add(this.entry4);
-		global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.PropertyContent1[this.entry4]));
+		this.FrameTimeEntry = new global::Gtk.Entry();
+		this.FrameTimeEntry.CanFocus = true;
+		this.FrameTimeEntry.Name = "FrameTimeEntry";
+		this.FrameTimeEntry.IsEditable = true;
+		this.FrameTimeEntry.InvisibleChar = '•';
+		this.PropertyContent1.Add(this.FrameTimeEntry);
+		global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.PropertyContent1[this.FrameTimeEntry]));
 		w32.Position = 3;
 		w32.Expand = false;
 		w32.Fill = false;
@@ -516,107 +516,107 @@ public partial class MainWindow
 		this.PropertyContent.Name = "PropertyContent";
 		this.PropertyContent.Spacing = 6;
 		// Container child PropertyContent.Gtk.Box+BoxChild
-		this.ActuatorScale = new global::Gtk.HScale(null);
-		this.ActuatorScale.CanFocus = true;
-		this.ActuatorScale.Name = "ActuatorScale";
-		this.ActuatorScale.Adjustment.Upper = 180D;
-		this.ActuatorScale.Adjustment.PageIncrement = 10D;
-		this.ActuatorScale.Adjustment.StepIncrement = 1D;
-		this.ActuatorScale.DrawValue = true;
-		this.ActuatorScale.Digits = 0;
-		this.ActuatorScale.ValuePos = ((global::Gtk.PositionType)(2));
-		this.PropertyContent.Add(this.ActuatorScale);
-		global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.ActuatorScale]));
+		this.FrameActuatorScale = new global::Gtk.HScale(null);
+		this.FrameActuatorScale.CanFocus = true;
+		this.FrameActuatorScale.Name = "FrameActuatorScale";
+		this.FrameActuatorScale.Adjustment.Upper = 180D;
+		this.FrameActuatorScale.Adjustment.PageIncrement = 10D;
+		this.FrameActuatorScale.Adjustment.StepIncrement = 1D;
+		this.FrameActuatorScale.DrawValue = true;
+		this.FrameActuatorScale.Digits = 0;
+		this.FrameActuatorScale.ValuePos = ((global::Gtk.PositionType)(2));
+		this.PropertyContent.Add(this.FrameActuatorScale);
+		global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.FrameActuatorScale]));
 		w38.Position = 0;
 		w38.Expand = false;
 		w38.Fill = false;
 		// Container child PropertyContent.Gtk.Box+BoxChild
-		this.ActuatorScale1 = new global::Gtk.HScale(null);
-		this.ActuatorScale1.CanFocus = true;
-		this.ActuatorScale1.Name = "ActuatorScale1";
-		this.ActuatorScale1.Adjustment.Upper = 180D;
-		this.ActuatorScale1.Adjustment.PageIncrement = 10D;
-		this.ActuatorScale1.Adjustment.StepIncrement = 1D;
-		this.ActuatorScale1.DrawValue = true;
-		this.ActuatorScale1.Digits = 0;
-		this.ActuatorScale1.ValuePos = ((global::Gtk.PositionType)(2));
-		this.PropertyContent.Add(this.ActuatorScale1);
-		global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.ActuatorScale1]));
+		this.FrameActuatorScale1 = new global::Gtk.HScale(null);
+		this.FrameActuatorScale1.CanFocus = true;
+		this.FrameActuatorScale1.Name = "FrameActuatorScale1";
+		this.FrameActuatorScale1.Adjustment.Upper = 180D;
+		this.FrameActuatorScale1.Adjustment.PageIncrement = 10D;
+		this.FrameActuatorScale1.Adjustment.StepIncrement = 1D;
+		this.FrameActuatorScale1.DrawValue = true;
+		this.FrameActuatorScale1.Digits = 0;
+		this.FrameActuatorScale1.ValuePos = ((global::Gtk.PositionType)(2));
+		this.PropertyContent.Add(this.FrameActuatorScale1);
+		global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.FrameActuatorScale1]));
 		w39.Position = 1;
 		w39.Expand = false;
 		w39.Fill = false;
 		// Container child PropertyContent.Gtk.Box+BoxChild
-		this.ActuatorScale2 = new global::Gtk.HScale(null);
-		this.ActuatorScale2.CanFocus = true;
-		this.ActuatorScale2.Name = "ActuatorScale2";
-		this.ActuatorScale2.Adjustment.Upper = 180D;
-		this.ActuatorScale2.Adjustment.PageIncrement = 10D;
-		this.ActuatorScale2.Adjustment.StepIncrement = 1D;
-		this.ActuatorScale2.DrawValue = true;
-		this.ActuatorScale2.Digits = 0;
-		this.ActuatorScale2.ValuePos = ((global::Gtk.PositionType)(2));
-		this.PropertyContent.Add(this.ActuatorScale2);
-		global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.ActuatorScale2]));
+		this.FrameActuatorScale2 = new global::Gtk.HScale(null);
+		this.FrameActuatorScale2.CanFocus = true;
+		this.FrameActuatorScale2.Name = "FrameActuatorScale2";
+		this.FrameActuatorScale2.Adjustment.Upper = 180D;
+		this.FrameActuatorScale2.Adjustment.PageIncrement = 10D;
+		this.FrameActuatorScale2.Adjustment.StepIncrement = 1D;
+		this.FrameActuatorScale2.DrawValue = true;
+		this.FrameActuatorScale2.Digits = 0;
+		this.FrameActuatorScale2.ValuePos = ((global::Gtk.PositionType)(2));
+		this.PropertyContent.Add(this.FrameActuatorScale2);
+		global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.FrameActuatorScale2]));
 		w40.Position = 2;
 		w40.Expand = false;
 		w40.Fill = false;
 		// Container child PropertyContent.Gtk.Box+BoxChild
-		this.ActuatorScale3 = new global::Gtk.HScale(null);
-		this.ActuatorScale3.CanFocus = true;
-		this.ActuatorScale3.Name = "ActuatorScale3";
-		this.ActuatorScale3.Adjustment.Upper = 180D;
-		this.ActuatorScale3.Adjustment.PageIncrement = 10D;
-		this.ActuatorScale3.Adjustment.StepIncrement = 1D;
-		this.ActuatorScale3.DrawValue = true;
-		this.ActuatorScale3.Digits = 0;
-		this.ActuatorScale3.ValuePos = ((global::Gtk.PositionType)(2));
-		this.PropertyContent.Add(this.ActuatorScale3);
-		global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.ActuatorScale3]));
+		this.FrameActuatorScale3 = new global::Gtk.HScale(null);
+		this.FrameActuatorScale3.CanFocus = true;
+		this.FrameActuatorScale3.Name = "FrameActuatorScale3";
+		this.FrameActuatorScale3.Adjustment.Upper = 180D;
+		this.FrameActuatorScale3.Adjustment.PageIncrement = 10D;
+		this.FrameActuatorScale3.Adjustment.StepIncrement = 1D;
+		this.FrameActuatorScale3.DrawValue = true;
+		this.FrameActuatorScale3.Digits = 0;
+		this.FrameActuatorScale3.ValuePos = ((global::Gtk.PositionType)(2));
+		this.PropertyContent.Add(this.FrameActuatorScale3);
+		global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.FrameActuatorScale3]));
 		w41.Position = 3;
 		w41.Expand = false;
 		w41.Fill = false;
 		// Container child PropertyContent.Gtk.Box+BoxChild
-		this.ActuatorScale4 = new global::Gtk.HScale(null);
-		this.ActuatorScale4.CanFocus = true;
-		this.ActuatorScale4.Name = "ActuatorScale4";
-		this.ActuatorScale4.Adjustment.Upper = 180D;
-		this.ActuatorScale4.Adjustment.PageIncrement = 10D;
-		this.ActuatorScale4.Adjustment.StepIncrement = 1D;
-		this.ActuatorScale4.DrawValue = true;
-		this.ActuatorScale4.Digits = 0;
-		this.ActuatorScale4.ValuePos = ((global::Gtk.PositionType)(2));
-		this.PropertyContent.Add(this.ActuatorScale4);
-		global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.ActuatorScale4]));
+		this.FrameActuatorScale4 = new global::Gtk.HScale(null);
+		this.FrameActuatorScale4.CanFocus = true;
+		this.FrameActuatorScale4.Name = "FrameActuatorScale4";
+		this.FrameActuatorScale4.Adjustment.Upper = 180D;
+		this.FrameActuatorScale4.Adjustment.PageIncrement = 10D;
+		this.FrameActuatorScale4.Adjustment.StepIncrement = 1D;
+		this.FrameActuatorScale4.DrawValue = true;
+		this.FrameActuatorScale4.Digits = 0;
+		this.FrameActuatorScale4.ValuePos = ((global::Gtk.PositionType)(2));
+		this.PropertyContent.Add(this.FrameActuatorScale4);
+		global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.FrameActuatorScale4]));
 		w42.Position = 4;
 		w42.Expand = false;
 		w42.Fill = false;
 		// Container child PropertyContent.Gtk.Box+BoxChild
-		this.ActuatorScale5 = new global::Gtk.HScale(null);
-		this.ActuatorScale5.CanFocus = true;
-		this.ActuatorScale5.Name = "ActuatorScale5";
-		this.ActuatorScale5.Adjustment.Upper = 180D;
-		this.ActuatorScale5.Adjustment.PageIncrement = 10D;
-		this.ActuatorScale5.Adjustment.StepIncrement = 1D;
-		this.ActuatorScale5.DrawValue = true;
-		this.ActuatorScale5.Digits = 0;
-		this.ActuatorScale5.ValuePos = ((global::Gtk.PositionType)(2));
-		this.PropertyContent.Add(this.ActuatorScale5);
-		global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.ActuatorScale5]));
+		this.FrameActuatorScale5 = new global::Gtk.HScale(null);
+		this.FrameActuatorScale5.CanFocus = true;
+		this.FrameActuatorScale5.Name = "FrameActuatorScale5";
+		this.FrameActuatorScale5.Adjustment.Upper = 180D;
+		this.FrameActuatorScale5.Adjustment.PageIncrement = 10D;
+		this.FrameActuatorScale5.Adjustment.StepIncrement = 1D;
+		this.FrameActuatorScale5.DrawValue = true;
+		this.FrameActuatorScale5.Digits = 0;
+		this.FrameActuatorScale5.ValuePos = ((global::Gtk.PositionType)(2));
+		this.PropertyContent.Add(this.FrameActuatorScale5);
+		global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.FrameActuatorScale5]));
 		w43.Position = 5;
 		w43.Expand = false;
 		w43.Fill = false;
 		// Container child PropertyContent.Gtk.Box+BoxChild
-		this.ActuatorScale6 = new global::Gtk.HScale(null);
-		this.ActuatorScale6.CanFocus = true;
-		this.ActuatorScale6.Name = "ActuatorScale6";
-		this.ActuatorScale6.Adjustment.Upper = 180D;
-		this.ActuatorScale6.Adjustment.PageIncrement = 10D;
-		this.ActuatorScale6.Adjustment.StepIncrement = 1D;
-		this.ActuatorScale6.DrawValue = true;
-		this.ActuatorScale6.Digits = 0;
-		this.ActuatorScale6.ValuePos = ((global::Gtk.PositionType)(2));
-		this.PropertyContent.Add(this.ActuatorScale6);
-		global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.ActuatorScale6]));
+		this.FrameActuatorScale6 = new global::Gtk.HScale(null);
+		this.FrameActuatorScale6.CanFocus = true;
+		this.FrameActuatorScale6.Name = "FrameActuatorScale6";
+		this.FrameActuatorScale6.Adjustment.Upper = 180D;
+		this.FrameActuatorScale6.Adjustment.PageIncrement = 10D;
+		this.FrameActuatorScale6.Adjustment.StepIncrement = 1D;
+		this.FrameActuatorScale6.DrawValue = true;
+		this.FrameActuatorScale6.Digits = 0;
+		this.FrameActuatorScale6.ValuePos = ((global::Gtk.PositionType)(2));
+		this.PropertyContent.Add(this.FrameActuatorScale6);
+		global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.PropertyContent[this.FrameActuatorScale6]));
 		w44.Position = 6;
 		w44.Expand = false;
 		w44.Fill = false;
@@ -652,14 +652,17 @@ public partial class MainWindow
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.connectSerialAction.Activated += new global::System.EventHandler(this.OnConnectSerialActivated);
+		this.addAction.Activated += new global::System.EventHandler(this.OnAddFrameActivated);
+		this.removeAction.Activated += new global::System.EventHandler(this.OnRemoveFrameActivated);
 		this.SerialPortDropdown.Changed += new global::System.EventHandler(this.OnSerialPortDropdownChanged);
 		this.BaudRateDropdown.Changed += new global::System.EventHandler(this.OnBaudRateDropdownChanged);
-		this.ActuatorScale.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
-		this.ActuatorScale1.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
-		this.ActuatorScale2.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
-		this.ActuatorScale3.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
-		this.ActuatorScale4.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
-		this.ActuatorScale5.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
-		this.ActuatorScale6.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
+		this.FrameTreeView.RowActivated += new global::Gtk.RowActivatedHandler(this.OnFrameTreeViewRowActivated);
+		this.FrameActuatorScale.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
+		this.FrameActuatorScale1.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
+		this.FrameActuatorScale2.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
+		this.FrameActuatorScale3.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
+		this.FrameActuatorScale4.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
+		this.FrameActuatorScale5.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
+		this.FrameActuatorScale6.ValueChanged += new global::System.EventHandler(this.OnActuatorScaleChanged);
 	}
 }

@@ -70,6 +70,8 @@
     <Compile Include="Robot.cs" />
     <Compile Include="Serial.cs" />
     <Compile Include="Servo.cs" />
+    <Compile Include="Keyframe.cs" />
+    <Compile Include="Timeline.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
