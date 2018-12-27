@@ -42,7 +42,7 @@ public partial class MainWindow : Gtk.Window
             deltaTime = (currentDateTime - lastDateTime).TotalMilliseconds;
 
             //Update timeline.
-            timeline.Update(ref deltaTime);
+            this.timeline.Update(ref deltaTime);
 
             //Set last date time to current date time.
             lastDateTime = currentDateTime;
@@ -68,7 +68,7 @@ public partial class MainWindow : Gtk.Window
         this.OnSerialPortDropdownChanged(this.SerialPortDropdown, null);
 
         //Init timeline.
-        this.timeline = new Timeline(ref this.FrameTreeView, ref this.FramePropertiesPanel, ref this.robot);
+        this.timeline = new Timeline(ref this.FrameTreeView, ref this.FramesPanel, ref this.FramePropertiesPanel, ref this.robot);
 
         //Init timeline update thread.
         this.timelineUpdateThread = new Thread(HandleTimelineUpdateThread);
@@ -374,6 +374,11 @@ public partial class MainWindow : Gtk.Window
     protected void OnPlayTimelineActivated(object sender, EventArgs e)
     {
         this.timeline.Play();
+    }
+
+    protected void OnRepeatTimelineToggled(object sender, EventArgs e)
+    {
+        this.timeline.Repeat = ((ToggleAction)sender).Active;
     }
 
     #endregion

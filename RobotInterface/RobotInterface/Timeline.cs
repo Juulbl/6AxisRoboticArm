@@ -11,6 +11,7 @@ namespace RobotInterface
 
         private Robot robot;
         private Gtk.VBox framePropertiesPanel;
+        private Gtk.VBox framesPanel;
         private List<Keyframe> keyframes = new List<Keyframe>();
         private Gtk.ListStore framesListStore;
         private Gtk.TreeView treeView;
@@ -61,7 +62,7 @@ namespace RobotInterface
                 if (this.keyframes.Count == 0) return;
 
                 //Set sensitivity.
-                this.treeView.Sensitive = !value;
+                this.framesPanel.Sensitive = !value;
 
                 //Set frame properties sensitivity.
                 this.framePropertiesPanel.Sensitive = (!value && this.SelectKeyframeIndex >= 0);
@@ -88,8 +89,11 @@ namespace RobotInterface
 
         #region CONSTRUCTORS
 
-        public Timeline(ref Gtk.TreeView treeView, ref Gtk.VBox framePropertiesPanel, ref Robot robot)
+        public Timeline(ref Gtk.TreeView treeView, ref Gtk.VBox framesPanel, ref Gtk.VBox framePropertiesPanel, ref Robot robot)
         {
+            //Set frames panel.
+            this.framesPanel = framesPanel;
+
             //Set frame properties panel.
             this.framePropertiesPanel = framePropertiesPanel;
 
@@ -136,7 +140,7 @@ namespace RobotInterface
             this.framePropertiesPanel.Sensitive = false;
 
             //Set tree view sensitive.
-            this.treeView.Sensitive = true;
+            this.framesPanel.Sensitive = true;
         }
 
         #endregion

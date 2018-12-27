@@ -27,11 +27,6 @@
         <property name="StockId">gtk-media-play</property>
         <signal name="Activated" handler="OnPlayTimelineActivated" />
       </action>
-      <action id="mediaNextAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes" />
-        <property name="StockId">gtk-media-next</property>
-      </action>
       <action id="newAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes" />
@@ -69,6 +64,14 @@
         <property name="Label" translatable="yes" />
         <property name="StockId">gtk-remove</property>
         <signal name="Activated" handler="OnRemoveFrameActivated" />
+      </action>
+      <action id="refreshAction">
+        <property name="Type">Toggle</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-refresh</property>
+        <property name="DrawAsRadio">False</property>
+        <property name="Active">False</property>
+        <signal name="Toggled" handler="OnRepeatTimelineToggled" />
       </action>
     </action-group>
     <property name="MemberName" />
@@ -162,7 +165,7 @@
                 <property name="WidthRequest">160</property>
                 <property name="CanFocus">True</property>
                 <property name="Text" translatable="yes">0</property>
-                <property name="IsEditable">True</property>
+                <property name="IsEditable">False</property>
                 <property name="InvisibleChar">•</property>
               </widget>
               <packing>
@@ -194,6 +197,7 @@
                   <node type="Toolitem" action="mediaPreviousAction" />
                   <node type="Toolitem" action="mediaStopAction" />
                   <node type="Toolitem" action="mediaPlayAction" />
+                  <node type="Toolitem" action="refreshAction" />
                 </node>
               </widget>
               <packing>

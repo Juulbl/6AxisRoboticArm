@@ -11,8 +11,6 @@ public partial class MainWindow
 
 	private global::Gtk.Action mediaPlayAction;
 
-	private global::Gtk.Action mediaNextAction;
-
 	private global::Gtk.Action newAction;
 
 	private global::Gtk.Action openAction;
@@ -26,6 +24,8 @@ public partial class MainWindow
 	private global::Gtk.Action addAction;
 
 	private global::Gtk.Action removeAction;
+
+	private global::Gtk.ToggleAction refreshAction;
 
 	private global::Gtk.VBox VPanel1;
 
@@ -137,8 +137,6 @@ public partial class MainWindow
 		w1.Add(this.mediaStopAction, null);
 		this.mediaPlayAction = new global::Gtk.Action("mediaPlayAction", null, null, "gtk-media-play");
 		w1.Add(this.mediaPlayAction, null);
-		this.mediaNextAction = new global::Gtk.Action("mediaNextAction", null, null, "gtk-media-next");
-		w1.Add(this.mediaNextAction, null);
 		this.newAction = new global::Gtk.Action("newAction", null, null, "gtk-new");
 		w1.Add(this.newAction, null);
 		this.openAction = new global::Gtk.Action("openAction", null, null, "gtk-open");
@@ -153,6 +151,8 @@ public partial class MainWindow
 		w1.Add(this.addAction, null);
 		this.removeAction = new global::Gtk.Action("removeAction", null, null, "gtk-remove");
 		w1.Add(this.removeAction, null);
+		this.refreshAction = new global::Gtk.ToggleAction("refreshAction", null, null, "gtk-refresh");
+		w1.Add(this.refreshAction, null);
 		this.UIManager.InsertActionGroup(w1, 0);
 		this.AddAccelGroup(this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
@@ -221,7 +221,7 @@ public partial class MainWindow
 		this.TimeEntry.CanFocus = true;
 		this.TimeEntry.Name = "TimeEntry";
 		this.TimeEntry.Text = global::Mono.Unix.Catalog.GetString("0");
-		this.TimeEntry.IsEditable = true;
+		this.TimeEntry.IsEditable = false;
 		this.TimeEntry.InvisibleChar = '•';
 		this.MenuBar.Add(this.TimeEntry);
 		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.MenuBar[this.TimeEntry]));
@@ -239,9 +239,7 @@ public partial class MainWindow
 		w7.Expand = false;
 		w7.Fill = false;
 		// Container child MenuBar.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString("<ui><toolbar name=\'MediaControls\'><toolitem name=\'mediaPreviousAction\' action=\'me" +
-				"diaPreviousAction\'/><toolitem name=\'mediaStopAction\' action=\'mediaStopAction\'/><" +
-				"toolitem name=\'mediaPlayAction\' action=\'mediaPlayAction\'/></toolbar></ui>");
+		this.UIManager.AddUiFromString(@"<ui><toolbar name='MediaControls'><toolitem name='mediaPreviousAction' action='mediaPreviousAction'/><toolitem name='mediaStopAction' action='mediaStopAction'/><toolitem name='mediaPlayAction' action='mediaPlayAction'/><toolitem name='refreshAction' action='refreshAction'/></toolbar></ui>");
 		this.MediaControls = ((global::Gtk.Toolbar)(this.UIManager.GetWidget("/MediaControls")));
 		this.MediaControls.Name = "MediaControls";
 		this.MediaControls.ShowArrow = false;
@@ -659,6 +657,7 @@ public partial class MainWindow
 		this.connectSerialAction.Activated += new global::System.EventHandler(this.OnConnectSerialActivated);
 		this.addAction.Activated += new global::System.EventHandler(this.OnAddFrameActivated);
 		this.removeAction.Activated += new global::System.EventHandler(this.OnRemoveFrameActivated);
+		this.refreshAction.Toggled += new global::System.EventHandler(this.OnRepeatTimelineToggled);
 		this.FrameTreeView.RowActivated += new global::Gtk.RowActivatedHandler(this.OnFrameTreeViewRowActivated);
 		this.FrameNameEntry.KeyReleaseEvent += new global::Gtk.KeyReleaseEventHandler(this.OnFramePropertyKeyRelease);
 		this.FrameTimeEntry.KeyReleaseEvent += new global::Gtk.KeyReleaseEventHandler(this.OnFramePropertyKeyRelease);
