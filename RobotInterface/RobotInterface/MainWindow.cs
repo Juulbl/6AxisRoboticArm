@@ -33,10 +33,18 @@ public partial class MainWindow : Gtk.Window
     {
         DateTime currentDateTime = DateTime.Now;
         DateTime lastDateTime = currentDateTime;
+        double deltaTime = 0;
+
         while (true)
         {
+            //Get current date time and calculate delta time.
             currentDateTime = DateTime.Now;
-            timeline.Update(/*FIX THIS*/);
+            deltaTime = (currentDateTime - lastDateTime).TotalMilliseconds;
+
+            //Update timeline.
+            timeline.Update(ref deltaTime);
+
+            //Set last date time to current date time.
             lastDateTime = currentDateTime;
         }
     }
@@ -45,13 +53,9 @@ public partial class MainWindow : Gtk.Window
 
 
     #region CONSTRUCTORS/DESCTRUCTORS
-
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
         Build();
-
-        //Set frame property panel not sensitive.
-        this.FramePropertiesPanel.Sensitive = false;
 
         //Init actuator scales.
         this.InitActuatorScales();
@@ -64,7 +68,7 @@ public partial class MainWindow : Gtk.Window
         this.OnSerialPortDropdownChanged(this.SerialPortDropdown, null);
 
         //Init timeline.
-        this.timeline = new Timeline(ref this.FrameTreeView, ref this.robot);
+        this.timeline = new Timeline(ref this.FrameTreeView, ref this.FramePropertiesPanel, ref this.robot);
 
         //Init timeline update thread.
         this.timelineUpdateThread = new Thread(HandleTimelineUpdateThread);
@@ -75,6 +79,10 @@ public partial class MainWindow : Gtk.Window
 
     protected void OnDeleteEvent(object sender, DeleteEventArgs a)
     {
+        //Abort thread.
+        this.timelineUpdateThread.Abort();
+
+        //Quit app.
         Application.Quit();
         a.RetVal = true;
     }
@@ -165,7 +173,6 @@ public partial class MainWindow : Gtk.Window
         //Set is loading frame true.
         this.isLoadingFrame = true;
 
-        this.FramePropertiesPanel.Sensitive = true;
         this.FrameNameEntry.Text = frame.name;
         this.FrameTimeEntry.Text = frame.time.ToString();
 
@@ -361,7 +368,6 @@ public partial class MainWindow : Gtk.Window
 
     protected void OnStopTimelineActivated(object sender, EventArgs e)
     {
-        //Update robot.
         this.timeline.Stop();
     }
 

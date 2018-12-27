@@ -10,13 +10,14 @@ namespace RobotInterface
         #region FIELDS
 
         private Robot robot;
+        private Gtk.VBox framePropertiesPanel;
         private List<Keyframe> keyframes = new List<Keyframe>();
         private Gtk.ListStore framesListStore;
         private Gtk.TreeView treeView;
         private int selectKeyframeIndex = -1;
         private bool isPlaying = false;
         private bool repeat = false;
-        private UInt32 currentTime = 0;
+        private double currentTime = 0;
 
         #endregion
 
@@ -40,8 +41,13 @@ namespace RobotInterface
                 //Set selected keyframe.
                 this.selectKeyframeIndex = value;
 
+                //Set activated row.
                 this.treeView.ActivateRow(new TreePath(new int[1] { this.SelectKeyframeIndex }), this.treeView.Columns[0]);
 
+                //Set frame properties sensitivity.
+                this.framePropertiesPanel.Sensitive = (!this.IsPlaying && value >= 0);
+
+                //Update all servos.
                 this.UpdateAllRobotServos();
             }
         }
@@ -54,7 +60,13 @@ namespace RobotInterface
                 //If no keyframes, return.
                 if (this.keyframes.Count == 0) return;
 
+                //Set sensitivity.
                 this.treeView.Sensitive = !value;
+
+                //Set frame properties sensitivity.
+                this.framePropertiesPanel.Sensitive = (!value && this.SelectKeyframeIndex >= 0);
+
+                //Set is playing.
                 this.isPlaying = value;
             }
         }
@@ -65,7 +77,7 @@ namespace RobotInterface
             set => this.repeat = value;
         }
 
-        public UInt32 CurrentTime
+        public double CurrentTime
         {
             get => this.currentTime;
             set => this.currentTime = value;
@@ -76,8 +88,11 @@ namespace RobotInterface
 
         #region CONSTRUCTORS
 
-        public Timeline(ref Gtk.TreeView treeView, ref Robot robot)
+        public Timeline(ref Gtk.TreeView treeView, ref Gtk.VBox framePropertiesPanel, ref Robot robot)
         {
+            //Set frame properties panel.
+            this.framePropertiesPanel = framePropertiesPanel;
+
             //Set robot.
             this.robot = robot;
 
@@ -116,6 +131,12 @@ namespace RobotInterface
             this.treeView.AppendColumn("Actuator 5", cellView, "text", 6);
             this.treeView.AppendColumn("Actuator 6", cellView, "text", 7);
             this.treeView.AppendColumn("Time (Milliseconds)", cellView, "text", 8);
+
+            //Set frame properties panel non-sensitive.
+            this.framePropertiesPanel.Sensitive = false;
+
+            //Set tree view sensitive.
+            this.treeView.Sensitive = true;
         }
 
         #endregion
@@ -139,7 +160,7 @@ namespace RobotInterface
             this.CurrentTime = 0; 
         }
 
-        public void Update(UInt32 deltaTime)
+        public void Update(ref double deltaTime)
         {
             //If if not playing, return.
             if (!this.IsPlaying) return;
@@ -323,9 +344,14 @@ namespace RobotInterface
 
         public void UpdateAllRobotServos()
         {
+            //If is playing, return.
+            if (this.IsPlaying) return;
+
+            //Get selected keyframe.
             Nullable<Keyframe> keyframe = this.GetSelectedKeyframe();
             if (!keyframe.HasValue) return;
 
+            //Update all servos.
             for(int i = 0; i < this.robot.Servos.Length; i++)
             {
                 this.robot.SetServoAngle(i, keyframe.Value.actuatorValues[i]);

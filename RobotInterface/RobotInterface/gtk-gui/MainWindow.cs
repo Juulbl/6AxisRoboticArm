@@ -49,7 +49,7 @@ public partial class MainWindow
 
 	private global::Gtk.VPaned vpaned1;
 
-	private global::Gtk.VBox vbox8;
+	private global::Gtk.VBox FramesPanel;
 
 	private global::Gtk.HBox hbox8;
 
@@ -267,10 +267,10 @@ public partial class MainWindow
 		this.vpaned1.Name = "vpaned1";
 		this.vpaned1.Position = 406;
 		// Container child vpaned1.Gtk.Paned+PanedChild
-		this.vbox8 = new global::Gtk.VBox();
-		this.vbox8.Name = "vbox8";
-		this.vbox8.Spacing = 6;
-		// Container child vbox8.Gtk.Box+BoxChild
+		this.FramesPanel = new global::Gtk.VBox();
+		this.FramesPanel.Name = "FramesPanel";
+		this.FramesPanel.Spacing = 6;
+		// Container child FramesPanel.Gtk.Box+BoxChild
 		this.hbox8 = new global::Gtk.HBox();
 		this.hbox8.Name = "hbox8";
 		this.hbox8.Spacing = 6;
@@ -301,12 +301,12 @@ public partial class MainWindow
 		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.FrameToolbar]));
 		w12.Position = 2;
 		w12.Expand = false;
-		this.vbox8.Add(this.hbox8);
-		global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox8[this.hbox8]));
+		this.FramesPanel.Add(this.hbox8);
+		global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.FramesPanel[this.hbox8]));
 		w13.Position = 0;
 		w13.Expand = false;
 		w13.Fill = false;
-		// Container child vbox8.Gtk.Box+BoxChild
+		// Container child FramesPanel.Gtk.Box+BoxChild
 		this.GtkScrolledWindow = new global::Gtk.ScrolledWindow();
 		this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 		this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
@@ -315,11 +315,11 @@ public partial class MainWindow
 		this.FrameTreeView.CanFocus = true;
 		this.FrameTreeView.Name = "FrameTreeView";
 		this.GtkScrolledWindow.Add(this.FrameTreeView);
-		this.vbox8.Add(this.GtkScrolledWindow);
-		global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox8[this.GtkScrolledWindow]));
+		this.FramesPanel.Add(this.GtkScrolledWindow);
+		global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.FramesPanel[this.GtkScrolledWindow]));
 		w15.Position = 1;
-		this.vpaned1.Add(this.vbox8);
-		global::Gtk.Paned.PanedChild w16 = ((global::Gtk.Paned.PanedChild)(this.vpaned1[this.vbox8]));
+		this.vpaned1.Add(this.FramesPanel);
+		global::Gtk.Paned.PanedChild w16 = ((global::Gtk.Paned.PanedChild)(this.vpaned1[this.FramesPanel]));
 		w16.Resize = false;
 		// Container child vpaned1.Gtk.Paned+PanedChild
 		this.TerminalPanel = new global::Gtk.VBox();
@@ -652,11 +652,22 @@ public partial class MainWindow
 		this.DefaultWidth = 1209;
 		this.DefaultHeight = 648;
 		this.Show();
+		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.mediaPreviousAction.Activated += new global::System.EventHandler(this.OnResetTimelineActivated);
 		this.mediaStopAction.Activated += new global::System.EventHandler(this.OnStopTimelineActivated);
 		this.mediaPlayAction.Activated += new global::System.EventHandler(this.OnPlayTimelineActivated);
 		this.connectSerialAction.Activated += new global::System.EventHandler(this.OnConnectSerialActivated);
 		this.addAction.Activated += new global::System.EventHandler(this.OnAddFrameActivated);
 		this.removeAction.Activated += new global::System.EventHandler(this.OnRemoveFrameActivated);
+		this.FrameTreeView.RowActivated += new global::Gtk.RowActivatedHandler(this.OnFrameTreeViewRowActivated);
+		this.FrameNameEntry.KeyReleaseEvent += new global::Gtk.KeyReleaseEventHandler(this.OnFramePropertyKeyRelease);
+		this.FrameTimeEntry.KeyReleaseEvent += new global::Gtk.KeyReleaseEventHandler(this.OnFramePropertyKeyRelease);
+		this.FrameActuatorScale.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
+		this.FrameActuatorScale1.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
+		this.FrameActuatorScale2.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
+		this.FrameActuatorScale3.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
+		this.FrameActuatorScale4.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
+		this.FrameActuatorScale5.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
+		this.FrameActuatorScale6.ValueChanged += new global::System.EventHandler(this.OnFrameActuatorScaleChanged);
 	}
 }

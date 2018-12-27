@@ -74,6 +74,7 @@
     <property name="MemberName" />
     <property name="Title" translatable="yes">RobotInterface</property>
     <property name="WindowPosition">CenterOnParent</property>
+    <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
       <widget class="Gtk.VBox" id="VPanel1">
         <property name="MemberName" />
@@ -221,7 +222,7 @@
                 <property name="CanFocus">True</property>
                 <property name="Position">406</property>
                 <child>
-                  <widget class="Gtk.VBox" id="vbox8">
+                  <widget class="Gtk.VBox" id="FramesPanel">
                     <property name="MemberName" />
                     <property name="Spacing">6</property>
                     <child>
@@ -283,6 +284,7 @@
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="ShowScrollbars">True</property>
+                            <signal name="RowActivated" handler="OnFrameTreeViewRowActivated" />
                           </widget>
                         </child>
                       </widget>
@@ -454,6 +456,7 @@
                                         <property name="CanFocus">True</property>
                                         <property name="IsEditable">True</property>
                                         <property name="InvisibleChar">•</property>
+                                        <signal name="KeyReleaseEvent" handler="OnFramePropertyKeyRelease" />
                                       </widget>
                                       <packing>
                                         <property name="Position">1</property>
@@ -496,6 +499,7 @@
                                         <property name="Text" translatable="yes">0</property>
                                         <property name="IsEditable">True</property>
                                         <property name="InvisibleChar">•</property>
+                                        <signal name="KeyReleaseEvent" handler="OnFramePropertyKeyRelease" />
                                       </widget>
                                       <packing>
                                         <property name="Position">3</property>
@@ -576,6 +580,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">0</property>
@@ -594,6 +599,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">1</property>
@@ -612,6 +618,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">2</property>
@@ -630,6 +637,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">3</property>
@@ -648,6 +656,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">4</property>
@@ -666,6 +675,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">5</property>
@@ -684,6 +694,7 @@
                                         <property name="DrawValue">True</property>
                                         <property name="Digits">0</property>
                                         <property name="ValuePos">Top</property>
+                                        <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
                                       <packing>
                                         <property name="Position">6</property>
