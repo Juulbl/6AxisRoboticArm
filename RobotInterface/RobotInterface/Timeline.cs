@@ -168,8 +168,6 @@ namespace RobotInterface
             //Update current time.
             this.CurrentTime += deltaTime;
 
-            Console.WriteLine($"It's time {this.CurrentTime}");
-
             //If time is higher than the last keyframe.
             if (this.CurrentTime > this.Keyframes[this.Keyframes.Count - 1].time)
             { 
@@ -182,7 +180,54 @@ namespace RobotInterface
                 {
                     this.CurrentTime = 0;
                 }
+
+                return;
             }
+
+            //Get keyframes the current time is between.
+            Nullable<Keyframe> startFrame = null;
+            Nullable<Keyframe> endFrame = null;
+            int keyframeIndex = 0;
+            while(keyframeIndex < this.Keyframes.Count - 1)
+            {
+                //If next keyframe has a time lower than the current time.
+                if(this.CurrentTime <= this.Keyframes[keyframeIndex + 1].time)
+                {
+                    //Set start and end keyframes.
+                    startFrame = this.Keyframes[keyframeIndex];
+                    endFrame = this.Keyframes[keyframeIndex + 1];
+
+                    //Break.
+                    break;
+                }
+
+                //Increment keyframes.
+                keyframeIndex++;
+            }
+
+            //If one of the selected keyframes does not have a value.
+            if (!startFrame.HasValue || !endFrame.HasValue) return;
+
+            //Get normalized position between the selected keyframes.
+            double normalizedPos = (this.CurrentTime - startFrame.Value.time) / (endFrame.Value.time - startFrame.Value.time);
+
+            //Update all servos.
+            for(int i = 0; i < this.robot.Servos.Length; i++)
+            {
+                this.robot.SetServoAngle(
+                        i, 
+                        this.GetValueBetweenAngles(
+                            startFrame.Value.actuatorValues[i], 
+                            endFrame.Value.actuatorValues[i],
+                            normalizedPos
+                        )
+                    );
+            }
+        }
+
+        private float GetValueBetweenAngles(float angle1, float angle2, double normalizedPosition)
+        {
+            return (float)(angle1 + ((angle2 - angle1) * normalizedPosition));
         }
 
         private void AppendListStore(ref Keyframe frame)
