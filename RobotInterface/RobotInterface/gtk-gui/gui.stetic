@@ -579,10 +579,10 @@
                                         <property name="MemberName" />
                                         <property name="CanFocus">True</property>
                                         <property name="Upper">180</property>
-                                        <property name="PageIncrement">10</property>
-                                        <property name="StepIncrement">1</property>
+                                        <property name="PageIncrement">0.5</property>
+                                        <property name="StepIncrement">0.05</property>
                                         <property name="DrawValue">True</property>
-                                        <property name="Digits">0</property>
+                                        <property name="Digits">2</property>
                                         <property name="ValuePos">Top</property>
                                         <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
@@ -598,10 +598,10 @@
                                         <property name="MemberName" />
                                         <property name="CanFocus">True</property>
                                         <property name="Upper">180</property>
-                                        <property name="PageIncrement">10</property>
-                                        <property name="StepIncrement">1</property>
+                                        <property name="PageIncrement">0.5</property>
+                                        <property name="StepIncrement">0.05</property>
                                         <property name="DrawValue">True</property>
-                                        <property name="Digits">0</property>
+                                        <property name="Digits">2</property>
                                         <property name="ValuePos">Top</property>
                                         <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
@@ -617,10 +617,10 @@
                                         <property name="MemberName" />
                                         <property name="CanFocus">True</property>
                                         <property name="Upper">180</property>
-                                        <property name="PageIncrement">10</property>
-                                        <property name="StepIncrement">1</property>
+                                        <property name="PageIncrement">0.5</property>
+                                        <property name="StepIncrement">0.05</property>
                                         <property name="DrawValue">True</property>
-                                        <property name="Digits">0</property>
+                                        <property name="Digits">2</property>
                                         <property name="ValuePos">Top</property>
                                         <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
@@ -636,10 +636,10 @@
                                         <property name="MemberName" />
                                         <property name="CanFocus">True</property>
                                         <property name="Upper">180</property>
-                                        <property name="PageIncrement">10</property>
-                                        <property name="StepIncrement">1</property>
+                                        <property name="PageIncrement">0.5</property>
+                                        <property name="StepIncrement">0.05</property>
                                         <property name="DrawValue">True</property>
-                                        <property name="Digits">0</property>
+                                        <property name="Digits">2</property>
                                         <property name="ValuePos">Top</property>
                                         <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
@@ -655,10 +655,10 @@
                                         <property name="MemberName" />
                                         <property name="CanFocus">True</property>
                                         <property name="Upper">180</property>
-                                        <property name="PageIncrement">10</property>
-                                        <property name="StepIncrement">1</property>
+                                        <property name="PageIncrement">0.5</property>
+                                        <property name="StepIncrement">0.05</property>
                                         <property name="DrawValue">True</property>
-                                        <property name="Digits">0</property>
+                                        <property name="Digits">2</property>
                                         <property name="ValuePos">Top</property>
                                         <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
@@ -674,10 +674,10 @@
                                         <property name="MemberName">0</property>
                                         <property name="CanFocus">True</property>
                                         <property name="Upper">180</property>
-                                        <property name="PageIncrement">10</property>
-                                        <property name="StepIncrement">1</property>
+                                        <property name="PageIncrement">0.5</property>
+                                        <property name="StepIncrement">0.05</property>
                                         <property name="DrawValue">True</property>
-                                        <property name="Digits">0</property>
+                                        <property name="Digits">2</property>
                                         <property name="ValuePos">Top</property>
                                         <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>
@@ -693,10 +693,10 @@
                                         <property name="MemberName">0</property>
                                         <property name="CanFocus">True</property>
                                         <property name="Upper">180</property>
-                                        <property name="PageIncrement">10</property>
-                                        <property name="StepIncrement">1</property>
+                                        <property name="PageIncrement">0.5</property>
+                                        <property name="StepIncrement">0.05</property>
                                         <property name="DrawValue">True</property>
-                                        <property name="Digits">0</property>
+                                        <property name="Digits">2</property>
                                         <property name="ValuePos">Top</property>
                                         <signal name="ValueChanged" handler="OnFrameActuatorScaleChanged" />
                                       </widget>

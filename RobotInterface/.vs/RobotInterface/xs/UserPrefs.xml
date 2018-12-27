@@ -5,7 +5,7 @@
       <File FileName="RobotInterface/Robot.cs" Line="30" Column="1" />
       <File FileName="RobotInterface/Serial.cs" Line="26" Column="58" />
       <File FileName="RobotInterface/Timeline.cs" Line="199" Column="18" />
-      <File FileName="RobotInterface/MainWindow.cs" Line="85" Column="42" />
+      <File FileName="RobotInterface/MainWindow.cs" Line="108" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.RobotInterface PreferredExecutionTarget="MonoDevelop.Default" />
