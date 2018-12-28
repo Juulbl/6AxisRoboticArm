@@ -9,13 +9,18 @@ namespace RobotInterface
     {
         #region FIELDS
 
+        //GUI components.
         private Robot robot;
         private Gtk.VBox framePropertiesPanel;
         private Gtk.VBox framesPanel;
+        private Gtk.TreeView treeView;
+
+        //Frames and frames list store.
         private List<Keyframe> keyframes = new List<Keyframe>();
         private Gtk.ListStore framesListStore;
-        private Gtk.TreeView treeView;
         private int selectKeyframeIndex = -1;
+
+        //Playback.
         private bool isPlaying = false;
         private bool repeat = false;
         private double currentTime = 0;
@@ -39,17 +44,22 @@ namespace RobotInterface
                 //If value is higher than the number of keyframes, set value to last keyframe.
                 if (value >= this.Keyframes.Count) value = this.Keyframes.Count - 1;
 
-                //Set selected keyframe.
-                this.selectKeyframeIndex = value;
+                if (value >= 0)
+                {
 
-                //Set activated row.
-                this.treeView.ActivateRow(new TreePath(new int[1] { this.SelectKeyframeIndex }), this.treeView.Columns[0]);
+                    //Set selected keyframe.
+                    this.selectKeyframeIndex = value;
+
+                    //Set activated row.
+                    this.treeView.ActivateRow(new TreePath(new int[1] { this.SelectKeyframeIndex }), this.treeView.Columns[0]);
+
+                    //Update all servos.
+                    this.UpdateAllRobotServos();
+
+                }
 
                 //Set frame properties sensitivity.
                 this.framePropertiesPanel.Sensitive = (!this.IsPlaying && value >= 0);
-
-                //Update all servos.
-                this.UpdateAllRobotServos();
             }
         }
 
@@ -89,6 +99,13 @@ namespace RobotInterface
 
         #region CONSTRUCTORS
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:RobotInterface.Timeline"/> class.
+        /// </summary>
+        /// <param name="treeView">Tree view.</param>
+        /// <param name="framesPanel">Frames panel.</param>
+        /// <param name="framePropertiesPanel">Frame properties panel.</param>
+        /// <param name="robot">Robot.</param>
         public Timeline(ref Gtk.TreeView treeView, ref Gtk.VBox framesPanel, ref Gtk.VBox framePropertiesPanel, ref Robot robot)
         {
             //Set frames panel.
@@ -148,22 +165,35 @@ namespace RobotInterface
 
         #region METHODS
 
+        /// <summary>
+        /// Play timeline.
+        /// </summary>
         public void Play()
         {
             this.IsPlaying = true;
         }
 
+        /// <summary>
+        /// Pause timeline.
+        /// </summary>
         public void Pause()
         {
             this.IsPlaying = false;
         }
 
+        /// <summary>
+        /// Stop timeline.
+        /// </summary>
         public void Stop()
         {
             this.IsPlaying = false;
             this.CurrentTime = 0; 
         }
 
+        /// <summary>
+        /// Update timeline.
+        /// </summary>
+        /// <param name="deltaTime">Delta time (milliseconds).</param>
         public void Update(ref double deltaTime)
         {
             //If if not playing, return.
@@ -229,11 +259,22 @@ namespace RobotInterface
             }
         }
 
+        /// <summary>
+        /// Gets the value between angles.
+        /// </summary>
+        /// <returns>The angle between angles.</returns>
+        /// <param name="angle1">Angle1.</param>
+        /// <param name="angle2">Angle2.</param>
+        /// <param name="normalizedPosition">Normalized position.</param>
         private float GetValueBetweenAngles(float angle1, float angle2, double normalizedPosition)
         {
             return (float)(angle1 + ((angle2 - angle1) * normalizedPosition));
         }
 
+        /// <summary>
+        /// Appends the list store.
+        /// </summary>
+        /// <param name="frame">Frame.</param>
         private void AppendListStore(ref Keyframe frame)
         {
             this.framesListStore.AppendValues(
@@ -251,11 +292,19 @@ namespace RobotInterface
             this.SelectKeyframeIndex = this.Keyframes.Count - 1;
         }
 
+        /// <summary>
+        /// Sorts the keyframes.
+        /// </summary>
         private void SortKeyframes()
         {
             this.Keyframes = this.Keyframes.OrderBy(f => f.time).ToList<Keyframe>();
         }
 
+        /// <summary>
+        /// Gets the index of a keyframe by its time.
+        /// </summary>
+        /// <returns>The keyframe index.</returns>
+        /// <param name="time">Time.</param>
         private int GetKeyframeIndex(UInt32 time)
         {
             for (int i = 0; i < this.keyframes.Count; i++)
@@ -266,10 +315,15 @@ namespace RobotInterface
             return -1;
         }
 
+        /// <summary>
+        /// Deletes the keyframe at index.
+        /// </summary>
+        /// <returns><c>true</c>, if keyframe was deleted, <c>false</c> otherwise.</returns>
+        /// <param name="index">Index.</param>
         public bool DeleteKeyframe(int index)
         {
             //If out of range, return.
-            if (index < 0 && index >= this.Keyframes.Count) return false;
+            if (index < 0 || index >= this.Keyframes.Count) return false;
 
             //Get keyframe  itterator.
             TreeIter iter;
@@ -287,6 +341,12 @@ namespace RobotInterface
             return true;
         }
 
+        /// <summary>
+        /// Updates the keyframe at index.
+        /// </summary>
+        /// <returns><c>true</c>, if keyframe was updated, <c>false</c> otherwise.</returns>
+        /// <param name="index">Index.</param>
+        /// <param name="keyframe">Keyframe.</param>
         public bool UpdateKeyframe(int index, Keyframe keyframe)
         {
             //If out of range, return.
@@ -334,18 +394,34 @@ namespace RobotInterface
             return true;
         }
 
+        /// <summary>
+        /// Gets the selected keyframe.
+        /// </summary>
+        /// <returns>The selected keyframe.</returns>
         public Nullable<Keyframe> GetSelectedKeyframe()
         {
             if (this.SelectKeyframeIndex < 0) return null;
             return this.Keyframes[this.SelectKeyframeIndex];
         }
 
+        /// <summary>
+        /// Updates the selected keyframe.
+        /// </summary>
+        /// <returns><c>true</c>, if selected keyframe was updated, <c>false</c> otherwise.</returns>
+        /// <param name="keyframe">Keyframe.</param>
         public bool UpdateSelectedKeyframe(Keyframe keyframe)
         {
             if (this.SelectKeyframeIndex < 0) return false;
             return this.UpdateKeyframe(this.SelectKeyframeIndex, keyframe);
         }
 
+        /// <summary>
+        /// Adds a new keyframe.
+        /// </summary>
+        /// <returns>The keyframe.</returns>
+        /// <param name="name">Name.</param>
+        /// <param name="time">Time.</param>
+        /// <param name="actuatorValues">Actuator values.</param>
         public int AddKeyframe(string name, Nullable<UInt32> time, params float[] actuatorValues)
         {
             //Get num of frames.
@@ -391,6 +467,9 @@ namespace RobotInterface
             return numOfFrames;
         }
 
+        /// <summary>
+        /// Updates all robot servos.
+        /// </summary>
         public void UpdateAllRobotServos()
         {
             //If is playing, return.

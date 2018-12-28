@@ -9,11 +9,14 @@ public partial class MainWindow : Gtk.Window
 
     #region FIELDS
 
+    //Is loading something.
     private bool isLoadingFrame = true;
 
+    //Timeline and timeline updating.
     private Timeline timeline;
     private Thread timelineUpdateThread;
 
+    //Robot and its actuator scales.
     private Robot robot = new Robot(
             new Servo(10, 170, 90),
             new Servo(10, 170, 170),
@@ -29,12 +32,18 @@ public partial class MainWindow : Gtk.Window
 
 
     #region THREAD_HANDLERS
-    void HandleTimelineUpdateThread()
+
+    /// <summary>
+    /// Handles the timeline update thread.
+    /// </summary>
+    private void HandleTimelineUpdateThread()
     {
+        //Saves the current and last recorded date time to calculate the delta time.
         DateTime currentDateTime = DateTime.Now;
         DateTime lastDateTime = currentDateTime;
         double deltaTime = 0;
 
+        //While this thread is running.
         while (true)
         {
             //Get current date time and calculate delta time.
@@ -74,6 +83,7 @@ public partial class MainWindow : Gtk.Window
         this.timelineUpdateThread = new Thread(HandleTimelineUpdateThread);
         this.timelineUpdateThread.Start();
 
+        //Set is loading false.
         this.isLoadingFrame = false;
     }
 
@@ -81,6 +91,7 @@ public partial class MainWindow : Gtk.Window
     {
         //Abort thread.
         this.timelineUpdateThread.Abort();
+        this.timelineUpdateThread = null;
 
         //Quit app.
         Application.Quit();
@@ -92,12 +103,15 @@ public partial class MainWindow : Gtk.Window
 
     #region METHODS
 
+    /// <summary>
+    /// Initializes the actuator scales.
+    /// </summary>
     private void InitActuatorScales()
     {
         //Clear actuator scales list.
         this.actuatorScales.Clear();
 
-        //Add actuators to actuator scales list.
+        //Add actuators to actuator scales list (Makes it easier to update these in the future).
         this.actuatorScales.Add(this.FrameActuatorScale);
         this.actuatorScales.Add(this.FrameActuatorScale1);
         this.actuatorScales.Add(this.FrameActuatorScale2);
@@ -115,6 +129,9 @@ public partial class MainWindow : Gtk.Window
         }
     }
 
+    /// <summary>
+    /// Loads the available serial ports.
+    /// </summary>
     private void LoadAvailableSerialPorts()
     {
 
@@ -129,6 +146,10 @@ public partial class MainWindow : Gtk.Window
 
     }
 
+    /// <summary>
+    /// Adds to serial terminal.
+    /// </summary>
+    /// <param name="text">Text.</param>
     private void AddToSerialTerminal(string text)
     {
         //Add time to text.
@@ -147,6 +168,10 @@ public partial class MainWindow : Gtk.Window
         this.SerialTerminal.Buffer.Insert(ref iter, text + "\n");
     }
 
+    /// <summary>
+    /// Gets the actuator scale values.
+    /// </summary>
+    /// <returns>The actuator scale values.</returns>
     private float[] GetActuatorScaleValues()
     {
         float[] values = new float[this.actuatorScales.Count];
@@ -168,6 +193,10 @@ public partial class MainWindow : Gtk.Window
         this.SetSelectedFrame(this.timeline.Keyframes[index]);
     }
 
+    /// <summary>
+    /// Sets the selected frame.
+    /// </summary>
+    /// <param name="frame">Frame.</param>
     private void SetSelectedFrame(Keyframe frame)
     {
         //Set is loading frame true.
@@ -185,6 +214,9 @@ public partial class MainWindow : Gtk.Window
         this.isLoadingFrame = false;
     }
 
+    /// <summary>
+    /// Updates the selected keyframe.
+    /// </summary>
     private void UpdateSelectedKeyframe()
     {
         //Get selected keyframe. If null, return.
@@ -206,6 +238,9 @@ public partial class MainWindow : Gtk.Window
 
     #region EVENTS
 
+    /// <summary>
+    /// On connect serial event.
+    /// </summary>
     private void OnConnectSerial()
     {
         this.AddToSerialTerminal("Device connected successfully.");
@@ -225,6 +260,9 @@ public partial class MainWindow : Gtk.Window
 
     }
 
+    /// <summary>
+    /// On disconnect serial event.
+    /// </summary>
     private void OnDisconnectSerial()
     {
         this.AddToSerialTerminal("Device disconnected successfully.");
@@ -238,6 +276,11 @@ public partial class MainWindow : Gtk.Window
 
     }
 
+    /// <summary>
+    /// On serial port dropdown change event.
+    /// </summary>
+    /// <param name="sender">Sender.</param>
+    /// <param name="e">E.</param>
     protected void OnSerialPortDropdownChanged(object sender, EventArgs e)
     {
 
@@ -246,11 +289,17 @@ public partial class MainWindow : Gtk.Window
 
     }
 
+    /// <summary>
+    /// On baud rate dropdown change event.
+    /// </summary>
+    /// <param name="sender">Sender.</param>
+    /// <param name="e">E.</param>
     protected void OnBaudRateDropdownChanged(object sender, EventArgs e)
     {
 
         int baudRate = 0;
 
+        //Try to cast the baudrate. On error, return.
         try
         {
             baudRate = Convert.ToInt32(((ComboBox)sender).ActiveText);
@@ -258,6 +307,7 @@ public partial class MainWindow : Gtk.Window
         catch (Exception)
         {
             Console.WriteLine("Could not convert dropdown baud rate to int.");
+            return;
         }
 
         //Set baud rate.
@@ -265,11 +315,18 @@ public partial class MainWindow : Gtk.Window
 
     }
 
+    /// <summary>
+    /// On connect serial activate event.
+    /// </summary>
+    /// <param name="sender">Sender.</param>
+    /// <param name="e">E.</param>
     protected void OnConnectSerialActivated(object sender, EventArgs e)
     {
 
-        if (!Serial.Instance.IsOpen())
+        //If serial is not open.
+        if (!Serial.Instance.IsOpen)
         {
+            //If serial successfully opened, else display dialog.
             if (Serial.Instance.Open()) this.OnConnectSerial();
             else
             {
@@ -286,6 +343,7 @@ public partial class MainWindow : Gtk.Window
         }
         else
         {
+            //If serial successfully closed, else display dialog.
             if (Serial.Instance.Close()) this.OnDisconnectSerial();
             else
             {
@@ -303,6 +361,11 @@ public partial class MainWindow : Gtk.Window
 
     }
 
+    /// <summary>
+    /// On add frame activate event.
+    /// </summary>
+    /// <param name="sender">Sender.</param>
+    /// <param name="e">E.</param>
     protected void OnAddFrameActivated(object sender, EventArgs e)
     {
         //If is loading frame, return.
@@ -319,6 +382,11 @@ public partial class MainWindow : Gtk.Window
         this.timeline.DeleteKeyframe(this.timeline.SelectKeyframeIndex);
     }
 
+    /// <summary>
+    /// On frame tree view row activate event.
+    /// </summary>
+    /// <param name="o">O.</param>
+    /// <param name="args">Arguments.</param>
     protected void OnFrameTreeViewRowActivated(object o, RowActivatedArgs args)
     {
         //If is loading frame, return.
@@ -327,6 +395,11 @@ public partial class MainWindow : Gtk.Window
         this.SetSelectedFrame(args.Path.Indices[args.Path.Indices.Length - 1]);
     }
 
+    /// <summary>
+    /// On frame actuator scale change event.
+    /// </summary>
+    /// <param name="sender">Sender.</param>
+    /// <param name="e">E.</param>
     protected void OnFrameActuatorScaleChanged(object sender, EventArgs e)
     {
         //If is loading frame, return.
@@ -353,29 +426,56 @@ public partial class MainWindow : Gtk.Window
         this.UpdateSelectedKeyframe();
     }
 
+    /// <summary>
+    /// On frame property key release event.
+    /// </summary>
+    /// <param name="o">O.</param>
+    /// <param name="args">Arguments.</param>
     protected void OnFramePropertyKeyRelease(object o, KeyReleaseEventArgs args)
     {
-        if (args.Event.Key == Gdk.Key.Return)
+        //If key pressed is return or key pad enter key.
+        if (args.Event.Key == Gdk.Key.Return || args.Event.Key == Gdk.Key.KP_Enter)
         {
+            //Update selected frame with data in GUI.
             this.UpdateSelectedKeyframe();
         }
     }
 
+    /// <summary>
+    /// On reset timeline activate event.
+    /// </summary>
+    /// <param name="sender">Sender.</param>
+    /// <param name="e">E.</param>
     protected void OnResetTimelineActivated(object sender, EventArgs e)
     {
         this.timeline.CurrentTime = 0;
     }
 
+    /// <summary>
+    /// On stop timeline activate event.
+    /// </summary>
+    /// <param name="sender">Sender.</param>
+    /// <param name="e">E.</param>
     protected void OnStopTimelineActivated(object sender, EventArgs e)
     {
         this.timeline.Stop();
     }
 
+    /// <summary>
+    /// On play timeline activate event.
+    /// </summary>
+    /// <param name="sender">Sender.</param>
+    /// <param name="e">E.</param>
     protected void OnPlayTimelineActivated(object sender, EventArgs e)
     {
         this.timeline.Play();
     }
 
+    /// <summary>
+    /// On repeat timeline toggle event.
+    /// </summary>
+    /// <param name="sender">Sender.</param>
+    /// <param name="e">E.</param>
     protected void OnRepeatTimelineToggled(object sender, EventArgs e)
     {
         this.timeline.Repeat = ((ToggleAction)sender).Active;

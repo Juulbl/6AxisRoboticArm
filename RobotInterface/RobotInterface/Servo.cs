@@ -45,6 +45,12 @@ namespace RobotInterface
 
         #region CONSTRUCTORS
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:RobotInterface.Servo"/> class.
+        /// </summary>
+        /// <param name="minAngle">Minimum angle.</param>
+        /// <param name="maxAngle">Max angle.</param>
+        /// <param name="initalAngle">Inital angle.</param>
         public Servo(float minAngle, float maxAngle, float initalAngle)
         {
             this.MinAngle = minAngle;

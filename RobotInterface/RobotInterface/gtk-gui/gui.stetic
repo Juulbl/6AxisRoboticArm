@@ -160,35 +160,6 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Entry" id="TimeEntry">
-                <property name="MemberName" />
-                <property name="WidthRequest">160</property>
-                <property name="CanFocus">True</property>
-                <property name="Text" translatable="yes">0</property>
-                <property name="IsEditable">False</property>
-                <property name="InvisibleChar">•</property>
-              </widget>
-              <packing>
-                <property name="PackType">End</property>
-                <property name="Position">4</property>
-                <property name="AutoSize">False</property>
-                <property name="Expand">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Label" id="label2">
-                <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">Time (Milliseconds):</property>
-              </widget>
-              <packing>
-                <property name="PackType">End</property>
-                <property name="Position">5</property>
-                <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
-            <child>
               <widget class="Gtk.Toolbar" id="MediaControls">
                 <property name="MemberName" />
                 <property name="ShowArrow">False</property>
@@ -202,7 +173,7 @@
               </widget>
               <packing>
                 <property name="PackType">End</property>
-                <property name="Position">6</property>
+                <property name="Position">4</property>
                 <property name="AutoSize">False</property>
                 <property name="Expand">False</property>
               </packing>
