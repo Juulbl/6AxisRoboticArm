@@ -6,9 +6,6 @@ This project exists of two parts:
 - C++ / Arduino software
 - C# GTK program to control the robot using a GUI.
 
-## Table of contents
-[TOC]
-
 ## Components
 
 Micro controller: [Arduino Uno](https://store.arduino.cc/arduino-uno-rev3)<br/>
