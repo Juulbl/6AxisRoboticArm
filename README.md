@@ -37,7 +37,7 @@ The robot was build to interpret incoming(UART) data and convert it to the corre
 
 ## C++ / Arduino software
 
-This project was build using [Visual studio code](https://code.visualstudio.com/). Although this program was written to run on an Arduino, tried was to use Arduino features and functions as little as possible. This was done so the software could easily be changed to run on another C++ compatible micro controller.<br/><br/>The documentation with all classes, methods, etc. can be found in the [Documentations/RoboticArm](https://github.com/Juulbl/6AxisRoboticArm/blob/master/Documentations/RoboticArm/index.html) directory.
+This project was build using [Visual studio code](https://code.visualstudio.com/). Although this program was written to run on an Arduino, tried was to use Arduino features and functions as little as possible. This was done so the software could easily be changed to run on another C++ compatible micro controller.<br/><br/>The documentation with all classes, methods, etc. can be found in the [Documentations/RoboticArm](https://github.com/Juulbl/6AxisRoboticArm/blob/master/Documentations/RoboticArm/html/index.html) directory.
 
 ## C# / GTK software
 
