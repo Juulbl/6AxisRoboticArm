@@ -37,8 +37,10 @@ The robot was build to interpret incoming(UART) data and convert it to the corre
 
 ## C++ / Arduino software
 
-This project was build using [Visual studio code](https://code.visualstudio.com/). Although this program was written to run on an Arduino, tried was to use Arduino features and functions as little as possible. This was done so the software could easily be changed to run on another C++ compatible micro controller.<br/><br/>The documentation with all classes, methods, etc. can be found in the [Documentations/RoboticArm](https://github.com/Juulbl/6AxisRoboticArm/blob/master/Documentations/RoboticArm) directory.
+This project was build using [Visual studio code](https://code.visualstudio.com/). Although this program was written to run on an Arduino, tried was to use Arduino features and functions as little as possible. This was done so the software could easily be changed to run on another C++ compatible micro controller.<br/><br/>Doxygen was used for commenting, in this way documentation can be easily generated. The documentation with all classes, methods, etc. can be found in the [Documentations/RoboticArm](https://github.com/Juulbl/6AxisRoboticArm/blob/master/Documentations/RoboticArm) directory.
+<br/><br/>[Project directory.](https://github.com/Juulbl/6AxisRoboticArm/tree/master/RoboticArm)
 
 ## C# / GTK software
 
-This project was build using [Mono develop](https://www.monodevelop.com/).
+This project was build using [Mono develop](https://www.monodevelop.com/).<br/>For commanting sandcastle was used.
+<br/><br/>[Project directory.](https://github.com/Juulbl/6AxisRoboticArm/tree/master/RobotInterface)
