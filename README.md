@@ -1,6 +1,6 @@
 # 6 Axis Robotic Arm
 
-![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmStage3-2.jpeg?raw=true)
+![](https://raw.githubusercontent.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmStage3-2.jpeg)
 
 This project exists of two different programs. A C++ program to control the robot and a C# program to easily create and run programs / sequences for the robot. All programs where written on a Linux machine.
 
@@ -8,10 +8,10 @@ This project exists of two different programs. A C++ program to control the robo
 ## Movement demos
 
 ### 6 axis
-![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArm6AxisDemo.gif?raw=true)
+![](https://raw.githubusercontent.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArm6AxisDemo.gif)
 
 ### Not a robot
-![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmNotARobot.gif?raw=true)
+![](https://raw.githubusercontent.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmNotARobot.gif)
 
 
 ## Hardware
@@ -25,7 +25,7 @@ Servos:
 - S3003:<br/>This servo is used at joints one and four, these joint don't carry a lot of weight so they don't need high torque servos.
 - SG90:<br/>This servo is used in the last two joints, these joint carry the least amount of weight and needed to be small.
 
-![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmServos.jpeg?raw=true)
+![](https://raw.githubusercontent.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmServos.jpeg)
 
 ### Drivers
 
@@ -37,7 +37,7 @@ The robot was build to interpret incoming(UART) data and convert it to the corre
 
 ## Robot design/model
 
-![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmDesign.png?raw=true)
+![](https://raw.githubusercontent.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmDesign.png)
 
 The design of the robot was created using [Fusion 360](https://www.autodesk.com/products/fusion-360/overview). The files can be found in the [Fusion 360 directory](https://github.com/Juulbl/6AxisRoboticArm/tree/master/Fusion360).
 
@@ -48,7 +48,7 @@ This project was build using [Visual studio code](https://code.visualstudio.com/
 
 ## C# / GTK software
 
-![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotInterfaceFrames.png?raw=true)
+![](https://raw.githubusercontent.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotInterfaceFrames.png)
 
 This project was build using [Mono develop](https://www.monodevelop.com/).<br/>For commanting sandcastle was used.
 <br/><br/>[Project directory.](https://github.com/Juulbl/6AxisRoboticArm/tree/master/RobotInterface)
