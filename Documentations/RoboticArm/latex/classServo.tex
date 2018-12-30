@@ -1,0 +1,189 @@
+\hypertarget{classServo}{}\section{Servo Class Reference}
+\label{classServo}\index{Servo@{Servo}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classServo_a3923a1b16b5a158d57307f364de4627e}{Servo}} (uint8\+\_\+t servo\+Index)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classServo}{Servo}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classServo_aec2c479518249cd444854c5dbb94b38f}{Servo}} (uint8\+\_\+t servo\+Index, double initial\+Angle)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classServo}{Servo}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classServo_a0bac7b17dbff704a36c75dd476c133f8}{Servo}} (uint8\+\_\+t servo\+Index, double min\+Angle, double max\+Angle)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classServo}{Servo}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classServo_a1fc3caed6ab6b598f3322225e6215030}{Servo}} (uint8\+\_\+t servo\+Index, double min\+Angle, double max\+Angle, double initial\+Angle)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classServo}{Servo}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServo_af14dee8f2d30567768b12485b43111f2}{Set\+Angle}} (double angle)
+\begin{DoxyCompactList}\small\item\em Set servo angle. \end{DoxyCompactList}\item 
+const uint8\+\_\+t \mbox{\hyperlink{classServo_a1daacfe18f997f3d3dc1ea4d5d293e70}{Get\+Servo\+Index}} () const
+\begin{DoxyCompactList}\small\item\em Get Index the servo has on the P\+WM driver. \end{DoxyCompactList}\item 
+const double \mbox{\hyperlink{classServo_ad534074ab9d9e72415d237510e559af5}{Get\+Min\+Angle}} () const
+\begin{DoxyCompactList}\small\item\em Get the servo its minimal angle. \end{DoxyCompactList}\item 
+const double \mbox{\hyperlink{classServo_a4f78f0ed210d9881b1f87c63a7a680a0}{Get\+Max\+Angle}} () const
+\begin{DoxyCompactList}\small\item\em Get the servo its maximum angle. \end{DoxyCompactList}\item 
+const double \mbox{\hyperlink{classServo_a1fd54cfd8f26d6d94211db5d9250b042}{Get\+Angle}} () const
+\begin{DoxyCompactList}\small\item\em Get the servo its angle. \end{DoxyCompactList}\item 
+const uint16\+\_\+t \mbox{\hyperlink{classServo_addcbaf416b54f183d24d6139f20f0312}{Get\+Pulse}} () const
+\begin{DoxyCompactList}\small\item\em Get the P\+WM pulse needed to get the desired angle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classServo_a3923a1b16b5a158d57307f364de4627e}\label{classServo_a3923a1b16b5a158d57307f364de4627e}} 
+\index{Servo@{Servo}!Servo@{Servo}}
+\index{Servo@{Servo}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{Servo()}{Servo()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Servo\+::\+Servo (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{servo\+Index }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classServo}{Servo}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em servo\+Index} & Index the servo has on the P\+WM driver. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classServo_aec2c479518249cd444854c5dbb94b38f}\label{classServo_aec2c479518249cd444854c5dbb94b38f}} 
+\index{Servo@{Servo}!Servo@{Servo}}
+\index{Servo@{Servo}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{Servo()}{Servo()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Servo\+::\+Servo (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{servo\+Index,  }\item[{double}]{initial\+Angle }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classServo}{Servo}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em servo\+Index} & Index the servo has on the P\+WM driver. \\
+\hline
+{\em initial\+Angle} & Value the servo is set to on initialization. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classServo_a0bac7b17dbff704a36c75dd476c133f8}\label{classServo_a0bac7b17dbff704a36c75dd476c133f8}} 
+\index{Servo@{Servo}!Servo@{Servo}}
+\index{Servo@{Servo}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{Servo()}{Servo()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Servo\+::\+Servo (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{servo\+Index,  }\item[{double}]{min\+Angle,  }\item[{double}]{max\+Angle }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classServo}{Servo}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em servo\+Index} & Index the servo has on the P\+WM driver. \\
+\hline
+{\em min\+Angle} & Minimal (radians) the servo can be at. \\
+\hline
+{\em max\+Angle} & Maximum angle(radians) the servo can be at. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classServo_a1fc3caed6ab6b598f3322225e6215030}\label{classServo_a1fc3caed6ab6b598f3322225e6215030}} 
+\index{Servo@{Servo}!Servo@{Servo}}
+\index{Servo@{Servo}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{Servo()}{Servo()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Servo\+::\+Servo (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{servo\+Index,  }\item[{double}]{min\+Angle,  }\item[{double}]{max\+Angle,  }\item[{double}]{initial\+Angle }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classServo}{Servo}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em servo\+Index} & Index the servo has on the P\+WM driver. \\
+\hline
+{\em min\+Angle} & Minimal angle(radians) the servo can be at. \\
+\hline
+{\em max\+Angle} & Maximum angle(radians) the servo can be at. \\
+\hline
+{\em initial\+Angle} & Value the servo is set to on initialization. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classServo_a1fd54cfd8f26d6d94211db5d9250b042}\label{classServo_a1fd54cfd8f26d6d94211db5d9250b042}} 
+\index{Servo@{Servo}!GetAngle@{GetAngle}}
+\index{GetAngle@{GetAngle}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{GetAngle()}{GetAngle()}}
+{\footnotesize\ttfamily const double Servo\+::\+Get\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the servo its angle. 
+
+\begin{DoxyReturn}{Returns}
+const double\& Angle in radians. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServo_a4f78f0ed210d9881b1f87c63a7a680a0}\label{classServo_a4f78f0ed210d9881b1f87c63a7a680a0}} 
+\index{Servo@{Servo}!GetMaxAngle@{GetMaxAngle}}
+\index{GetMaxAngle@{GetMaxAngle}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{GetMaxAngle()}{GetMaxAngle()}}
+{\footnotesize\ttfamily const double Servo\+::\+Get\+Max\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the servo its maximum angle. 
+
+\begin{DoxyReturn}{Returns}
+const double\& Maximum angle in radians. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServo_ad534074ab9d9e72415d237510e559af5}\label{classServo_ad534074ab9d9e72415d237510e559af5}} 
+\index{Servo@{Servo}!GetMinAngle@{GetMinAngle}}
+\index{GetMinAngle@{GetMinAngle}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{GetMinAngle()}{GetMinAngle()}}
+{\footnotesize\ttfamily const double Servo\+::\+Get\+Min\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the servo its minimal angle. 
+
+\begin{DoxyReturn}{Returns}
+const double\& Minimal angle in radians. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServo_addcbaf416b54f183d24d6139f20f0312}\label{classServo_addcbaf416b54f183d24d6139f20f0312}} 
+\index{Servo@{Servo}!GetPulse@{GetPulse}}
+\index{GetPulse@{GetPulse}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{GetPulse()}{GetPulse()}}
+{\footnotesize\ttfamily const uint16\+\_\+t Servo\+::\+Get\+Pulse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the P\+WM pulse needed to get the desired angle. 
+
+\begin{DoxyReturn}{Returns}
+const uint16\+\_\+t\& P\+WM pulse. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServo_a1daacfe18f997f3d3dc1ea4d5d293e70}\label{classServo_a1daacfe18f997f3d3dc1ea4d5d293e70}} 
+\index{Servo@{Servo}!GetServoIndex@{GetServoIndex}}
+\index{GetServoIndex@{GetServoIndex}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{GetServoIndex()}{GetServoIndex()}}
+{\footnotesize\ttfamily const uint8\+\_\+t Servo\+::\+Get\+Servo\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get Index the servo has on the P\+WM driver. 
+
+\begin{DoxyReturn}{Returns}
+const uint8\+\_\+t\& \mbox{\hyperlink{classServo}{Servo}} index. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServo_af14dee8f2d30567768b12485b43111f2}\label{classServo_af14dee8f2d30567768b12485b43111f2}} 
+\index{Servo@{Servo}!SetAngle@{SetAngle}}
+\index{SetAngle@{SetAngle}!Servo@{Servo}}
+\subsubsection{\texorpdfstring{SetAngle()}{SetAngle()}}
+{\footnotesize\ttfamily void Servo\+::\+Set\+Angle (\begin{DoxyParamCaption}\item[{double}]{angle }\end{DoxyParamCaption})}
+
+
+
+Set servo angle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & Angle in radians. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Servo_8h}{Servo.\+h}}\item 
+\mbox{\hyperlink{Servo_8cpp}{Servo.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,108 @@
+\hypertarget{classRemoteControl}{}\section{Remote\+Control Class Reference}
+\label{classRemoteControl}\index{RemoteControl@{RemoteControl}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRemoteControl_a5d0cf2268dbecaae9b2526b6a9ea4e58}{Remote\+Control}} (\mbox{\hyperlink{classServo}{Servo}} $\ast$servos, uint8\+\_\+t num\+Of\+Servos)
+\begin{DoxyCompactList}\small\item\em Construct a new Remote Control object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRemoteControl_aa513b841c71c24aaa9637e58ece1be53}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Update remote control. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRemoteControl_ae53e5ef85ab672a133bd4485fb7ff8cd}{Update\+Serial}} ()
+\begin{DoxyCompactList}\small\item\em Update serial communication. \end{DoxyCompactList}\item 
+const int8\+\_\+t \mbox{\hyperlink{classRemoteControl_a56e3105d14f9150e8c08ff2f6f480c85}{Add\+Char\+To\+Rx\+Buffer}} (char c)
+\begin{DoxyCompactList}\small\item\em Adds a character to the rx buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRemoteControl_a2c903c1cce31327c040450f0ce9ef558}{Clear\+Rx\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Clears the rx buffer. \end{DoxyCompactList}\item 
+const int8\+\_\+t \mbox{\hyperlink{classRemoteControl_a0117ce47c6b69ad679b6570930b89e9d}{Handle\+Command}} (\mbox{\hyperlink{classRemoteControlCommand}{Remote\+Control\+Command}} \&\&command)
+\begin{DoxyCompactList}\small\item\em Handles a given command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRemoteControl_a5d0cf2268dbecaae9b2526b6a9ea4e58}\label{classRemoteControl_a5d0cf2268dbecaae9b2526b6a9ea4e58}} 
+\index{RemoteControl@{RemoteControl}!RemoteControl@{RemoteControl}}
+\index{RemoteControl@{RemoteControl}!RemoteControl@{RemoteControl}}
+\subsubsection{\texorpdfstring{RemoteControl()}{RemoteControl()}}
+{\footnotesize\ttfamily Remote\+Control\+::\+Remote\+Control (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classServo}{Servo}} $\ast$}]{servos,  }\item[{uint8\+\_\+t}]{num\+Of\+Servos }\end{DoxyParamCaption})}
+
+
+
+Construct a new Remote Control object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em servos} & \mbox{\hyperlink{classServo}{Servo}} array.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+Serial needs to be initialized. 
+\end{DoxyPrecond}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classRemoteControl_a56e3105d14f9150e8c08ff2f6f480c85}\label{classRemoteControl_a56e3105d14f9150e8c08ff2f6f480c85}} 
+\index{RemoteControl@{RemoteControl}!AddCharToRxBuffer@{AddCharToRxBuffer}}
+\index{AddCharToRxBuffer@{AddCharToRxBuffer}!RemoteControl@{RemoteControl}}
+\subsubsection{\texorpdfstring{AddCharToRxBuffer()}{AddCharToRxBuffer()}}
+{\footnotesize\ttfamily const int8\+\_\+t Remote\+Control\+::\+Add\+Char\+To\+Rx\+Buffer (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Adds a character to the rx buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Character to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int8\+\_\+t Positive if success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRemoteControl_a2c903c1cce31327c040450f0ce9ef558}\label{classRemoteControl_a2c903c1cce31327c040450f0ce9ef558}} 
+\index{RemoteControl@{RemoteControl}!ClearRxBuffer@{ClearRxBuffer}}
+\index{ClearRxBuffer@{ClearRxBuffer}!RemoteControl@{RemoteControl}}
+\subsubsection{\texorpdfstring{ClearRxBuffer()}{ClearRxBuffer()}}
+{\footnotesize\ttfamily void Remote\+Control\+::\+Clear\+Rx\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears the rx buffer. 
+
+\mbox{\Hypertarget{classRemoteControl_a0117ce47c6b69ad679b6570930b89e9d}\label{classRemoteControl_a0117ce47c6b69ad679b6570930b89e9d}} 
+\index{RemoteControl@{RemoteControl}!HandleCommand@{HandleCommand}}
+\index{HandleCommand@{HandleCommand}!RemoteControl@{RemoteControl}}
+\subsubsection{\texorpdfstring{HandleCommand()}{HandleCommand()}}
+{\footnotesize\ttfamily const int8\+\_\+t Remote\+Control\+::\+Handle\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRemoteControlCommand}{Remote\+Control\+Command}} \&\&}]{command }\end{DoxyParamCaption})}
+
+
+
+Handles a given command. 
+
+\begin{DoxyReturn}{Returns}
+int8\+\_\+t Positive if success. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRemoteControl_aa513b841c71c24aaa9637e58ece1be53}\label{classRemoteControl_aa513b841c71c24aaa9637e58ece1be53}} 
+\index{RemoteControl@{RemoteControl}!Update@{Update}}
+\index{Update@{Update}!RemoteControl@{RemoteControl}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Remote\+Control\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update remote control. 
+
+\mbox{\Hypertarget{classRemoteControl_ae53e5ef85ab672a133bd4485fb7ff8cd}\label{classRemoteControl_ae53e5ef85ab672a133bd4485fb7ff8cd}} 
+\index{RemoteControl@{RemoteControl}!UpdateSerial@{UpdateSerial}}
+\index{UpdateSerial@{UpdateSerial}!RemoteControl@{RemoteControl}}
+\subsubsection{\texorpdfstring{UpdateSerial()}{UpdateSerial()}}
+{\footnotesize\ttfamily void Remote\+Control\+::\+Update\+Serial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update serial communication. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{RemoteControl_8h}{Remote\+Control.\+h}}\item 
+\mbox{\hyperlink{RemoteControl_8cpp}{Remote\+Control.\+cpp}}\end{DoxyCompactItemize}

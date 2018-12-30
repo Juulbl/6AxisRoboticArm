@@ -2,7 +2,7 @@
 
 ![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmStage3-2.jpeg)
 
-This project exists of two different programs. A C++ program to control the robot and a C# program to easily create and run programs / sequences for the robot.
+This project exists of two different programs. A C++ program to control the robot and a C# program to easily create and run programs / sequences for the robot. All programs where written on a Linux machine.
 
 
 ## Movement demos
@@ -33,10 +33,12 @@ All servos require their own PWM signals. It would take a lot of CPU power if th
 
 ### Micro controllers
 
-The robot was build to interpret incoming(UART) data and convert it to the correct servo angle which it than send to the PWM/Servo driver. This made it also possible to create a front-end which acts like a time line and makes it posible to update the robot's position live when programming its movement.<br/>A micro controller was chosen which could "easily" use UART as well as I2c communication. Because a lot of the intensive calculations are done at the computer running the front-end the micro controller didn't need to have a really fast CPU, therefor the [Arduino Uno](https://store.arduino.cc/arduino-uno-rev3) was chosen.
+The robot was build to interpret incoming(UART) data and convert it to the correct servo angle which it than send to the PWM/Servo driver. This made it also possible to create a front-end which acts like a time line and makes it posible to update the robot's position live when programming its movement.<br/><br/>A micro controller was chosen which could "easily" use UART as well as I2c communication. Because a lot of the intensive calculations are done at the computer running the front-end the micro controller didn't need to have a really fast CPU, therefor the [Arduino Uno](https://store.arduino.cc/arduino-uno-rev3) was chosen.
 
 ## C++ / Arduino software
 
-
+This project was build using [Visual studio code](https://code.visualstudio.com/). Although this program was written to run on an Arduino, tried was to use Arduino features and functions as little as possible. This was done so the software could easily be changed to run on another C++ compatible micro controller.<br/><br/>The documentation with all classes, methods, etc. can be found in the [Documentations/RoboticArm](https://github.com/Juulbl/6AxisRoboticArm/blob/master/Documentations/RoboticArm/index.html) directory.
 
 ## C# / GTK software
+
+This project was build using [Mono develop](https://www.monodevelop.com/).
