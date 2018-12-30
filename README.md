@@ -2,6 +2,18 @@
 
 ![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmStage3-2.jpeg)
 
+This project exists of two different programs. A C++ program to control the robot and a C# program to easily create and run programs / sequences for the robot.
+
+
+## Movement demos
+
+### 6 axis
+![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArm6AxisDemo.gif)
+
+### Not a robot
+![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmNotARobot.gif)
+
+
 ## Hardware
 
 ### Motors
