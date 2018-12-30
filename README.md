@@ -37,7 +37,7 @@ The robot was build to interpret incoming(UART) data and convert it to the corre
 
 ## Robot design/model
 
-![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmDesign.jpeg)
+![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmDesign.png)
 
 The design of the robot was created using [Fusion 360](https://www.autodesk.com/products/fusion-360/overview). The files can be found in the [Fusion 360 directory](https://github.com/Juulbl/6AxisRoboticArm/tree/master/Fusion360).
 
