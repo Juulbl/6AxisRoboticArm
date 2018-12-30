@@ -1,7 +1,4 @@
-![](https://raw.githubusercontent.com/Juulbl/6AxisRoboticArm/master/media/images/RobotArmStage3-2.jpeg)
-
 This project exists of two different programs. A C++ program to control the robot and a C# program to easily create and run programs / sequences for the robot. All programs where written on a Linux machine.
-
 
 ## Movement demos
 
