@@ -5,12 +5,15 @@
 ## Hardware
 
 ### Motors
+
 Servos drive all the joints of the robot. Because all joints carry a different weight, three different kinds of servos are used.
 
 Servos:
 - MG996R:<br/>This servo is used at joints two and three, these joints bare the most weight and therefor need high torque servos.
 - S3003:<br/>This servo is used at joints one and four, these joint don't carry a lot of weight so they don't need high torque servos.
 - SG90:<br/>This servo is used in the last two joints, these joint carry the least amount of weight and needed to be small.
+
+![](https://github.com/Juulbl/6AxisRoboticArm/blob/master/media/images/RobotArmServos.jpeg)
 
 ### Drivers
 
